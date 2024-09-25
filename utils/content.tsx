@@ -2,7 +2,7 @@ import ActionsheetDemo from "@/app/ActionSheet";
 import AlertDialogDemo from "@/app/AlertDialog";
 import AlertDemo from "@/app/Alert";
 import AvatarDemo from "@/app/Avatar";
-import AccordionDemo from "@/app/Accordian";
+import AccordionDemo from "@/app/Accordion";
 import BadgeDemo from "@/app/Badge";
 import BoxDemo from "@/app/Box";
 import ButtonDemo from "@/app/Button";
@@ -33,105 +33,99 @@ import VStackDemo from "@/app/VStack";
 
 export const content = [
   {
-    title: "Actionsheet",
+    title: "ActionSheet",
     child: <ActionsheetDemo />,
-    href: "/actionsheet",
+    href: "/ActionSheet",
   },
   {
     title: "AlertDialog",
     child: <AlertDialogDemo />,
-    href: "/alert-dialog",
+    href: "/AlertDialog",
   },
   {
     title: "Alert",
     child: <AlertDemo />,
-    href: "/alert",
+    href: "/Alert",
   },
   {
     title: "Avatar",
     child: <AvatarDemo />,
-    href: "/avatar",
+    href: "/Avatar",
   },
   {
     title: "Accordion",
     child: <AccordionDemo />,
-    href: "/accordion",
+    href: "/Accordion",
   },
-
   {
     title: "Badge",
     child: <BadgeDemo />,
-    href: "/badge",
+    href: "/Badge",
   },
   {
     title: "Box",
     child: <BoxDemo />,
-    href: "/box",
+    href: "/Box",
   },
   {
     title: "Button",
     child: <ButtonDemo />,
-    href: "/button",
+    href: "/Button",
   },
-
   {
     title: "Center",
     child: <CenterDemo />,
-    href: "/center",
+    href: "/Center",
   },
   {
     title: "Checkbox",
     child: <CheckboxDemo />,
-    href: "/checkbox",
+    href: "/Checkbox",
   },
-
   {
     title: "Divider",
     child: <DividerDemo />,
-    href: "/divider",
+    href: "/Divider",
   },
-
   {
     title: "Fab",
     child: <FabDemo />,
-    href: "/fab",
+    href: "/Fab",
   },
   {
     title: "FormControl",
     child: <FormControlDemo />,
-    href: "/form-control",
+    href: "/FormControl",
   },
   {
     title: "Heading",
     child: <HeadingDemo />,
-    href: "/heading",
+    href: "/Heading",
   },
   {
     title: "HStack",
     child: <HStackDemo />,
-    href: "/hstack",
+    href: "/HStack",
   },
-
   {
     title: "Icon",
     child: <IconDemo />,
-    href: "/icon",
+    href: "/Icon",
   },
   {
     title: "Image",
     child: <ImageDemo />,
-    href: "/image",
+    href: "/Image",
   },
   {
     title: "Input",
     child: <InputDemo />,
-    href: "/input",
+    href: "/Input",
   },
-
   {
     title: "Link",
     child: <LinkDemo />,
-    href: "/link",
+    href: "/Link",
   },
 
   // {
@@ -144,7 +138,7 @@ export const content = [
   {
     title: "Modal",
     child: <ModalDemo />,
-    href: "/modal",
+    href: "/Modal",
   },
 
   // {
@@ -157,67 +151,61 @@ export const content = [
   {
     title: "Pressable",
     child: <PressableDemo />,
-    href: "/pressable",
+    href: "/Pressable",
   },
   {
     title: "Progress",
     child: <ProgressDemo />,
-    href: "/progress",
+    href: "/Progress",
   },
-
   {
     title: "Radio",
     child: <RadioDemo />,
-    href: "/radio",
+    href: "/Radio",
   },
-
   {
     title: "Select",
     child: <SelectDemo />,
-    href: "/select",
+    href: "/Select",
   },
-
   {
     title: "Slider",
     child: <SliderDemo />,
-    href: "/slider",
+    href: "/Slider",
   },
   {
     title: "Spinner",
     child: <SpinnerDemo />,
-    href: "/spinner",
+    href: "/Spinner",
   },
   {
     title: "Switch",
     child: <SwitchDemo />,
-    href: "/switch",
+    href: "/Switch",
   },
-
   {
     title: "Text",
     child: <TextDemo />,
-    href: "/text",
+    href: "/Text",
   },
   {
     title: "TextArea",
     child: <TextAreaDemo />,
-    href: "/textarea",
+    href: "/TextArea",
   },
   {
     title: "Toast",
     child: <ToastDemo />,
-    href: "/toast",
+    href: "/Toast",
   },
-
   {
     title: "Tooltip",
     child: <TooltipDemo />,
-    href: "/tooltip",
+    href: "/Tooltip",
   },
-
   {
     title: "VStack",
     child: <VStackDemo />,
-    href: "/vstack",
+    href: "/VStack",
   },
 ];
