@@ -1,19 +1,22 @@
+import React from "react";
 import {
   Slider,
   SliderFilledTrack,
   SliderThumb,
   SliderTrack,
 } from "@/components/ui/slider";
-import React from "react";
+import { Center } from "@/components/ui/center";
 
 const SliderDemo = () => {
   return (
-    <Slider defaultValue={30} className="w-[220px]">
-      <SliderTrack>
-        <SliderFilledTrack />
-      </SliderTrack>
-      <SliderThumb />
-    </Slider>
+    <Center className="flex-1">
+      <Slider defaultValue={30} className="w-[220px]">
+        <SliderTrack>
+          <SliderFilledTrack />
+        </SliderTrack>
+        <SliderThumb />
+      </Slider>
+    </Center>
   );
 };
 

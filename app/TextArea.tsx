@@ -1,11 +1,14 @@
-import { Textarea, TextareaInput } from "@/components/ui/textarea";
 import React from "react";
+import { Textarea, TextareaInput } from "@/components/ui/textarea";
+import { Center } from "@/components/ui/center";
 
 const TextAreaDemo = () => {
   return (
-    <Textarea>
-      <TextareaInput placeholder="Your text goes here..." />
-    </Textarea>
+    <Center className="flex-1 px-6">
+      <Textarea>
+        <TextareaInput placeholder="Your text goes here..." />
+      </Textarea>
+    </Center>
   );
 };
 

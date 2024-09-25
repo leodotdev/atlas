@@ -10,11 +10,11 @@ export default function RootLayout() {
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" options={{ headerShown: false }} />
         <Stack.Screen
-          name="accordian"
-          options={{ headerTitle: "Accordian", headerBackTitle: "Home" }}
+          name="accordion"
+          options={{ headerTitle: "Accordion", headerBackTitle: "Home" }}
         />
         <Stack.Screen
-          name="actionSheet"
+          name="actionsheet"
           options={{ headerTitle: "ActionSheet", headerBackTitle: "Home" }}
         />
         <Stack.Screen
@@ -22,7 +22,7 @@ export default function RootLayout() {
           options={{ headerTitle: "Alert", headerBackTitle: "Home" }}
         />
         <Stack.Screen
-          name="alertDialog"
+          name="alert-dialog"
           options={{ headerTitle: "AlertDialog", headerBackTitle: "Home" }}
         />
         <Stack.Screen
@@ -58,7 +58,7 @@ export default function RootLayout() {
           options={{ headerTitle: "Fab", headerBackTitle: "Home" }}
         />
         <Stack.Screen
-          name="formControl"
+          name="form-control"
           options={{ headerTitle: "FormControl", headerBackTitle: "Home" }}
         />
         <Stack.Screen
@@ -118,7 +118,7 @@ export default function RootLayout() {
           options={{ headerTitle: "Text", headerBackTitle: "Home" }}
         />
         <Stack.Screen
-          name="textArea"
+          name="textarea"
           options={{ headerTitle: "TextArea", headerBackTitle: "Home" }}
         />
         <Stack.Screen

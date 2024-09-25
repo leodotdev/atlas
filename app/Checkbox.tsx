@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Checkbox,
   CheckboxIcon,
@@ -5,16 +6,18 @@ import {
   CheckboxLabel,
 } from "@/components/ui/checkbox";
 import { CheckIcon } from "@/components/ui/icon";
-import React from "react";
+import { Center } from "@/components/ui/center";
 
 export const CheckboxDemo = () => {
   return (
-    <Checkbox value={''}>
-      <CheckboxIndicator>
-        <CheckboxIcon as={CheckIcon} />
-      </CheckboxIndicator>
-      <CheckboxLabel>Label</CheckboxLabel>
-    </Checkbox>
+    <Center className="flex-1">
+      <Checkbox value={""}>
+        <CheckboxIndicator>
+          <CheckboxIcon as={CheckIcon} />
+        </CheckboxIndicator>
+        <CheckboxLabel>Label</CheckboxLabel>
+      </Checkbox>
+    </Center>
   );
 };
 

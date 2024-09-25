@@ -1,9 +1,14 @@
 import React from "react";
 import { Spinner } from "@/components/ui/spinner";
 import colors from "tailwindcss/colors";
+import { Center } from "@/components/ui/center";
 
 const SpinnerDemo = () => {
-  return <Spinner size="large" color={colors.gray[500]} />;
+  return (
+    <Center className="flex-1">
+      <Spinner size="large" color={colors.gray[500]} />
+    </Center>
+  );
 };
 
 export default SpinnerDemo;
