@@ -9,62 +9,113 @@ import {
   FormControlErrorText,
   FormControlErrorIcon,
 } from "@/components/ui/form-control";
-import { Input, InputField } from "@/components/ui/input";
+import { Input, InputField, InputSlot, InputIcon } from "@/components/ui/input";
 import { AlertCircleIcon } from "@/components/ui/icon";
 import { Button, ButtonText } from "@/components/ui/button";
-import { VStack } from "@/components/ui/vstack";
 import { Center } from "@/components/ui/center";
+import { EyeIcon, EyeOffIcon } from "lucide-react-native";
 
 const FormControlDemo = () => {
   const [isInvalid, setIsInvalid] = React.useState(false);
-  const [inputValue, setInputValue] = React.useState("12345");
+  const [isInvalid2, setIsInvalid2] = React.useState(false);
+  const [inputValue1, setInputValue1] = React.useState("");
+  const [inputValue2, setInputValue2] = React.useState("");
+  const [showPassword1, setShowPassword1] = React.useState(false);
+  const [showPassword2, setShowPassword2] = React.useState(false);
 
-  const handleSubmit = () => {
-    if (inputValue?.length < 6) {
+  const handleChangePassword = () => {
+    if (inputValue1?.length < 6) {
       setIsInvalid(true);
     } else {
       setIsInvalid(false);
     }
+    if (inputValue2 !== inputValue1) {
+      setIsInvalid2(true);
+    } else {
+      setIsInvalid2(false);
+    }
   };
   return (
-    <Center className="flex-1">
-      <VStack className="w-full max-w-[300px] rounded-md border border-background-300 p-4">
-        <FormControl isInvalid={isInvalid}>
+    <Center className="flex-1 p-6">
+      <Center className="rounded-xl border border-outline-200 bg-background-0 p-6 w-full max-w-[336px]">
+        <FormControl isInvalid={isInvalid} className="w-full">
           <FormControlLabel>
-            <FormControlLabelText>Password</FormControlLabelText>
+            <FormControlLabelText size="sm">
+              Enter Password
+            </FormControlLabelText>
           </FormControlLabel>
-          <Input className="my-1">
+          <Input>
             <InputField
-              type="password"
-              placeholder="password"
-              value={inputValue}
+              type={showPassword1 ? "text" : "password"}
+              value={inputValue1}
               //@ts-ignore
-              onChange={(e) => setInputValue(e.target.value)}
+              onChange={(e) => setInputValue1(e.target.value)}
             />
+            <InputSlot
+              onPress={() => setShowPassword1(!showPassword1)}
+              className="mr-3"
+            >
+              <InputIcon as={showPassword1 ? EyeIcon : EyeOffIcon} />
+            </InputSlot>
           </Input>
 
           <FormControlHelper>
-            <FormControlHelperText>
+            <FormControlHelperText size="xs">
               Must be atleast 6 characters.
             </FormControlHelperText>
           </FormControlHelper>
 
           <FormControlError>
             <FormControlErrorIcon as={AlertCircleIcon} />
-            <FormControlErrorText>
+            <FormControlErrorText size="xs">
               Atleast 6 characters are required.
             </FormControlErrorText>
           </FormControlError>
         </FormControl>
 
+        <FormControl isInvalid={isInvalid2} className="mt-6 w-full">
+          <FormControlLabel>
+            <FormControlLabelText size="sm">
+              Confirm Password
+            </FormControlLabelText>
+          </FormControlLabel>
+          <Input>
+            <InputField
+              type={showPassword2 ? "text" : "password"}
+              value={inputValue2}
+              //@ts-ignore
+              onChange={(e) => setInputValue2(e.target.value)}
+            />
+            <InputSlot
+              onPress={() => setShowPassword2(!showPassword2)}
+              className="mr-3"
+            >
+              <InputIcon as={showPassword2 ? EyeIcon : EyeOffIcon} />
+            </InputSlot>
+          </Input>
+
+          <FormControlHelper>
+            <FormControlHelperText size="xs">
+              Must be same as password.
+            </FormControlHelperText>
+          </FormControlHelper>
+
+          <FormControlError>
+            <FormControlErrorIcon as={AlertCircleIcon} />
+            <FormControlErrorText size="xs">
+              Passwords do not match.
+            </FormControlErrorText>
+          </FormControlError>
+        </FormControl>
+
         <Button
-          className="w-fit self-end mt-4"
+          className="mt-8 w-full"
           size="sm"
-          onPress={handleSubmit}
+          onPress={handleChangePassword}
         >
-          <ButtonText>Submit</ButtonText>
+          <ButtonText>Change Password</ButtonText>
         </Button>
-      </VStack>
+      </Center>
     </Center>
   );
 };

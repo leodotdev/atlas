@@ -5,7 +5,7 @@ import { Center } from "@/components/ui/center";
 
 const AlertDemo = () => {
   return (
-    <Center className="flex-1">
+    <Center className="flex-1 bg-typography-0">
       <Alert>
         <AlertIcon as={InfoIcon} />
         <AlertText>Description of alert!</AlertText>

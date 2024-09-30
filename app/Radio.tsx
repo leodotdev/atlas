@@ -9,28 +9,36 @@ import {
 import { CircleIcon } from "@/components/ui/icon";
 import { VStack } from "@/components/ui/vstack";
 import { Center } from "@/components/ui/center";
+import { Text } from "@/components/ui/text";
+import { Box } from "@/components/ui/box";
 
 const RadioDemo = () => {
-  const [values, setValues] = React.useState("optionA");
+  const [values, setValues] = React.useState("");
 
   return (
     <Center className="flex-1">
-      <RadioGroup value={values} onChange={setValues}>
-        <VStack space="md">
-          <Radio value="optionA">
-            <RadioLabel>Option A</RadioLabel>
-            <RadioIndicator>
-              <RadioIcon as={CircleIcon} />
-            </RadioIndicator>
-          </Radio>
-          <Radio value="optionB">
-            <RadioLabel>Option B</RadioLabel>
-            <RadioIndicator>
-              <RadioIcon as={CircleIcon} />
-            </RadioIndicator>
-          </Radio>
-        </VStack>
-      </RadioGroup>
+      <Box className="bg-background-0 p-6 rounded-lg border border-outline-200 shadow-hard-5">
+        <Text size="2xl" className="font-semibold text-typography-900">
+          Do you like gluestack?
+        </Text>
+        <RadioGroup value={values} onChange={setValues} className="mt-8 ml-3">
+          <VStack space="xl">
+            <Radio value="optionA">
+              <RadioIndicator>
+                <RadioIcon as={CircleIcon} />
+              </RadioIndicator>
+              <RadioLabel>Yes</RadioLabel>
+            </Radio>
+
+            <Radio value="optionB">
+              <RadioIndicator>
+                <RadioIcon as={CircleIcon} />
+              </RadioIndicator>
+              <RadioLabel>Also, yes</RadioLabel>
+            </Radio>
+          </VStack>
+        </RadioGroup>
+      </Box>
     </Center>
   );
 };

@@ -12,13 +12,12 @@ import {
 import { Divider } from "@/components/ui/divider";
 import { ScrollView } from "@/components/ui/scroll-view";
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react-native";
-import { Center } from "@/components/ui/center";
 
 const AccordionDemo = () => {
   const accRef = React.useRef(null);
   return (
-    <ScrollView contentContainerClassName="max-h-[500px] bg-green-300 mt-[300px]">
-      <Accordion className="border border-outline-200">
+    <ScrollView contentContainerClassName="max-h-[500px] mt-[300px] mx-6 md:mx-10">
+      <Accordion className="border border-outline-200 rounded-lg overflow-hidden">
         <AccordionItem value="a">
           <AccordionHeader>
             <AccordionTrigger>

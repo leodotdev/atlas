@@ -5,6 +5,7 @@ import {
   AlertDialog,
   AlertDialogBackdrop,
   AlertDialogContent,
+  AlertDialogCloseButton,
   AlertDialogHeader,
   AlertDialogBody,
   AlertDialogFooter,
@@ -12,6 +13,7 @@ import {
 import { Text } from "@/components/ui/text";
 import { OverlayProvider } from "@gluestack-ui/overlay";
 import { Center } from "@/components/ui/center";
+import { Icon, CloseIcon } from "@/components/ui/icon";
 
 const AlertDialogDemo = () => {
   const [showAlertDialog, setShowAlertDialog] = useState(false);
@@ -29,8 +31,14 @@ const AlertDialogDemo = () => {
               <Heading className="text-typography-950 font-semibold" size="md">
                 Delete post?
               </Heading>
+              <AlertDialogCloseButton>
+                <Icon
+                  as={CloseIcon}
+                  className="stroke-background-400 group-[:hover]/alert-dialog-close-button:stroke-background-700 group-[:active]/alert-dialog-close-button:stroke-background-900 group-[:focus-visible]/alert-dialog-close-button:stroke-background-900"
+                />
+              </AlertDialogCloseButton>
             </AlertDialogHeader>
-            <AlertDialogBody className="mt-2 mb-4">
+            <AlertDialogBody className="mb-4">
               <Text size="sm">
                 Deleting the post will remove it permanently and cannot be
                 undone.
@@ -41,11 +49,11 @@ const AlertDialogDemo = () => {
                 variant="outline"
                 action="secondary"
                 onPress={handleClose}
-                size="sm"
+                size="xs"
               >
                 <ButtonText>Cancel</ButtonText>
               </Button>
-              <Button size="sm" onPress={handleClose}>
+              <Button size="xs" onPress={handleClose}>
                 <ButtonText>Delete</ButtonText>
               </Button>
             </AlertDialogFooter>

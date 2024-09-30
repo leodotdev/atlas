@@ -12,7 +12,7 @@ export default function HomeScreen() {
 
   return (
     <View className="flex-1 items-center justify-center">
-      <Text>Component not found. Redirecting to home...</Text>
+      <Text>Component not found. Redirecting to home page...</Text>
     </View>
   );
 }

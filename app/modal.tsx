@@ -57,7 +57,6 @@ const ModalDemo = () => {
                 variant="outline"
                 size="sm"
                 action="secondary"
-                className="mr-3"
                 onPress={() => {
                   setShowModal(false);
                 }}

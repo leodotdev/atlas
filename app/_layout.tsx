@@ -42,6 +42,10 @@ export default function RootLayout() {
           options={{ headerTitle: "Button", headerBackTitle: "Home" }}
         />
         <Stack.Screen
+          name="card"
+          options={{ headerTitle: "Card", headerBackTitle: "Home" }}
+        />
+        <Stack.Screen
           name="center"
           options={{ headerTitle: "Center", headerBackTitle: "Home" }}
         />
@@ -54,12 +58,20 @@ export default function RootLayout() {
           options={{ headerTitle: "Divider", headerBackTitle: "Home" }}
         />
         <Stack.Screen
+          name="drawer"
+          options={{ headerTitle: "Drawer", headerBackTitle: "Home" }}
+        />
+        <Stack.Screen
           name="fab"
           options={{ headerTitle: "Fab", headerBackTitle: "Home" }}
         />
         <Stack.Screen
           name="form-control"
           options={{ headerTitle: "FormControl", headerBackTitle: "Home" }}
+        />
+        <Stack.Screen
+          name="grid"
+          options={{ headerTitle: "Grid", headerBackTitle: "Home" }}
         />
         <Stack.Screen
           name="hstack"
@@ -82,8 +94,20 @@ export default function RootLayout() {
           options={{ headerTitle: "Link", headerBackTitle: "Home" }}
         />
         <Stack.Screen
+          name="menu"
+          options={{ headerTitle: "Menu", headerBackTitle: "Home" }}
+        />
+        <Stack.Screen
           name="modal"
           options={{ headerTitle: "Modal", headerBackTitle: "Home" }}
+        />
+        <Stack.Screen
+          name="popover"
+          options={{ headerTitle: "Popover", headerBackTitle: "Home" }}
+        />
+        <Stack.Screen
+          name="portal"
+          options={{ headerTitle: "Portal", headerBackTitle: "Home" }}
         />
         <Stack.Screen
           name="pressable"
@@ -102,6 +126,10 @@ export default function RootLayout() {
           options={{ headerTitle: "Select", headerBackTitle: "Home" }}
         />
         <Stack.Screen
+          name="skeleton"
+          options={{ headerTitle: "Skeleton", headerBackTitle: "Home" }}
+        />
+        <Stack.Screen
           name="slider"
           options={{ headerTitle: "Slider", headerBackTitle: "Home" }}
         />
@@ -112,6 +140,10 @@ export default function RootLayout() {
         <Stack.Screen
           name="switch"
           options={{ headerTitle: "Switch", headerBackTitle: "Home" }}
+        />
+        <Stack.Screen
+          name="table"
+          options={{ headerTitle: "Table", headerBackTitle: "Home" }}
         />
         <Stack.Screen
           name="text"
