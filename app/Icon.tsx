@@ -1,5 +1,5 @@
 import React from "react";
-import { Icon, EditIcon } from "@/components/ui/icon";
+import { Icon } from "@/components/ui/icon";
 import { Center } from "@/components/ui/center";
 import { Grid, GridItem } from "@/components/ui/grid";
 import {
@@ -15,6 +15,7 @@ import {
   RepeatIcon,
   CopyIcon,
 } from "@/components/ui/icon";
+import { Box } from "@/components/ui/box";
 
 const icons = [
   {
@@ -59,7 +60,7 @@ const IconDemo = () => {
   return (
     <Center className="flex-1 bg-background-0">
       <Grid
-        className="gap-10 max-w-[216px] w-full items-center justify-center bg-background-0 rounded-lg border border-outline-200 p-8 shadow-hard-5"
+        className="gap-10 w-full max-w-[216px] p-8 rounded-lg shadow-hard-5 border-outline-200 border"
         _extra={{
           className: "grid-cols-3",
         }}
@@ -72,7 +73,9 @@ const IconDemo = () => {
                 className: "col-span-1",
               }}
             >
-              <Icon as={icon.icon} size="xl" />
+              <Box className="flex items-center">
+                <Icon as={icon.icon} size="xl" />
+              </Box>
             </GridItem>
           );
         })}

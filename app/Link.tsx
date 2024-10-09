@@ -3,7 +3,7 @@ import { Link, LinkText } from "@/components/ui/link";
 import { Center } from "@/components/ui/center";
 import { HStack } from "@/components/ui/hstack";
 import { Icon } from "@/components/ui/icon";
-import { Twitter, Instagram } from "lucide-react-native";
+import { Twitter, Youtube } from "lucide-react-native";
 
 const LinkDemo = () => {
   return (
@@ -22,16 +22,12 @@ const LinkDemo = () => {
           <LinkText className="no-underline">Twitter</LinkText>
         </Link>
         <Link
-          href="https://www.instagram.com/gluestackio/"
+          href="https://www.youtube.com/@GeekyAnts"
           isExternal
           className="flex flex-row justify-center items-center gap-2"
         >
-          <Icon
-            // size="xl"
-            as={Instagram}
-            className="text-typography-0 fill-info-800 h-10 w-10"
-          />
-          <LinkText className="no-underline">Instagram</LinkText>
+          <Icon size="xl" as={Youtube} className="text-info-800" />
+          <LinkText className="no-underline">Youtube</LinkText>
         </Link>
       </HStack>
     </Center>

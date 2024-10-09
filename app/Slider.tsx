@@ -11,6 +11,7 @@ import { Text } from "@/components/ui/text";
 import { Icon } from "@/components/ui/icon";
 import HundredEmoji from "@/components/custom/icons/hundredEmoji";
 import ThumbDownEmoji from "@/components/custom/icons/thumbDownEmoji";
+
 const SliderDemo = () => {
   return (
     <Center className="flex-1">

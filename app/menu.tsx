@@ -7,7 +7,7 @@ import { Icon, GlobeIcon, PlayIcon, SettingsIcon } from "@/components/ui/icon";
 
 const MenuDemo = () => {
   return (
-    <Center className="flex-1 bg-typography-0 p-6">
+    <Center className="flex-1 bg-background-0 p-6">
       <Menu
         placement="top"
         offset={5}

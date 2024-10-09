@@ -2,7 +2,6 @@ import React from "react";
 import { Progress, ProgressFilledTrack } from "@/components/ui/progress";
 import { Center } from "@/components/ui/center";
 import { Text } from "@/components/ui/text";
-import { Box } from "@/components/ui/box";
 import { VStack } from "@/components/ui/vstack";
 
 const ProgressDemo = () => {

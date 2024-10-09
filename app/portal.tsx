@@ -17,7 +17,7 @@ import { CloseIcon } from "@/components/ui/icon";
 const PortalDemo = () => {
   const [visible, setVisible] = React.useState(false);
   return (
-    <Center className="flex-1 bg-typography-0 p-6">
+    <Center className="flex-1 bg-background-0 p-6">
       <VStack className="max-w-[336px] w-full" space="md">
         <VStack className="border border-outline-200 rounded-xl p-3">
           <Image
@@ -45,7 +45,7 @@ const PortalDemo = () => {
           className="max-w-[336px] w-full p-5 bg-background-0 shadow-hard-5 rounded-lg border border-outline-300 justify-between"
           space="sm"
         >
-          <VStack>
+          <VStack className="flex-1">
             <Text className="text-typography-900 font-semibold">
               Choose a slot
             </Text>
@@ -72,7 +72,12 @@ const PortalDemo = () => {
             </ButtonGroup>
           </VStack>
 
-          <Button size="sm" variant="link" onPress={() => setVisible(false)}>
+          <Button
+            size="sm"
+            variant="link"
+            onPress={() => setVisible(false)}
+            className=""
+          >
             <ButtonIcon as={CloseIcon} />
           </Button>
         </HStack>

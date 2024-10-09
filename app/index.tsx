@@ -1,10 +1,6 @@
 import React from "react";
-import { Text } from "@/components/ui/text";
-import { View } from "@/components/ui/view";
-import { Pressable } from "@/components/ui/pressable";
 import { Link } from "expo-router";
 import { SafeAreaView } from "@/components/ui/safe-area-view";
-import { Box } from "@/components/ui/box";
 import { content } from "@/utils/content";
 import { ScrollView } from "@/components/ui/scroll-view";
 import { Grid, GridItem } from "@/components/ui/grid";

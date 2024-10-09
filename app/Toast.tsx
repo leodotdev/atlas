@@ -2,7 +2,7 @@ import React from "react";
 import { Toast, ToastDescription, ToastTitle } from "@/components/ui/toast";
 import { Center } from "@/components/ui/center";
 import { VStack } from "@/components/ui/vstack";
-import { HelpCircleIcon, Icon, CalendarDaysIcon } from "@/components/ui/icon";
+import { HelpCircleIcon, Icon } from "@/components/ui/icon";
 
 const ToastDemo = () => {
   return (

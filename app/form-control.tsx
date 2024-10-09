@@ -48,8 +48,7 @@ const FormControlDemo = () => {
             <InputField
               type={showPassword1 ? "text" : "password"}
               value={inputValue1}
-              //@ts-ignore
-              onChange={(e) => setInputValue1(e.target.value)}
+              onChangeText={(text) => setInputValue1(text)}
             />
             <InputSlot
               onPress={() => setShowPassword1(!showPassword1)}
@@ -83,8 +82,7 @@ const FormControlDemo = () => {
             <InputField
               type={showPassword2 ? "text" : "password"}
               value={inputValue2}
-              //@ts-ignore
-              onChange={(e) => setInputValue2(e.target.value)}
+              onChangeText={(text) => setInputValue2(text)}
             />
             <InputSlot
               onPress={() => setShowPassword2(!showPassword2)}

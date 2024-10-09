@@ -8,14 +8,13 @@ import {
   TableHead,
   TableBody,
   TableData,
-  TableFooter,
 } from "@/components/ui/table";
 import { Badge, BadgeText, BadgeIcon } from "@/components/ui/badge";
 import { CloseIcon, CheckIcon, InfoIcon } from "@/components/ui/icon";
 
 const TableDemo = () => {
   return (
-    <Center className="flex-1 bg-typography-0 p-6">
+    <Center className="flex-1 bg-background-0 p-6">
       <Box className="w-full rounded-xl border border-outline-300 overflow-hidden">
         <Table className="w-full">
           <TableHeader>
@@ -29,7 +28,7 @@ const TableDemo = () => {
             <TableRow>
               <TableData>Rajesh</TableData>
               <TableData>VII</TableData>
-              <TableData>
+              <TableData useRNView>
                 <Badge
                   size="sm"
                   variant="solid"
@@ -44,7 +43,7 @@ const TableDemo = () => {
             <TableRow>
               <TableData>Ravi</TableData>
               <TableData>IX</TableData>
-              <TableData>
+              <TableData useRNView>
                 <Badge
                   size="sm"
                   variant="solid"
@@ -59,7 +58,7 @@ const TableDemo = () => {
             <TableRow className="border-none">
               <TableData>Ananya</TableData>
               <TableData>X</TableData>
-              <TableData>
+              <TableData useRNView>
                 <Badge
                   size="sm"
                   variant="solid"

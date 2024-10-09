@@ -9,6 +9,11 @@ const InputDemo = () => {
   const [inputValue1, setInputValue1] = React.useState("");
   const [inputValue2, setInputValue2] = React.useState("");
 
+  const handleSubmit = () => {
+    setInputValue1("");
+    setInputValue2("");
+  };
+
   return (
     <Center className="flex-1 p-6">
       <VStack className="rounded-xl border border-outline-200 bg-background-0 p-6 w-full max-w-[406px]">
@@ -20,8 +25,7 @@ const InputDemo = () => {
             type={"text"}
             value={inputValue1}
             placeholder="Enter First Name"
-            //@ts-ignore
-            onChange={(e) => setInputValue1(e.target.value)}
+            onChangeText={(text) => setInputValue1(text)} 
           />
         </Input>
 
@@ -33,12 +37,11 @@ const InputDemo = () => {
             type={"text"}
             value={inputValue2}
             placeholder="Enter First Name"
-            //@ts-ignore
-            onChange={(e) => setInputValue2(e.target.value)}
+            onChangeText={(text) => setInputValue2(text)}
           />
         </Input>
 
-        <Button className="w-full">
+        <Button className="w-full" onPress={handleSubmit}>
           <ButtonText>Submit</ButtonText>
         </Button>
       </VStack>

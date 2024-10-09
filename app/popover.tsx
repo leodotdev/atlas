@@ -21,7 +21,7 @@ const PopoverDemo = () => {
     setIsOpen(false);
   };
   return (
-    <Center className="flex-1 bg-typography-0 p-6">
+    <Center className="flex-1 bg-background-0 p-6">
       <VStack space="md" className="max-w-[336px] w-full">
         <Image
           source={{

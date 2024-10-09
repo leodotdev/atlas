@@ -7,7 +7,7 @@ import { Heading } from "@/components/ui/heading";
 
 const CardDemo = () => {
   return (
-    <Center className="flex-1 bg-typography-0 p-6">
+    <Center className="flex-1 bg-background-0 p-6">
       <Card className="max-w-[352px] max-h-[352px] flex flex-col p-0">
         <Image
           source={{

@@ -10,22 +10,6 @@ import { VStack } from "@/components/ui/vstack";
 import { Badge, BadgeIcon } from "@/components/ui/badge";
 import { InfoIcon } from "@/components/ui/icon";
 
-// const PressableDemo = () => {
-//   return (
-//     <Center className="flex-1">
-//       <Pressable
-//         // eslint-disable-next-line no-console
-//         onPress={() => console.log("Hello")}
-//         className="p-5 bg-primary-500"
-//       >
-//         <Text className="text-typography-0">Press me</Text>
-//       </Pressable>
-//     </Center>
-//   );
-// };
-
-// export default PressableDemo;
-
 const PressableDemo = () => {
   const [readMore, setReadMore] = React.useState(false);
 
@@ -39,12 +23,12 @@ const PressableDemo = () => {
           <Image
             className="w-[94px] h-auto aspect-[534/164]"
             source={{
-              uri: "https://s3-alpha-sig.figma.com/img/f352/23e6/1854e6bd23003fbec7b50971b17c90b1?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=S4khw4550567Dy1asVtemxArehBO5YzwEgNJe8P7xEnkpttB3nPwyTBTWsZWnAHKshGD52b7vsW8pDbE~APfca~udnZFXl1GD1sO3AkkxTirK8j3k4SP8BaOM1K~Y~iRIaI51hDWs5~a8cQTyLmmZ~BXNbA0Pvd8Ylu3y00rHKt6iM8tbX5wqbUvDzHxvlPE0tuIq2I0Gedsl4h~X557hgk70MErZMfjFajJczNzOJ6tzM4I4z1jioXULQeJl1rW79Ei730cOBk4U8E5B9~sfTlUCEOT7GTRHhyRR5kyT5hZh99iMZ~9qKpGoJBLxMCsJEnwYrZav6r3eKC9NHH56w__",
+              uri: "https://i.imgur.com/w4N0SUz.png",
             }}
             alt="image"
           />
         </Box>
-        <VStack>
+        <VStack className="flex-1">
           <Badge action="info" size="sm">
             <BadgeIcon as={InfoIcon} className="mr-1" />
             <BadgeText>new story</BadgeText>

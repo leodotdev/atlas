@@ -1,5 +1,4 @@
 import React from "react";
-import { Box } from "@/components/ui/box";
 import { Center } from "@/components/ui/center";
 import { Button, ButtonText } from "@/components/ui/button";
 import {
@@ -16,7 +15,7 @@ import { Text } from "@/components/ui/text";
 const DrawerDemo = () => {
   const [showDrawer, setShowDrawer] = React.useState(false);
   return (
-    <Center className="flex-1 bg-typography-0 p-6">
+    <Center className="flex-1 bg-background-0 p-6">
       <Button
         onPress={() => {
           setShowDrawer(true);

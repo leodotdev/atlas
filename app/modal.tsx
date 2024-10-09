@@ -17,12 +17,11 @@ import { Center } from "@/components/ui/center";
 
 const ModalDemo = () => {
   const [showModal, setShowModal] = React.useState(false);
-  const ref = React.useRef(null);
 
   return (
     <OverlayProvider>
       <Center className="flex-1">
-        <Button onPress={() => setShowModal(true)} ref={ref}>
+        <Button onPress={() => setShowModal(true)}>
           <ButtonText>Show Modal</ButtonText>
         </Button>
         <Modal
@@ -31,7 +30,6 @@ const ModalDemo = () => {
             setShowModal(false);
           }}
           size="lg"
-          finalFocusRef={ref}
         >
           <ModalBackdrop />
           <ModalContent focusScope={false}>

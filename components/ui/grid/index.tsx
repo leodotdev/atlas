@@ -10,10 +10,6 @@ import type { VariantProps } from "@gluestack-ui/nativewind-utils";
 import { View, Dimensions, Platform, ViewProps } from "react-native";
 import { gridStyle, gridItemStyle } from "./styles";
 import { cssInterop } from "nativewind";
-// import {
-//   useBreakpointValue,
-//   getBreakPointValue,
-// } from '@gluestack-ui/nativewind-utils/useBreakpointValue';
 import {
   useBreakpointValue,
   getBreakPointValue,
@@ -121,6 +117,9 @@ type IGridProps = ViewProps &
     paddingRight?: number;
     paddingStart?: number;
     paddingEnd?: number;
+    borderWidth?: number;
+    borderLeftWidth?: number;
+    borderRightWidth?: number;
     _extra: {
       className: string;
     };
@@ -186,6 +185,10 @@ const Grid = forwardRef<React.ElementRef<typeof View>, IGridProps>(
       };
     }, [calculatedWidth, itemsPerRow, responsiveNumColumns, props]);
 
+    const borderLeftWidth = props?.borderLeftWidth || props?.borderWidth || 0;
+    const borderRightWidth = props?.borderRightWidth || props?.borderWidth || 0;
+    const borderWidthToSubtract = borderLeftWidth + borderRightWidth;
+
     return (
       <GridContext.Provider value={contextValue}>
         <View
@@ -203,7 +206,8 @@ const Grid = forwardRef<React.ElementRef<typeof View>, IGridProps>(
             const width =
               event.nativeEvent.layout.width -
               paddingLeftToSubtract -
-              paddingRightToSubtract;
+              paddingRightToSubtract -
+              borderWidthToSubtract;
 
             setCalculatedWidth(width);
           }}
@@ -230,6 +234,9 @@ cssInterop(Grid, {
       paddingRight: "paddingRight",
       paddingStart: "paddingStart",
       paddingEnd: "paddingEnd",
+      borderWidth: "borderWidth",
+      borderLeftWidth: "borderLeftWidth",
+      borderRightWidth: "borderRightWidth",
     },
   },
 });
