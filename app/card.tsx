@@ -11,7 +11,7 @@ const CardDemo = () => {
       <Card className="max-w-[352px] max-h-[352px] flex flex-col p-0">
         <Image
           source={{
-            uri: "https://s3-alpha-sig.figma.com/img/5f2a/37c0/2ae67e355659158769f1e2e6a597f8b5?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=m-wPmMx1oi6YVUMcBldMlzKvJSW65U017tmQF7ER6Zpyo7DSnI3DjTz6DaxE~b~nLm2NbDsEXH428QhbJJJoF8ZVmeyaPG0T3PvG2uiKgai8IwKM1M6Y0CuD7casBmzq~uZE8iW5oiDSeuT1Z5UzYt6wf5mz7zJHsmc7XcXtTTQUDbNCouZDTrUfHUpgeLINvxbc8XoEaZOsOrnQ84zrUmkmkvH0KIIpBEOZpIJj7If-UAu8RRQkybvPJ4r8TIjWhnCoDg-IxDV~ako346gOEGABtxbElKG0sLY2eTH-afk2i7FXRuohtzrOAUmKxLLWu9cuE6mddSKlzWNH4fkmKg__",
+            uri: "https://i.imgur.com/yL7VSbU.png",
           }}
           alt="random"
           className="w-full aspect-[352/234] rounded"
