@@ -31,7 +31,7 @@ const AlertDialogDemo = () => {
               <Heading className="text-typography-950 font-semibold" size="md">
                 Delete post?
               </Heading>
-              <AlertDialogCloseButton>
+              <AlertDialogCloseButton onPress={handleClose}>
                 <Icon
                   as={CloseIcon}
                   className="stroke-background-400 group-[:hover]/alert-dialog-close-button:stroke-background-700 group-[:active]/alert-dialog-close-button:stroke-background-900 group-[:focus-visible]/alert-dialog-close-button:stroke-background-900"
