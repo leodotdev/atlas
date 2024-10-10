@@ -16,7 +16,7 @@ import { Center } from "@/components/ui/center";
 
 const SelectDemo = () => {
   return (
-    <Center className="flex-1">
+    <Center className="flex-1 px-6">
       <Select>
         <SelectTrigger>
           <SelectInput placeholder="Select option" />
