@@ -19,7 +19,7 @@ const SelectDemo = () => {
     <Center className="flex-1 px-6">
       <Select>
         <SelectTrigger>
-          <SelectInput placeholder="Select option" />
+          <SelectInput placeholder="Select option" className="w-[240px] overflow-ellipsis" />
           <SelectIcon as={ChevronDownIcon} className="mr-3" />
         </SelectTrigger>
         <SelectPortal>

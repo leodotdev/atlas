@@ -11,6 +11,7 @@ import { Pressable } from "@/components/ui/pressable";
 import { cssInterop } from "nativewind";
 
 cssInterop(SafeAreaView, { className: "style" });
+
 const ComponentCard = ({ component, onPress }: any) => (
   <Pressable
     className="flex-1 sm:p-3 p-2 rounded-lg bg-background-0 shadow-[0px_0px_4.374px_0px_rgba(38,38,38,0.10)] w-full max-w-[400px] h-full aspect-[4/3] sm:gap-2 gap-1 flex flex-col"
@@ -37,7 +38,7 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView className="flex-1 bg-background-0">
-      <ScrollView className="flex-1 bg-background-0">
+      <ScrollView className="flex-1">
         <Grid
           className="gap-3 sm:gap-5 sm:p-6 p-4 max-w-[1600px] mx-auto"
           _extra={{

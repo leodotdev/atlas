@@ -22,7 +22,7 @@ const PortalDemo = () => {
         <VStack className="border border-outline-200 rounded-xl p-3">
           <Image
             source={{
-              uri: "https://s3-alpha-sig.figma.com/img/ce91/5efa/1fb17b6f2e672daf91660490e00b5358?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=DY6sNaCDFmwkDjOAZQYwyG8u0Ebmj0qduzC10lrpy77WeljBbaUYd2vK6lOEwLsl8WY5I6w3AlO7IZs8gVMtVJJ~f4SJyvUfG-BUwBRSNGp1Tr4KecSSf9zO8yBQl0rpWPdL2ppXGWMXM5xWogEuuGpCgWm2SbE8r5yeE0XpPxVaHaMaaL~rAlgvav~bS1GosP3sMcMcXb4CSUfTvgxUmsgalREtsP4JvZU4ZEWU~2vJtshWG9GExnRJfb29r~TZaxp0KFGdw0-iJ6S2hmjtVNZ6QDzivDYx5ewuil2jp5gXsyTJxG69vjYUefLN81pwE1V9b1lc5Lm62WxCMKa-mg__",
+              uri: "https://images.unsplash.com/photo-1527685609591-44b0aef2400b?q=80&w=3866&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             }}
             alt="image"
             className="w-full aspect-[312/173] rounded"
@@ -39,6 +39,7 @@ const PortalDemo = () => {
 
       <Portal
         isOpen={visible}
+        //@ts-ignore
         className={`justify-center items-center ${visible ? "bg-background-dark/60" : ""}`}
       >
         <HStack

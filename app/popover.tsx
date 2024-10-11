@@ -25,7 +25,7 @@ const PopoverDemo = () => {
       <VStack space="md" className="max-w-[336px] w-full">
         <Image
           source={{
-            uri: "https://s3-alpha-sig.figma.com/img/a4f6/9fd3/9466134c3838d0338a7a9d07cf1fb3b5?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hWtl~YvFyoO6wL3O9S-~Rs~QbZq8hXvK5RvI6TcTt-5Eii87iTORDqK5VMU0vIAAlwRhWz~L-3PaQhSYkc1akHHNYQixN3FlUDEIUIlirjLd8MZA9K-ZGYuXRtYrnft0gRDCwDFB-HZDZ15mNo12a0pVYT1WxxB-vu-TTvmOC8dy6K19ASWAvCsyija4Ysr5Dm8U7-~Rdg6S1Y~~22N9d8hYYhuMx0VRRPP7v8p8woKsjR84LLiyrN8WVY~f4Gt7A8MZAjHtnQ0CylMBQmcg2gI4eQw7yrF98HNo99YAtVH7Qv-4zfxjGqHWlKlJD49Hd6ePEgSIdqc0mfUNL3oVrw__",
+            uri: "https://images.unsplash.com/photo-1647221598272-9aa015392c81?q=80&w=3840&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           }}
           alt="image"
           className="w-full aspect-[336/173] rounded-lg"

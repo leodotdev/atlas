@@ -9,21 +9,33 @@ import {
   ChevronDownIcon,
 } from "@/components/ui/icon";
 import { VStack } from "@/components/ui/vstack";
+import { Platform } from "react-native";
 
-const DirectionalTooltip = ({ placement, IconComponent }: any) => (
-  <Tooltip
-    placement={placement}
-    trigger={(triggerProps) => (
-      <Button variant="link" {...triggerProps}>
-        <ButtonIcon as={IconComponent} size="sm" />
-      </Button>
-    )}
-  >
-    <TooltipContent>
-      <TooltipText>Hello World!</TooltipText>
-    </TooltipContent>
-  </Tooltip>
-);
+const DirectionalTooltip = ({ placement, IconComponent }: any) => {
+  const [pressed, setPressed] = React.useState(false);
+  const tooltipProps = Platform.OS !== "web" ? { isOpen: pressed } : {};
+  return (
+    <Tooltip
+      placement={placement}
+      // isOpen={pressed}
+      {...tooltipProps}
+      trigger={(triggerProps) => (
+        <Button
+          variant="link"
+          {...triggerProps}
+          onPressIn={() => setPressed(true)}
+          onPressOut={() => setPressed(false)}
+        >
+          <ButtonIcon as={IconComponent} size="sm" />
+        </Button>
+      )}
+    >
+      <TooltipContent>
+        <TooltipText>Hello World!</TooltipText>
+      </TooltipContent>
+    </Tooltip>
+  );
+};
 
 const TooltipDemo = () => {
   return (

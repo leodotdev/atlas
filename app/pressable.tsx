@@ -2,7 +2,6 @@ import React from "react";
 import { Pressable } from "@/components/ui/pressable";
 import { Text } from "@/components/ui/text";
 import { Center } from "@/components/ui/center";
-import { HStack } from "@/components/ui/hstack";
 import { Box } from "@/components/ui/box";
 import { Image } from "@/components/ui/image";
 import { BadgeText } from "@/components/ui/badge";
@@ -12,12 +11,14 @@ import { InfoIcon } from "@/components/ui/icon";
 
 const PressableDemo = () => {
   const [readMore, setReadMore] = React.useState(false);
+  const [pressed, setPressed] = React.useState(false);
 
   return (
     <Center className="flex-1">
-      <HStack
-        className="p-6 max-w-[336px] w-full shadow-hard-5 rounded-lg bg-background-0 border-outline-100"
-        space="xl"
+      <Pressable
+        className={`p-6 max-w-[336px] w-full shadow-hard-5 rounded-lg bg-background-0 border-outline-100 gap-5 flex flex-row ${pressed ? "scale-95" : ""}`}
+        onPressIn={() => setPressed(true)}
+        onPressOut={() => setPressed(false)}
       >
         <Box className="w-32 items-center justify-center rounded bg-background-50 flex-shrink-0">
           <Image
@@ -52,7 +53,7 @@ const PressableDemo = () => {
             </Pressable>
           )}
         </VStack>
-      </HStack>
+      </Pressable>
     </Center>
   );
 };
