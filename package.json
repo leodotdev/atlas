@@ -6,8 +6,9 @@
     "start": "expo start",
     "android": "DARK_MODE=media isWeb=false expo start --android",
     "ios": "DARK_MODE=media isWeb=false expo start --ios",
-    "web": "DARK_MODE=media ISWEB=true expo start --web",
-    "test": "jest --watchAll"
+    "web": "DARK_MODE=media isWeb=true expo start --web",
+    "test": "jest --watchAll",
+    "build": "expo export -p web"
   },
   "jest": {
     "preset": "jest-expo"
@@ -47,7 +48,7 @@
     "@legendapp/motion": "^2.4.0",
     "@react-navigation/native": "^6.0.2",
     "babel-plugin-module-resolver": "^5.0.2",
-    "expo": "~51.0.28",
+    "expo": "~51.0.37",
     "expo-font": "~12.0.9",
     "expo-linking": "~6.3.1",
     "expo-router": "~3.5.23",
