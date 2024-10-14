@@ -3,10 +3,7 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/expo",
-      "config": {
-        "maxLambdaSize": "15mb"
-      }
+      "use": "@vercel/node"
     }
   ],
   "routes": [
@@ -14,5 +11,10 @@
       "src": "/(.*)",
       "dest": "/"
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "EXPO_ROUTER_APP_ROOT": "app"
+    }
+  }
 }
