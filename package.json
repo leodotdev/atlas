@@ -7,8 +7,7 @@
     "android": "DARK_MODE=media isWeb=false expo start --android",
     "ios": "DARK_MODE=media isWeb=false expo start --ios",
     "web": "DARK_MODE=media isWeb=true expo start --web",
-    "test": "jest --watchAll",
-    "build": "expo export -p web"
+    "test": "jest --watchAll"
   },
   "jest": {
     "preset": "jest-expo"

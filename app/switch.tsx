@@ -2,12 +2,19 @@ import React from "react";
 import colors from "tailwindcss/colors";
 import { Switch } from "@/components/ui/switch";
 import { Center } from "@/components/ui/center";
-import { Box } from "@/components/ui/box";
+import { Text } from "@/components/ui/text";
+import { HStack } from "@/components/ui/hstack";
 
 const SwitchDemo = () => {
   return (
     <Center className="flex-1 bg-background-0">
-      <Box className="bg-background-0 px-10 py-5 rounded-full border border-outline-100 shadow-[inset_0_0px_10px_0px_rgba(0,0,0,0.12)]">
+      <HStack
+        className="bg-background-0 px-10 py-5 rounded-full border border-outline-100 shadow-hard-5 items-center justify-center"
+        space="xl"
+      >
+        <Text size="lg">
+          Enable Notification
+        </Text>
         <Switch
           size="lg"
           trackColor={{ false: colors.neutral[300], true: colors.neutral[600] }}
@@ -16,7 +23,7 @@ const SwitchDemo = () => {
           activeThumbColor={colors.neutral[50]}
           ios_backgroundColor={colors.neutral[300]}
         />
-      </Box>
+      </HStack>
     </Center>
   );
 };

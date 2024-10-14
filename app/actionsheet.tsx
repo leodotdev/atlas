@@ -16,7 +16,7 @@ const ActionsheetDemo = () => {
   const handleClose = () => setShowActionsheet(false);
 
   return (
-    <Center className="flex-1">
+    <Center className="flex-1 bg-background-0">
       <Button onPress={() => setShowActionsheet(true)}>
         <ButtonText>Open Actionsheet</ButtonText>
       </Button>

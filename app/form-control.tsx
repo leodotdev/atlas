@@ -36,7 +36,7 @@ const FormControlDemo = () => {
     }
   };
   return (
-    <Center className="flex-1 p-6">
+    <Center className="flex-1 p-6 bg-background-0">
       <Center className="rounded-xl border border-outline-200 bg-background-0 p-6 w-full max-w-[336px]">
         <FormControl isInvalid={isInvalid} className="w-full">
           <FormControlLabel>

@@ -6,17 +6,21 @@ import {
   ButtonIcon,
 } from "@/components/ui/button";
 import { Center } from "@/components/ui/center";
-import { LogIn, LogOut } from "lucide-react-native";
+import { LogOut } from "lucide-react-native";
 
 const ButtonDemo = () => {
   return (
     <Center className="flex-1">
-      <ButtonGroup>
+      <ButtonGroup className="flex flex-col">
         <Button className="gap-2">
-          <ButtonText>Log In</ButtonText>
-          <ButtonIcon as={LogIn} />
+          <ButtonText>Log Out</ButtonText>
+          <ButtonIcon as={LogOut} />
         </Button>
         <Button className="gap-2" variant="outline">
+          <ButtonText>Log Out</ButtonText>
+          <ButtonIcon as={LogOut} />
+        </Button>
+        <Button className="gap-2" variant="link">
           <ButtonText>Log Out</ButtonText>
           <ButtonIcon as={LogOut} />
         </Button>

@@ -21,7 +21,7 @@ const FabDemo = () => {
     setIsOpen(false);
   };
   return (
-    <Center className="flex-1">
+    <Center className="flex-1 bg-background-0">
       <Popover
         isOpen={isOpen}
         onClose={handleClose}
@@ -29,8 +29,8 @@ const FabDemo = () => {
         placement="top"
         trigger={(triggerProps) => {
           return (
-            <Box className="h-[150px] w-[200px] bg-background-0 rounded-md">
-              <Fab placement={"bottom right"} {...triggerProps}>
+            <Box className="h-[200px] w-[250px] bg-background-0 rounded-lg border border-outline-200 shadow-hard-5">
+              <Fab placement={"bottom center"} {...triggerProps}>
                 <FabIcon as={MenuIcon} />
               </Fab>
             </Box>

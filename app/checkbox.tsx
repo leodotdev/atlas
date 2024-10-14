@@ -40,7 +40,6 @@ export const CheckboxDemo = () => {
             value={todo.id.toString()}
             isChecked={todo.isDone}
             onChange={() => handleCheckboxChange(todo.id)}
-            className="ml-3"
           >
             <CheckboxIndicator>
               <CheckboxIcon as={CheckIcon} />

@@ -26,7 +26,6 @@ const PortalDemo = () => {
             }}
             alt="image"
             className="w-full aspect-[312/173] rounded"
-            // @ts-ignore
             size="none"
           />
           <Text className="mt-6 mb-2">2 shows available on 15 May</Text>

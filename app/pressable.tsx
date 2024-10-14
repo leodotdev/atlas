@@ -6,15 +6,13 @@ import { Box } from "@/components/ui/box";
 import { Image } from "@/components/ui/image";
 import { BadgeText } from "@/components/ui/badge";
 import { VStack } from "@/components/ui/vstack";
-import { Badge, BadgeIcon } from "@/components/ui/badge";
-import { InfoIcon } from "@/components/ui/icon";
+import { Badge } from "@/components/ui/badge";
 
 const PressableDemo = () => {
-  const [readMore, setReadMore] = React.useState(false);
   const [pressed, setPressed] = React.useState(false);
 
   return (
-    <Center className="flex-1">
+    <Center className="flex-1 px-4">
       <Pressable
         className={`p-6 max-w-[336px] w-full shadow-hard-5 rounded-lg bg-background-0 border-outline-100 gap-5 flex flex-row ${pressed ? "scale-95" : ""}`}
         onPressIn={() => setPressed(true)}
@@ -30,28 +28,16 @@ const PressableDemo = () => {
           />
         </Box>
         <VStack className="flex-1">
-          <Badge action="info" size="sm">
-            <BadgeIcon as={InfoIcon} className="mr-1" />
+          <Badge action="info" size="sm" className="w-fit">
             <BadgeText>new story</BadgeText>
           </Badge>
           <Text className="text-typography-900 font-medium mt-3">
             React OS Winner of 2024
           </Text>
-          <Text
-            size="sm"
-            className={`${readMore ? "line-clamp-none" : "line-clamp-2"}`}
-          >
-            {/* Gluestack is the React OS winner of 2024 in... */}
+          <Text size="sm" className="line-clamp-2">
             Gluestack is the React OS winner of 2024 in the productivity booster
             category.
           </Text>
-          {!readMore && (
-            <Pressable className="mt-2" onPress={() => setReadMore(true)}>
-              <Text className="text-info-700 font-medium" size="sm">
-                Read More
-              </Text>
-            </Pressable>
-          )}
         </VStack>
       </Pressable>
     </Center>

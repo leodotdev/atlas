@@ -29,7 +29,6 @@ const PopoverDemo = () => {
           }}
           alt="image"
           className="w-full aspect-[336/173] rounded-lg"
-          //@ts-ignore
           size="none"
         />
         <Popover
@@ -47,10 +46,10 @@ const PopoverDemo = () => {
           }}
         >
           <PopoverBackdrop />
-          <PopoverContent>
+          <PopoverContent size="full">
             <PopoverArrow />
             <PopoverBody>
-              <Text className="text-typography-900">
+              <Text className="text-typography-900" size="sm">
                 Alex, Annie and many others are already enjoying the Pro
                 features, don't miss out on the fun!
               </Text>

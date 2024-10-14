@@ -6,8 +6,8 @@ import { VStack } from "@/components/ui/vstack";
 
 const ProgressDemo = () => {
   return (
-    <Center className="flex-1 p-6">
-      <VStack className="bg-background-0 p-6 rounded-lg border border-outline-200 w-full max-w-[336px]">
+    <Center className="flex-1 p-6 bg-background-0">
+      <VStack className="bg-background-0 p-6 rounded-lg border border-outline-200 w-full max-w-[336px] shadow-hard-5">
         <Text size="xl" className="font-medium text-typography-900">
           Download in progress..
         </Text>

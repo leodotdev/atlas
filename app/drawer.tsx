@@ -31,12 +31,12 @@ const DrawerDemo = () => {
         size="md"
       >
         <DrawerBackdrop />
-        <DrawerContent>
+        <DrawerContent className="p-4 sm:p-6">
           <DrawerHeader>
-            <Heading size="3xl">Heading</Heading>
+            <Heading className="text-xl sm:text-3xl">Heading</Heading>
           </DrawerHeader>
-          <DrawerBody>
-            <Text size="2xl" className="text-typography-800">
+          <DrawerBody className="mt-2 sm:mt-3">
+            <Text className="text-typography-800 text-base sm:text-xl">
               This is a sentence.
             </Text>
           </DrawerBody>

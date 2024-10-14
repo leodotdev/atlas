@@ -16,13 +16,13 @@ const RadioDemo = () => {
   const [values, setValues] = React.useState("");
 
   return (
-    <Center className="flex-1">
-      <Box className="bg-background-0 p-6 rounded-lg border border-outline-200 shadow-hard-5">
-        <Text size="2xl" className="font-semibold text-typography-900">
+    <Center className="flex-1 bg-background-0">
+      <Box className="p-6 rounded-lg border border-outline-200 shadow-hard-5">
+        <Text size="xl" className="font-semibold text-typography-900">
           Do you like gluestack?
         </Text>
-        <RadioGroup value={values} onChange={setValues} className="mt-8 ml-3">
-          <VStack space="xl">
+        <RadioGroup value={values} onChange={setValues} className="mt-6 ml-1">
+          <VStack space="lg">
             <Radio value="optionA">
               <RadioIndicator>
                 <RadioIcon as={CircleIcon} />

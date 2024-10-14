@@ -15,7 +15,7 @@ const InputDemo = () => {
   };
 
   return (
-    <Center className="flex-1 p-6">
+    <Center className="flex-1 p-6 bg-background-0">
       <VStack className="rounded-xl border border-outline-200 bg-background-0 p-6 w-full max-w-[406px]">
         <Text size="sm" className="font-medium text-typography-900 mb-3">
           First Name
