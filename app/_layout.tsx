@@ -11,7 +11,11 @@ export default function RootLayout() {
         <Stack.Screen name="+not-found" options={{ headerShown: false }} />
         <Stack.Screen
           name="accordion"
-          options={{ headerTitle: "Accordion", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Accordion",
+            headerBackTitle: "Home",  //for iOS
+            headerTintColor: "red",  //for color
+          }}
         />
         <Stack.Screen
           name="actionsheet"

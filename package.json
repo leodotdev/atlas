@@ -6,8 +6,9 @@
     "start": "expo start",
     "android": "DARK_MODE=media isWeb=false expo start --android",
     "ios": "DARK_MODE=media isWeb=false expo start --ios",
-    "web": "DARK_MODE=media ISWEB=true expo start --web",
-    "test": "jest --watchAll"
+    "web": "DARK_MODE=media isWeb=true expo start --web",
+    "test": "jest --watchAll",
+    "build:web": "npx expo export -p web"
   },
   "jest": {
     "preset": "jest-expo"
