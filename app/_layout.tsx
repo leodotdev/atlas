@@ -1,7 +1,23 @@
 import React from "react";
 import "../global.css";
-import { Stack } from "expo-router";
+import { Stack, useNavigation } from "expo-router";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
+import { Icon, ChevronLeftIcon } from "@/components/ui/icon";
+import { cssInterop } from "nativewind";
+import { TouchableOpacity } from "react-native";
+
+cssInterop(TouchableOpacity, { className: "style" });
+const CustomBackButton = () => {
+  const navigation = useNavigation();
+  return (
+    <TouchableOpacity
+      onPress={() => navigation.goBack()}
+      className="web:ml-2 ios:-ml-2 android:-ml-1 android:mr-4"
+    >
+      <Icon as={ChevronLeftIcon} size="xl" />
+    </TouchableOpacity>
+  );
+};
 
 export default function RootLayout() {
   return (
@@ -13,161 +29,274 @@ export default function RootLayout() {
           name="accordion"
           options={{
             headerTitle: "Accordion",
-            headerBackTitle: "Home",  //for iOS
-            headerTintColor: "red",  //for color
+            headerLeft: () => <CustomBackButton />,
           }}
         />
         <Stack.Screen
           name="actionsheet"
-          options={{ headerTitle: "ActionSheet", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "ActionSheet",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="alert"
-          options={{ headerTitle: "Alert", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Alert",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="alert-dialog"
-          options={{ headerTitle: "AlertDialog", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "AlertDialog",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="avatar"
-          options={{ headerTitle: "Avatar", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Avatar",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="badge"
-          options={{ headerTitle: "Badge", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Badge",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="box"
-          options={{ headerTitle: "Box", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Box",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="button"
-          options={{ headerTitle: "Button", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Button",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="card"
-          options={{ headerTitle: "Card", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Card",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="center"
-          options={{ headerTitle: "Center", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Center",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="checkbox"
-          options={{ headerTitle: "Checkbox", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Checkbox",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="divider"
-          options={{ headerTitle: "Divider", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Divider",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="drawer"
-          options={{ headerTitle: "Drawer", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Drawer",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="fab"
-          options={{ headerTitle: "Fab", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Fab",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="form-control"
-          options={{ headerTitle: "FormControl", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "FormControl",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="grid"
-          options={{ headerTitle: "Grid", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Grid",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="hstack"
-          options={{ headerTitle: "HStack", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "HStack",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="icon"
-          options={{ headerTitle: "Icon", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Icon",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="image"
-          options={{ headerTitle: "Image", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Image",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="input"
-          options={{ headerTitle: "Input", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Input",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="link"
-          options={{ headerTitle: "Link", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Link",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="menu"
-          options={{ headerTitle: "Menu", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Menu",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="modal"
-          options={{ headerTitle: "Modal", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Modal",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="popover"
-          options={{ headerTitle: "Popover", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Popover",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="portal"
-          options={{ headerTitle: "Portal", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Portal",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="pressable"
-          options={{ headerTitle: "Pressable", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Pressable",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="progress"
-          options={{ headerTitle: "Progress", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Progress",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="radio"
-          options={{ headerTitle: "Radio", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Radio",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="select"
-          options={{ headerTitle: "Select", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Select",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="skeleton"
-          options={{ headerTitle: "Skeleton", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Skeleton",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="slider"
-          options={{ headerTitle: "Slider", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Slider",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="spinner"
-          options={{ headerTitle: "Spinner", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Spinner",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="switch"
-          options={{ headerTitle: "Switch", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Switch",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="table"
-          options={{ headerTitle: "Table", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Table",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="text"
-          options={{ headerTitle: "Text", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Text",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="textarea"
-          options={{ headerTitle: "TextArea", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "TextArea",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="toast"
-          options={{ headerTitle: "Toast", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Toast",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="tooltip"
-          options={{ headerTitle: "Tooltip", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "Tooltip",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
         <Stack.Screen
           name="vstack"
-          options={{ headerTitle: "VStack", headerBackTitle: "Home" }}
+          options={{
+            headerTitle: "VStack",
+            headerLeft: () => <CustomBackButton />,
+          }}
         />
       </Stack>
     </GluestackUIProvider>
