@@ -10,7 +10,7 @@ import { LogOut } from "lucide-react-native";
 
 const ButtonDemo = () => {
   return (
-    <Center className="flex-1">
+    <Center className="flex-1 bg-background-0">
       <ButtonGroup className="flex flex-col">
         <Button className="gap-2">
           <ButtonText>Log Out</ButtonText>

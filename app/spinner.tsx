@@ -5,7 +5,7 @@ import { Center } from "@/components/ui/center";
 
 const SpinnerDemo = () => {
   return (
-    <Center className="flex-1">
+    <Center className="flex-1 bg-background-0">
       <Spinner size="large" color={colors.gray[500]} />
     </Center>
   );

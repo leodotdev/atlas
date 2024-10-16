@@ -9,6 +9,7 @@ import { Center } from "@/components/ui/center";
 import { VStack } from "@/components/ui/vstack";
 import { CheckIcon, Icon } from "@/components/ui/icon";
 import { Button, ButtonText } from "@/components/ui/button";
+import { SafeAreaView } from "@/components/ui/safe-area-view";
 
 const ToastDemo = () => {
   const toast = useToast();
@@ -38,9 +39,7 @@ const ToastDemo = () => {
             <Icon as={CheckIcon} className="mt-[3px] text-success-800" />
             <VStack>
               <ToastTitle>Completed!</ToastTitle>
-              <ToastDescription>
-                File Submitted Successfully.
-              </ToastDescription>
+              <ToastDescription>File Submitted Successfully.</ToastDescription>
             </VStack>
           </Toast>
         );
@@ -48,11 +47,13 @@ const ToastDemo = () => {
     });
   };
   return (
-    <Center className="flex-1 bg-background-0 p-6">
-      <Button onPress={handleToast}>
-        <ButtonText>Show Toast</ButtonText>
-      </Button>
-    </Center>
+    <SafeAreaView className="flex-1">
+      <Center className="flex-1 bg-background-0 p-6">
+        <Button onPress={handleToast}>
+          <ButtonText>Show Toast</ButtonText>
+        </Button>
+      </Center>
+    </SafeAreaView>
   );
 };
 

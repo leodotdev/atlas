@@ -20,9 +20,34 @@ const PopoverDemo = () => {
   const handleClose = () => {
     setIsOpen(false);
   };
+
+  return (
+    <Center className="flex-1">
+      <Popover
+        isOpen={isOpen}
+        onClose={handleClose}
+        onOpen={handleOpen}
+        placement="top"
+        trigger={(triggerProps) => {
+          return <Button {...triggerProps} />;
+        }}
+      >
+        <PopoverBackdrop />
+        <PopoverContent className="p-2">
+          <PopoverArrow />
+          <PopoverBody>
+            <Text>Alex</Text>
+          </PopoverBody>
+        </PopoverContent>
+      </Popover>
+    </Center>
+  );
   return (
     <Center className="flex-1 bg-background-0 p-6">
-      <VStack space="md" className="max-w-[336px] w-full">
+      <VStack
+        space="md"
+        className="max-w-[336px] w-full rounded-lg border border-outline-200 p-4"
+      >
         <Image
           source={{
             uri: "https://images.unsplash.com/photo-1647221598272-9aa015392c81?q=80&w=3840&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -46,7 +71,7 @@ const PopoverDemo = () => {
           }}
         >
           <PopoverBackdrop />
-          <PopoverContent size="full">
+          <PopoverContent className="max-w-[300px]">
             <PopoverArrow />
             <PopoverBody>
               <Text className="text-typography-900" size="sm">

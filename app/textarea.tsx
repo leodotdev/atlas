@@ -5,8 +5,11 @@ import { Center } from "@/components/ui/center";
 const TextAreaDemo = () => {
   return (
     <Center className="flex-1 p-6 bg-background-0">
-      <Textarea>
-        <TextareaInput placeholder="Your text goes here..." />
+      <Textarea className="items-start">
+        <TextareaInput
+          placeholder="Your text goes here..." 
+          textAlignVertical="top"
+        />
       </Textarea>
     </Center>
   );

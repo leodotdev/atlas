@@ -9,7 +9,7 @@ import { Center } from "@/components/ui/center";
 
 const AvatarDemo = () => {
   return (
-    <Center className="flex-1">
+    <Center className="flex-1 bg-background-0">
       <Avatar>
         <AvatarFallbackText>John Doe</AvatarFallbackText>
         <AvatarImage

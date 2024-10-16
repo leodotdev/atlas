@@ -1,69 +1,78 @@
 import React from "react";
 import { Image } from "@/components/ui/image";
 import { Center } from "@/components/ui/center";
-import { HStack } from "@/components/ui/hstack";
+import { Text } from "@/components/ui/text";
+import { Grid, GridItem } from "@/components/ui/grid";
 import { VStack } from "@/components/ui/vstack";
-import { Box } from "@/components/ui/box";
-import { ScrollView } from "react-native";
+
+const images = [
+  {
+    id: 1,
+    url: "https://i.imgur.com/vFNOeCn.png",
+  },
+  {
+    id: 2,
+    url: "https://i.imgur.com/8ng85b5.png",
+  },
+  {
+    id: 3,
+    url: "https://i.imgur.com/cyRKjHI.png",
+  },
+  {
+    id: 4,
+    url: "https://i.imgur.com/nzclOpJ.png",
+  },
+  {
+    id: 5,
+    url: "https://i.imgur.com/3IOgIev.png",
+  },
+  {
+    id: 6,
+    url: "https://i.imgur.com/FpTI9UX.png",
+  },
+  {
+    id: 7,
+    url: "https://i.imgur.com/QZu77gP.png",
+  },
+  {
+    id: 8,
+    url: "https://i.imgur.com/FO1F4tR.png",
+  },
+];
 
 const ImageDemo = () => {
   return (
     <Center className="flex-1 p-6 bg-background-0">
-      <HStack
-        space="md"
-        className="max-h-[272px] max-w-[372px] h-full w-full m-6 overflow-hidden"
-      >
-        <VStack className="min-w-[80px]">
-          <ScrollView className="">
-            <Box className="border border-outline-300 rounded items-center justify-center bg-background-0 h-[76px] w-[76px] flex-shrink-0">
-              <Image
-                size="sm"
-                source={{
-                  uri: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?q=80&w=2367&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      <VStack className=" max-w-[304px] w-full" space="sm">
+        <Text className="self-start text-typography-500" size="sm">
+          Sunday 27 Oct
+        </Text>
+        <Grid
+          className="gap-2"
+          _extra={{
+            className: "grid-cols-3",
+          }}
+        >
+          {images.map((image) => {
+            return (
+              <GridItem
+                key={image.id}
+                className="max-w-[96px] max-h-[96px] h-full w-full bg-red-200"
+                _extra={{
+                  className: "col-span-1",
                 }}
-                alt="image"
-              />
-            </Box>
-            <Box className="border border-outline-300 rounded items-center justify-center bg-background-0 h-[76px] w-[76px] flex-shrink-0 my-2">
-              <Image
-                size="sm"
-                source={{
-                  uri: "https://images.unsplash.com/photo-1618354691438-25bc04584c23?q=80&w=2028&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                }}
-                alt="image"
-              />
-            </Box>
-            <Box className="border border-outline-300 rounded items-center justify-center bg-background-0 h-[76px] w-[76px] flex-shrink-0 mb-2">
-              <Image
-                size="sm"
-                source={{
-                  uri: "https://images.unsplash.com/photo-1657364890921-dbd85cf0398b?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                }}
-                alt="image"
-              />
-            </Box>
-            <Box className="border border-outline-300 rounded items-center justify-center bg-background-0 h-[76px] w-[76px] flex-shrink-0">
-              <Image
-                size="sm"
-                source={{
-                  uri: "https://images.unsplash.com/photo-1618354691714-7d92150909db?q=80&w=3867&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                }}
-                alt="image"
-              />
-            </Box>
-          </ScrollView>
-        </VStack>
-
-        <VStack className="p-2">
-          <Image
-            size="2xl"
-            source={{
-              uri: "https://images.unsplash.com/photo-1618354691438-25bc04584c23?q=80&w=2028&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            }}
-            alt="image"
-          />
-        </VStack>
-      </HStack>
+              >
+                <Image
+                  source={{ uri: image.url }}
+                  alt="image"
+                  size="none"
+                  className="aspect-[1/1] w-full rounded"
+                />
+              </GridItem>
+            );
+          })}
+        </Grid>
+      </VStack>
     </Center>
   );
 };

@@ -16,6 +16,8 @@ import { CloseIcon } from "@/components/ui/icon";
 
 const PortalDemo = () => {
   const [visible, setVisible] = React.useState(false);
+  const [slot, setSlot] = React.useState("12");
+
   return (
     <Center className="flex-1 bg-background-0 p-6">
       <VStack className="max-w-[336px] w-full" space="md">
@@ -41,46 +43,47 @@ const PortalDemo = () => {
         //@ts-ignore
         className={`justify-center items-center ${visible ? "bg-background-dark/60" : ""}`}
       >
-        <HStack
-          className="max-w-[336px] w-full p-5 bg-background-0 shadow-hard-5 rounded-lg border border-outline-300 justify-between"
-          space="sm"
+        <VStack
+          className="max-w-[324px] w-full p-4 bg-background-0 shadow-hard-5 rounded-lg border border-outline-300 justify-between"
         >
-          <VStack className="flex-1">
+          <HStack className="justify-between items-center">
             <Text className="text-typography-900 font-semibold">
               Choose a slot
             </Text>
+            <Button size="sm" variant="link" onPress={() => setVisible(false)}>
+              <ButtonIcon as={CloseIcon} />
+            </Button>
+          </HStack>
 
-            <Text className="mt-2 mb-4" size="sm">
-              <Text className="font-semibold" size="sm">
-                The Sinbad Movie:{" "}
-              </Text>
-              Legend of the Seven Seas (also known as simply Sinbad) is a 2003
-              American animated adventure film produced by DreamWorks Animation
+          <Text className="mt-2 mb-3" size="sm">
+            <Text className="font-semibold" size="sm">
+              The Sinbad Movie:{" "}
             </Text>
+            Legend of the Seven Seas (also known as simply Sinbad) is a 2003
+            American animated adventure film produced by DreamWorks Animation
+          </Text>
 
-            <ButtonGroup space="md" className="flex flex-row">
-              <Button
-                variant="outline"
-                onPress={() => setVisible(false)}
-                size="xs"
-              >
-                <ButtonText>11:30 AM</ButtonText>
-              </Button>
-              <Button onPress={() => setVisible(false)} size="xs">
-                <ButtonText>12:45 PM</ButtonText>
-              </Button>
-            </ButtonGroup>
-          </VStack>
-
-          <Button
-            size="sm"
-            variant="link"
-            onPress={() => setVisible(false)}
-            className=""
-          >
-            <ButtonIcon as={CloseIcon} />
-          </Button>
-        </HStack>
+          <ButtonGroup space="md" className="flex flex-row">
+            <Button
+              variant={slot === "11" ? "solid" : "outline"}
+              onPress={() =>
+                setSlot((prevSlot) => (prevSlot === "11" ? "12" : "11"))
+              }
+              size="xs"
+            >
+              <ButtonText>11:30 AM</ButtonText>
+            </Button>
+            <Button
+              variant={slot === "12" ? "solid" : "outline"}
+              onPress={() =>
+                setSlot((prevSlot) => (prevSlot === "11" ? "12" : "11"))
+              }
+              size="xs"
+            >
+              <ButtonText>12:45 PM</ButtonText>
+            </Button>
+          </ButtonGroup>
+        </VStack>
       </Portal>
     </Center>
   );

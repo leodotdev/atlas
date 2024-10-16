@@ -4,7 +4,7 @@ import { Center } from "@/components/ui/center";
 
 const TextDemo = () => {
   return (
-    <Center className="flex-1 p-6 items-start">
+    <Center className="flex-1 p-6 items-start bg-background-0">
       <Text className="text-2xl font-semibold text-typography-900 mb-3">
         Your Notes
       </Text>

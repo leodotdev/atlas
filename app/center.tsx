@@ -10,7 +10,7 @@ import {
 
 const CenterDemo = () => {
   return (
-    <Center className="flex-1 px-6">
+    <Center className="flex-1 px-6 bg-background-0">
       <Center className="max-h-[406px] max-w-[406px] w-full h-full p-6 bg-background-0 rounded-xl border-dashed border-outline-200 border-[3px]">
         <Center className="w-[176px] h-[176px] p-4 gap-4 flex flex-col rounded-lg bg-background-50">
           <Avatar size="xl">

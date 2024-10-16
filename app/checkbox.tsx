@@ -28,7 +28,7 @@ export const CheckboxDemo = () => {
   };
 
   return (
-    <Center className="flex-1">
+    <Center className="flex-1 bg-background-0">
       <Box className="flex flex-col gap-4">
         <Text size="xl" className="font-semibold text-typography-900">
           To-do List
