@@ -14,10 +14,9 @@ import ThumbDownEmoji from "@/components/custom/icons/thumbDownEmoji";
 
 const SliderDemo = () => {
   return (
-    <Center className="flex-1">
+    <Center className="flex-1 bg-background-0">
       <Box className="bg-background-0 p-6 rounded-xl border border-outline-200 w-full max-w-[336px]">
         <Text size="xl" className="font-medium text-typography-900">
-          {" "}
           How satisfied are you with gluestack?
         </Text>
         <Slider defaultValue={30} className="w-full mt-10">

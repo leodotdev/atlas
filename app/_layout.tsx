@@ -466,6 +466,7 @@ export default function RootLayout() {
             }}
           />
         </Stack>
+
         <Fab
           className="bottom-10 sm:right-10 right-6 p-4"
           onPress={handleColorMode}
