@@ -5,13 +5,18 @@ import { componentsList } from "@/utils/list";
 import { ScrollView } from "@/components/ui/scroll-view";
 import { Grid, GridItem } from "@/components/ui/grid";
 import { Box } from "@/components/ui/box";
-import { Image } from "@/components/ui/image";
+// import { Image } from "@/components/ui/image";
+import { Image as ExpoImage } from "expo-image";
 import { Text } from "@/components/ui/text";
 import { Pressable } from "@/components/ui/pressable";
 import { cssInterop } from "nativewind";
 import { ColorModeContext } from "./_layout";
+import { HStack } from "@/components/ui/hstack";
+import { VStack } from "@/components/ui/vstack";
+import { Heading } from "@/components/ui/heading";
 
 cssInterop(SafeAreaView, { className: "style" });
+cssInterop(ExpoImage, { className: "style" });
 
 const ComponentCard = ({ component, onPress }: any) => {
   const { colorMode }: any = useContext(ColorModeContext);
@@ -21,13 +26,13 @@ const ComponentCard = ({ component, onPress }: any) => {
       onPress={onPress}
     >
       <Box className="flex-1 rounded-lg bg-background-50 sm:p-4 p-2">
-        <Image
+        <ExpoImage
           source={{
             uri: colorMode === "light" ? component.url : component.darkUrl,
           }}
           alt={component.title}
-          size="none"
           className={`flex-1 rounded shadow-[0px_0px_1.998px_0px_rgba(38,38,38,0.10)]`}
+          cachePolicy="memory-disk"
         />
       </Box>
       <Text className="text-typography-900 font-medium sm:text-base text-sm ml-1">
@@ -37,12 +42,45 @@ const ComponentCard = ({ component, onPress }: any) => {
   );
 };
 
+const Header = () => {
+  return (
+    <HStack className="px-5 py-8 bg-background-50">
+      <VStack>
+        <HStack
+          className="rounded-full bg-background-0 py-4 px-5 mb-7 items-center native:max-w-[250px] w-fit"
+          space="sm"
+        >
+          <ExpoImage
+            source={{ uri: "https://i.imgur.com/9bvua6C.png" }}
+            alt="logo_image"
+            className="h-5 w-5 rounded-sm"
+          />
+          <Text size="sm" className="font-medium">
+            Powered by gluestack-ui v2
+          </Text>
+        </HStack>
+        <Heading size="3xl" className="mb-2">
+          Kitchensink app
+        </Heading>
+        <Text size="sm">
+          KitchenSink is a comprehensive demo app showcasing all the NativeBase
+          components in action. It includes buttons, forms, icons and much more!
+        </Text>
+      </VStack>
+      <VStack>
+
+      </VStack>
+    </HStack>
+  );
+};
+
 export default function HomeScreen() {
   const router = useRouter();
 
   return (
-    <SafeAreaView className="flex-1 bg-background-0 relative">
+    <SafeAreaView className="flex-1 bg-background-50 relative">
       <ScrollView className="flex-1">
+        <Header />
         <Grid
           className="gap-3 sm:gap-5 sm:p-6 p-4 max-w-[1600px] mx-auto"
           _extra={{

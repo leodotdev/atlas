@@ -9,7 +9,6 @@ import { Center } from "@/components/ui/center";
 import { VStack } from "@/components/ui/vstack";
 import { CheckIcon, Icon } from "@/components/ui/icon";
 import { Button, ButtonText } from "@/components/ui/button";
-import { SafeAreaView } from "@/components/ui/safe-area-view";
 
 const ToastDemo = () => {
   const toast = useToast();
@@ -32,7 +31,7 @@ const ToastDemo = () => {
         return (
           <Toast
             nativeID={uniqueToastId}
-            className="flex flex-row gap-2 mx-2 mt-4"
+            className="flex flex-row gap-2 mx-2 android:mt-[56px]"
             variant="outline"
             action="success"
           >
@@ -47,13 +46,11 @@ const ToastDemo = () => {
     });
   };
   return (
-    <SafeAreaView className="flex-1">
-      <Center className="flex-1 bg-background-0 p-6">
-        <Button onPress={handleToast}>
-          <ButtonText>Show Toast</ButtonText>
-        </Button>
-      </Center>
-    </SafeAreaView>
+    <Center className="flex-1 bg-background-0 p-6">
+      <Button onPress={handleToast}>
+        <ButtonText>Show Toast</ButtonText>
+      </Button>
+    </Center>
   );
 };
 

@@ -31,7 +31,7 @@ const DrawerDemo = () => {
         size="md"
       >
         <DrawerBackdrop />
-        <DrawerContent className="p-4 sm:p-6">
+        <DrawerContent className="p-4 sm:p-6 native:pt-[56px]">
           <DrawerHeader>
             <Heading className="text-xl sm:text-3xl">Heading</Heading>
           </DrawerHeader>

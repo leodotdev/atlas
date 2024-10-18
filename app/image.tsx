@@ -57,7 +57,7 @@ const ImageDemo = () => {
             return (
               <GridItem
                 key={image.id}
-                className="max-w-[96px] max-h-[96px] h-full w-full bg-red-200"
+                className="max-w-[96px] max-h-[96px] h-full w-full"
                 _extra={{
                   className: "col-span-1",
                 }}
