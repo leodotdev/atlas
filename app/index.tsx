@@ -5,7 +5,6 @@ import { componentsList } from "@/utils/list";
 import { ScrollView } from "@/components/ui/scroll-view";
 import { Grid, GridItem } from "@/components/ui/grid";
 import { Box } from "@/components/ui/box";
-import { Image } from "@/components/ui/image";
 import { Image as ExpoImage } from "expo-image";
 import { Text } from "@/components/ui/text";
 import { Pressable } from "@/components/ui/pressable";
@@ -46,7 +45,7 @@ const Header = () => {
   const { colorMode }: any = useContext(ColorModeContext);
   return (
     <HStack className="flex-1 max-w-[1600px] w-full mx-auto justify-between">
-      <VStack className="w-full max-w-[515px] mx-5 my-8 xl:ml-[120px]">
+      <VStack className="w-full max-w-[515px] mx-5 my-8 xl:ml-[120px] flex-1">
         <HStack
           className="rounded-full bg-background-0 py-4 px-5 mb-7 items-center native:max-w-[250px] w-fit"
           space="sm"
@@ -82,7 +81,6 @@ const Header = () => {
                 : "https://i.imgur.com/2sE0Z6X.png",
           }}
           alt="header_image"
-          // size="none"
           className="flex-1"
           cachePolicy="memory-disk"
         />
