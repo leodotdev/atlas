@@ -45,7 +45,7 @@ export const componentsList = [
     title: "Button",
     link: "/button",
     url: "https://i.imgur.com/Hkurc7l.png",
-    darkUrl: "https://i.imgur.com/TAjoCQ5.png",
+    darkUrl: "https://i.imgur.com/hS1TqJ7.png",
   },
   {
     title: "Card",
