@@ -10,20 +10,20 @@ const SkeletonDemo = () => {
       <VStack space="lg" className="w-full max-w-[352px]">
         <HStack space="xl" className="w-full">
           <VStack space="sm" className="flex-1">
-            <Skeleton className="w-full h-[84px]" variant="rounded" />
-            <SkeletonText className="h-6 w-full" _lines={1} />
-            <SkeletonText className="h-6 w-full" _lines={1} />
+            <Skeleton className="w-full h-[84px]" variant="rounded" speed={4} />
+            <SkeletonText className="h-6 w-full" _lines={1} speed={4} />
+            <SkeletonText className="h-6 w-full" _lines={1} speed={4} />
           </VStack>
           <VStack space="sm" className="flex-1">
-            <SkeletonText className="h-6 w-full" _lines={1} />
-            <SkeletonText className="h-6 w-full" _lines={1} />
-            <SkeletonText className="h-6 w-full" _lines={1} />
-            <Skeleton className="w-full h-[52px]" variant="rounded" />
+            <SkeletonText className="h-6 w-full" _lines={1} speed={4} />
+            <SkeletonText className="h-6 w-full" _lines={1} speed={4} />
+            <SkeletonText className="h-6 w-full" _lines={1} speed={4} />
+            <Skeleton className="w-full h-[52px]" variant="rounded" speed={4} />
           </VStack>
         </HStack>
-        <SkeletonText className="h-6 w-full" _lines={1} />
-        <SkeletonText className="h-6 w-full" _lines={1} />
-        <SkeletonText className="h-6 w-full" _lines={1} />
+        <SkeletonText className="h-6 w-full" _lines={1} speed={4} />
+        <SkeletonText className="h-6 w-full" _lines={1} speed={4} />
+        <SkeletonText className="h-6 w-full" _lines={1} speed={4} />
       </VStack>
     </Center>
   );
