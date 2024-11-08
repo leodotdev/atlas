@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/drawer";
 import { Heading } from "@/components/ui/heading";
 import { Text } from "@/components/ui/text";
+import { Platform } from "react-native";
 
 const DrawerDemo = () => {
   const [showDrawer, setShowDrawer] = React.useState(false);
@@ -28,7 +29,7 @@ const DrawerDemo = () => {
         onClose={() => {
           setShowDrawer(false);
         }}
-        size="md"
+        size={Platform.OS === "web" ? "sm" : "md"}
       >
         <DrawerBackdrop />
         <DrawerContent className="p-4 sm:p-6 native:pt-[56px]">

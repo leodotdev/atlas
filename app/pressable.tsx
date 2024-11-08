@@ -12,13 +12,13 @@ const PressableDemo = () => {
   const [pressed, setPressed] = React.useState(false);
 
   return (
-    <Center className="flex-1 px-4">
+    <Center className="flex-1 px-4 bg-background-0">
       <Pressable
-        className={`p-6 max-w-[336px] w-full shadow-hard-5 rounded-lg bg-background-0 border-outline-100 gap-5 flex flex-row ${pressed ? "scale-95" : ""}`}
+        className={`p-6 max-w-[336px] w-full shadow-hard-5 rounded-lg bg-background-0 border border-outline-100 gap-5 flex flex-row ${pressed ? "scale-95" : ""}`}
         onPressIn={() => setPressed(true)}
         onPressOut={() => setPressed(false)}
       >
-        <Box className="w-32 items-center justify-center rounded bg-background-50 flex-shrink-0">
+        {/* <Box className="w-32 items-center justify-center rounded bg-background-50 flex-shrink-0">
           <Image
             className="w-[94px] h-auto aspect-[534/164]"
             source={{
@@ -26,7 +26,14 @@ const PressableDemo = () => {
             }}
             alt="image"
           />
-        </Box>
+        </Box> */}
+        <Image
+          className="max-w-32 w-full h-auto aspect-[1/1]"
+          source={{
+            uri: "https://i.imgur.com/FuFpo1s.png",
+          }}
+          alt="image"
+        />
         <VStack className="flex-1">
           <Badge action="info" size="sm" className="w-fit">
             <BadgeText>new story</BadgeText>

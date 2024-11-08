@@ -25,14 +25,14 @@ const PopoverDemo = () => {
     <Center className="flex-1 bg-background-0 p-6">
       <VStack
         space="md"
-        className="max-w-[336px] w-full rounded-lg border border-outline-200 p-4"
+        className="max-w-[336px] w-full rounded-lg bg-background-50 p-4"
       >
         <Image
           source={{
             uri: "https://images.unsplash.com/photo-1647221598272-9aa015392c81?q=80&w=3840&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           }}
           alt="image"
-          className="w-full aspect-[336/173] rounded-lg"
+          className="w-full aspect-[336/173] rounded-md"
           size="none"
         />
         <Popover
@@ -40,7 +40,7 @@ const PopoverDemo = () => {
           onClose={handleClose}
           onOpen={handleOpen}
           placement="bottom"
-          size="md"
+          offset={8}
           trigger={(triggerProps) => {
             return (
               <Button {...triggerProps}>

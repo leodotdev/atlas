@@ -6,7 +6,7 @@ const GridDemo = () => {
   return (
     <Center className="flex-1 bg-typography-0 p-6">
       <Grid
-        className="gap-4"
+        className="gap-4 max-w-[600px]"
         _extra={{
           className: "grid-cols-2",
         }}

@@ -27,12 +27,11 @@ const ModalDemo = () => {
         onClose={() => {
           setShowModal(false);
         }}
-        size="lg"
       >
         <ModalBackdrop />
         <ModalContent>
           <ModalHeader>
-            <Heading size="lg">Engage with Modals</Heading>
+            <Heading size="md">Engage with Modals</Heading>
             <ModalCloseButton
               onPress={() => {
                 setShowModal(false);
@@ -46,7 +45,7 @@ const ModalDemo = () => {
             </ModalCloseButton>
           </ModalHeader>
           <ModalBody>
-            <Text>Elevate user interactions with our versatile modals.</Text>
+            <Text className="text-typography-500" size='sm'>Elevate user interactions with our versatile modals.</Text>
           </ModalBody>
           <ModalFooter>
             <Button

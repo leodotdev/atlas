@@ -5,7 +5,7 @@ import { Center } from "@/components/ui/center";
 const TextAreaDemo = () => {
   return (
     <Center className="flex-1 p-6 bg-background-0">
-      <Textarea className="items-start">
+      <Textarea className="items-start max-w-[400px]">
         <TextareaInput
           placeholder="Your text goes here..." 
           textAlignVertical="top"

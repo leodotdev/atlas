@@ -18,7 +18,7 @@ const TableDemo = () => {
 
   return (
     <Center className="flex-1 bg-background-0 p-6">
-      <Box className="w-full rounded-xl border border-outline-300 overflow-hidden">
+      <Box className="w-full rounded-xl border border-outline-300 overflow-hidden max-w-[500px]">
         <Box className="overflow-x-scroll">
           <Table className="w-full">
             <TableHeader>

@@ -4,7 +4,7 @@ import { Stack, useNavigation } from "expo-router";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import { Icon, ChevronLeftIcon, SunIcon, MoonIcon } from "@/components/ui/icon";
 import { cssInterop } from "nativewind";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, StyleSheet } from "react-native";
 import { Fab } from "@/components/ui/fab";
 
 cssInterop(TouchableOpacity, { className: "style" });
@@ -25,6 +25,14 @@ const CustomBackButton = () => {
 export default function RootLayout() {
   const [colorMode, setColorMode] = React.useState<"light" | "dark">("light");
 
+  const styles = StyleSheet.create({
+    header: {
+      backgroundColor: colorMode === "light" ? "#fff" : "#000",
+      borderBottomColor: colorMode === "light" ? "#E6E6E6" : "#414141",
+      borderBottomWidth: 1,
+    },
+  });
+
   const handleColorMode = () => {
     setColorMode((prevMode: string) =>
       prevMode === "light" ? "dark" : "light"
@@ -41,9 +49,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Accordion",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -52,9 +58,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "ActionSheet",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -63,9 +67,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Alert",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -74,9 +76,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "AlertDialog",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -85,9 +85,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Avatar",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -96,9 +94,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Badge",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -107,9 +103,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Box",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -118,9 +112,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Button",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -129,9 +121,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Card",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -140,9 +130,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Center",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -151,9 +139,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Checkbox",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -162,9 +148,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Divider",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -173,9 +157,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Drawer",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -184,9 +166,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Fab",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -195,9 +175,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "FormControl",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -206,9 +184,16 @@ export default function RootLayout() {
             options={{
               headerTitle: "Grid",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
+              headerLeft: () => <CustomBackButton />,
+            }}
+          />
+          <Stack.Screen
+            name="heading"
+            options={{
+              headerTitle: "Heading",
+              headerTintColor: colorMode === "light" ? "#000" : "#fff",
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -217,9 +202,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "HStack",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -228,9 +211,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Icon",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -239,9 +220,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Image",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -250,9 +229,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Input",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -261,9 +238,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Link",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -272,9 +247,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Menu",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -283,9 +256,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Modal",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -294,9 +265,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Popover",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -305,9 +274,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Portal",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -316,9 +283,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Pressable",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -327,9 +292,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Progress",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -338,9 +301,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Radio",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -349,9 +310,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Select",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -360,9 +319,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Skeleton",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -371,9 +328,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Slider",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -382,9 +337,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Spinner",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -393,9 +346,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Switch",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -404,9 +355,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Table",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -415,9 +364,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Text",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -426,9 +373,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "TextArea",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -437,9 +382,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Toast",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -448,9 +391,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "Tooltip",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />
@@ -459,9 +400,7 @@ export default function RootLayout() {
             options={{
               headerTitle: "VStack",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: {
-                backgroundColor: colorMode === "light" ? "#fff" : "#000",
-              },
+              headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
           />

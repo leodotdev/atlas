@@ -43,9 +43,7 @@ const PortalDemo = () => {
         //@ts-ignore
         className={`justify-center items-center ${visible ? "bg-background-dark/60" : ""}`}
       >
-        <VStack
-          className="max-w-[324px] w-full p-4 bg-background-0 shadow-hard-5 rounded-lg border border-outline-300 justify-between"
-        >
+        <VStack className="max-w-[324px] w-full p-4 bg-background-0 shadow-hard-5 rounded-lg border border-outline-300 justify-between">
           <HStack className="justify-between items-center">
             <Text className="text-typography-900 font-semibold">
               Choose a slot
@@ -55,7 +53,7 @@ const PortalDemo = () => {
             </Button>
           </HStack>
 
-          <Text className="mt-2 mb-3" size="sm">
+          <Text className="mt-2 mb-4" size="sm">
             <Text className="font-semibold" size="sm">
               The Sinbad Movie:{" "}
             </Text>
@@ -66,18 +64,22 @@ const PortalDemo = () => {
           <ButtonGroup space="md" className="flex flex-row">
             <Button
               variant={slot === "11" ? "solid" : "outline"}
-              onPress={() =>
-                setSlot((prevSlot) => (prevSlot === "11" ? "12" : "11"))
-              }
+              onPress={() => {
+                if (slot !== "11") {
+                  setSlot("11");
+                }
+              }}
               size="xs"
             >
               <ButtonText>11:30 AM</ButtonText>
             </Button>
             <Button
               variant={slot === "12" ? "solid" : "outline"}
-              onPress={() =>
-                setSlot((prevSlot) => (prevSlot === "11" ? "12" : "11"))
-              }
+              onPress={() => {
+                if (slot !== "12") {
+                  setSlot("12");
+                }
+              }}
               size="xs"
             >
               <ButtonText>12:45 PM</ButtonText>

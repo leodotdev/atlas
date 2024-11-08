@@ -5,14 +5,12 @@ import {
   AlertDialog,
   AlertDialogBackdrop,
   AlertDialogContent,
-  AlertDialogCloseButton,
   AlertDialogHeader,
   AlertDialogBody,
   AlertDialogFooter,
 } from "@/components/ui/alert-dialog";
 import { Text } from "@/components/ui/text";
 import { Center } from "@/components/ui/center";
-import { Icon, CloseIcon } from "@/components/ui/icon";
 
 const AlertDialogDemo = () => {
   const [showAlertDialog, setShowAlertDialog] = useState(false);
@@ -22,21 +20,15 @@ const AlertDialogDemo = () => {
       <Button onPress={() => setShowAlertDialog(true)}>
         <ButtonText>Open Dialog</ButtonText>
       </Button>
-      <AlertDialog size="lg" isOpen={showAlertDialog} onClose={handleClose}>
+      <AlertDialog size="md" isOpen={showAlertDialog} onClose={handleClose}>
         <AlertDialogBackdrop />
         <AlertDialogContent>
           <AlertDialogHeader>
             <Heading className="text-typography-950 font-semibold" size="md">
               Delete post?
             </Heading>
-            <AlertDialogCloseButton onPress={handleClose}>
-              <Icon
-                as={CloseIcon}
-                className="stroke-background-400 group-[:hover]/alert-dialog-close-button:stroke-background-700 group-[:active]/alert-dialog-close-button:stroke-background-900 group-[:focus-visible]/alert-dialog-close-button:stroke-background-900"
-              />
-            </AlertDialogCloseButton>
           </AlertDialogHeader>
-          <AlertDialogBody className="mb-4">
+          <AlertDialogBody className="mt-3 mb-4">
             <Text size="sm">
               Deleting the post will remove it permanently and cannot be undone.
             </Text>
@@ -46,11 +38,11 @@ const AlertDialogDemo = () => {
               variant="outline"
               action="secondary"
               onPress={handleClose}
-              size="xs"
+              size="sm"
             >
               <ButtonText>Cancel</ButtonText>
             </Button>
-            <Button size="xs" onPress={handleClose}>
+            <Button size="sm" onPress={handleClose}>
               <ButtonText>Delete</ButtonText>
             </Button>
           </AlertDialogFooter>
