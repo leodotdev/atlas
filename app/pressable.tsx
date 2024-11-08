@@ -28,7 +28,7 @@ const PressableDemo = () => {
           />
         </Box>
         <VStack className="flex-1">
-          <Badge action="info" size="sm" className="w-fit">
+          <Badge action="info" size="sm" className="self-start">
             <BadgeText>new story</BadgeText>
           </Badge>
           <Text className="text-typography-900 font-medium mt-3">
