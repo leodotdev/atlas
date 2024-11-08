@@ -19,7 +19,7 @@ const SelectDemo = () => {
     <Center className="flex-1 px-6 bg-background-0">
       <Select>
         <SelectTrigger>
-          <SelectInput placeholder="Select option" className="w-[240px] overflow-ellipsis" />
+          <SelectInput placeholder="Select option" className="w-[240px]" />
           <SelectIcon as={ChevronDownIcon} className="mr-3" />
         </SelectTrigger>
         <SelectPortal>
@@ -31,8 +31,8 @@ const SelectDemo = () => {
             <SelectItem label="UX Research" value="ux" />
             <SelectItem label="Web Development" value="web" />
             <SelectItem
-              label="Cross Platform Development Process"
-              value="Cross Platform Development Process"
+              label="Cross Platform Development"
+              value="Cross Platform Development"
             />
             <SelectItem label="Backend Development" value="backend" />
           </SelectContent>

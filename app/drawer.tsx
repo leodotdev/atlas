@@ -29,7 +29,7 @@ const DrawerDemo = () => {
         onClose={() => {
           setShowDrawer(false);
         }}
-        size={Platform.OS === "web" ? "sm" : "md"}
+        size={Platform.OS === "web" ? "sm" : "lg"}
       >
         <DrawerBackdrop />
         <DrawerContent className="p-4 sm:p-6 native:pt-[56px]">
