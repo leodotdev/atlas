@@ -37,7 +37,7 @@ const TableDemo = () => {
                     size="sm"
                     variant="solid"
                     action="success"
-                    className="w-fit"
+                    className="self-start"
                   >
                     <BadgeIcon as={CheckIcon} className="mr-2" />
                     <BadgeText>Success</BadgeText>
@@ -52,7 +52,7 @@ const TableDemo = () => {
                     size="sm"
                     variant="solid"
                     action="warning"
-                    className="w-fit"
+                    className="self-start"
                   >
                     <BadgeIcon as={InfoIcon} className="mr-2" />
                     <BadgeText>Pending</BadgeText>
@@ -67,7 +67,7 @@ const TableDemo = () => {
                     size="sm"
                     variant="solid"
                     action="error"
-                    className="w-fit"
+                    className="self-start"
                   >
                     <BadgeIcon as={CloseIcon} className="mr-2" />
                     <BadgeText>Failed</BadgeText>
