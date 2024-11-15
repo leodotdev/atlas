@@ -6,9 +6,9 @@ const { execSync } = require("child_process");
 
 const config = {
   gitUrl: "git@github.com:gluestack/gluestack-ui.git",
-  componentPath: "example/storybook-nativewind/src/components/Button/index.nw.stories.mdx", // Path to the file to extract from
+  componentPath: "example/storybook-nativewind/src/components/Checkbox/index.nw.stories.mdx", // Path to the file to extract from
   branchName: "fix/button-extract",
-  destinationDir: path.join(__dirname, "../components/docs/examples/button"), // Destination for the extracted file
+  destinationDir: path.join(__dirname, "../components/docs/examples/checkbox"), // Destination for the extracted file
   cloneDir: path.join(__dirname, "../gluestack-ui"), // Directory to clone the repo into
 };
 

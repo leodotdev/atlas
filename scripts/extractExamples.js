@@ -1,4 +1,3 @@
-console.log("extract Examples .js file");
 const fs = require('fs');
 const path = require('path');
 
@@ -45,8 +44,7 @@ function extractExamplesCode(filePath) {
 }
 
 // Define the extracted file path
-const extractedFilePath = path.join(__dirname, '..', 'components', 'docs', 'examples', 'button', 'extracted_code.mdx');
-console.log("extractedFilePath", extractedFilePath);
+const extractedFilePath = path.join(__dirname, '..', 'components', 'docs', 'examples', 'checkbox', 'extracted_code.mdx');
 
 // Extracted output should be saved in the same directory as the extracted file
 const outputFilePath = path.join(path.dirname(extractedFilePath), 'examples.js');

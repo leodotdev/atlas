@@ -8,7 +8,7 @@ const examplesFilePath = path.join(
   "components",
   "docs",
   "examples",
-  "button",
+  "checkbox",
   "examples.js"
 );
 
@@ -74,6 +74,150 @@ function getExportedComponents(filePath) {
   return exportedComponents;
 }
 
+function handleImports(leftComponents, imports) {
+  // Filter out the components that start with 'use' (hooks)
+  const hooks = leftComponents.filter((comp) => comp.startsWith("use"));
+  // Filter out the components that are 'colors'
+  const colors = leftComponents.filter((comp) => comp === "colors");
+
+  const formControlComponents = leftComponents.filter((comp) =>
+    comp.startsWith("FormControl")
+  );
+
+  const alertDialogComponents = leftComponents.filter((comp) =>
+    comp.startsWith("AlertDialog")
+  );
+
+  const imageBackgroundComponents = leftComponents.filter((comp) =>
+    comp.startsWith("ImageBackground")
+  );
+
+  const inputAccessoryViewComponents = leftComponents.filter((comp) =>
+    comp.startsWith("InputAccessoryView")
+  );
+
+  const keyboardAvoidingViewComponents = leftComponents.filter((comp) =>
+    comp.startsWith("KeyboardAvoidingView")
+  );
+
+  const refreshControlComponents = leftComponents.filter((comp) =>
+    comp.startsWith("RefreshControl")
+  );
+
+  const safeAreaViewComponents = leftComponents.filter((comp) =>
+    comp.startsWith("SafeAreaView")
+  );
+
+  const scrollViewComponents = leftComponents.filter((comp) =>
+    comp.startsWith("ScrollView")
+  );
+
+  const sectionListComponents = leftComponents.filter((comp) =>
+    comp.startsWith("SectionList")
+  );
+
+  const statusBarComponents = leftComponents.filter((comp) =>
+    comp.startsWith("StatusBar")
+  );
+
+  const virtualizedListComponents = leftComponents.filter((comp) =>
+    comp.startsWith("VirtualizedList")
+  );
+
+  if (hooks.length > 0) {
+    // imports.push(`import React, { ${hooks.join(", ")} } from 'react';`);
+    imports.push(`import React from 'react';`);
+  }
+
+  if (colors.length > 0) {
+    imports.push(`import colors from 'tailwindcss/colors';`);
+  }
+
+  if (formControlComponents.length > 0) {
+    imports.push(
+      `import { ${formControlComponents.join(", ")} } from '@/components/ui/form-control';`
+    );
+  }
+
+  if (alertDialogComponents.length > 0) {
+    imports.push(
+      `import { ${alertDialogComponents.join(", ")} } from '@/components/ui/alert-dialog';`
+    );
+  }
+
+  if (imageBackgroundComponents.length > 0) {
+    imports.push(
+      `import { ${imageBackgroundComponents.join(", ")} } from '@/components/ui/image-background';`
+    );
+  }
+
+  if (inputAccessoryViewComponents.length > 0) {
+    imports.push(
+      `import { ${inputAccessoryViewComponents.join(", ")} } from '@/components/ui/input-accessory-view';`
+    );
+  }
+
+  if (keyboardAvoidingViewComponents.length > 0) {
+    imports.push(
+      `import { ${keyboardAvoidingViewComponents.join(", ")} } from '@/components/ui/keyboard-avoiding-view';`
+    );
+  }
+
+  if (refreshControlComponents.length > 0) {
+    imports.push(
+      `import { ${refreshControlComponents.join(", ")} } from '@/components/ui/refresh-control';`
+    );
+  }
+
+  if (safeAreaViewComponents.length > 0) {
+    imports.push(
+      `import { ${safeAreaViewComponents.join(", ")} } from '@/components/ui/safe-area-view';`
+    );
+  }
+
+  if (scrollViewComponents.length > 0) {
+    imports.push(
+      `import { ${scrollViewComponents.join(", ")} } from '@/components/ui/scroll-view';`
+    );
+  }
+
+  if (sectionListComponents.length > 0) {
+    imports.push(
+      `import { ${sectionListComponents.join(", ")} } from '@/components/ui/section-list';`
+    );
+  }
+
+  if (statusBarComponents.length > 0) {
+    imports.push(
+      `import { ${statusBarComponents.join(", ")} } from '@/components/ui/status-bar';`
+    );
+  }
+
+  if (virtualizedListComponents.length > 0) {
+    imports.push(
+      `import { ${virtualizedListComponents.join(", ")} } from '@/components/ui/virtualized-list';`
+    );
+  }
+
+  const processedComponents = [
+    ...hooks,
+    ...colors,
+    ...formControlComponents,
+    ...alertDialogComponents,
+    ...imageBackgroundComponents,
+    ...inputAccessoryViewComponents,
+    ...keyboardAvoidingViewComponents,
+    ...refreshControlComponents,
+    ...safeAreaViewComponents,
+    ...scrollViewComponents,
+    ...sectionListComponents,
+    ...statusBarComponents,
+    ...virtualizedListComponents,
+  ];
+
+  return { processedComponents, imports };
+}
+
 // Function to generate import statements based on component usage
 function generateImports(components) {
   const imports = [];
@@ -136,28 +280,14 @@ function generateImports(components) {
       (comp) => !importedComponents.includes(comp)
     );
 
-    // Filter out the components that start with 'use' (hooks)
-    const hooks = leftComponents.filter((comp) => comp.startsWith("use"));
-    // Filter out the components that are 'colors'
-    const colors = leftComponents.filter((comp) => comp === "colors");
-    // The remaining components that are neither hooks nor 'colors'
-    const otherComponentsWithoutHooks = leftComponents.filter(
-      (comp) => !comp.startsWith("use")
+    const { processedComponents, imports } = handleImports(
+      leftComponents,
+      imports
     );
-
-    const otherComponents = otherComponentsWithoutHooks.filter(
-      (comp) => comp !== "colors"
+    // the remaining one's
+    const otherComponents = leftComponents.filter(
+      (comp) => !processedComponents.includes(comp)
     );
-
-    // Import hooks from 'React'
-    if (hooks.length > 0) {
-      imports.push(`import { ${hooks.join(", ")} } from 'react';`);
-    }
-
-    // Import 'colors' from 'tailwindcss/colors'
-    if (colors.length > 0) {
-      imports.push(`import colors from 'tailwindcss/colors';`);
-    }
 
     // Add missing components from 'lucide-react-native'
     if (otherComponents.length > 0) {
@@ -198,12 +328,15 @@ function extractAllComponents() {
     ].join("\n");
 
     // Path to the new file
-    const newFilePath = path.join(__dirname, "..",
-  "components",
-  "docs",
-  "examples",
-  "button",
-  "index.js");
+    const newFilePath = path.join(
+      __dirname,
+      "..",
+      "components",
+      "docs",
+      "examples",
+      "checkbox",
+      "index.js"
+    );
 
     // Ensure the output directory exists
     fs.mkdirSync(path.dirname(newFilePath), { recursive: true });
