@@ -280,19 +280,20 @@ function generateImports(components) {
       (comp) => !importedComponents.includes(comp)
     );
 
-    const { processedComponents, imports } = handleImports(
-      leftComponents,
-      imports
-    );
-    // the remaining one's
-    const otherComponents = leftComponents.filter(
+    // Rename 'abc' to 'importDetails' or 'updatedImports'
+    const importDetails = handleImports(leftComponents, imports);
+
+    const processedComponents = importDetails.processedComponents;
+
+    // Filter out the remaining components that haven't been imported
+    const remainingComponents = leftComponents.filter(
       (comp) => !processedComponents.includes(comp)
     );
 
     // Add missing components from 'lucide-react-native'
-    if (otherComponents.length > 0) {
+    if (remainingComponents.length > 0) {
       imports.push(
-        `import { ${otherComponents.join(", ")} } from 'lucide-react-native';`
+        `import { ${remainingComponents.join(", ")} } from 'lucide-react-native';`
       );
     }
 
@@ -301,7 +302,85 @@ function generateImports(components) {
 }
 
 // Function to parse examples and extract components from the Code fields
-function extractAllComponents() {
+// function extractAllComponents() {
+//   try {
+//     const fileContent = fs.readFileSync(examplesFilePath, "utf-8");
+//     const examples = eval(fileContent + "\nexamples;");
+
+//     const allComponents = new Set();
+
+//     examples.forEach(({ Code }) => {
+//       const components = extractComponents(Code);
+//       components.forEach((component) => allComponents.add(component));
+//     });
+
+//     const importStatements = generateImports(Array.from(allComponents));
+
+//     // Prepare content for the new file
+//     const newFileContent = [
+//       "// Import Statements",
+//       ...importStatements,
+//       "// Examples",
+//       "export const examples = [",
+//       ...examples.map(({ name, Code }) => {
+//         return `  {\n    name: "${name}",\n    Code: (\n      ${Code}\n    )\n  },`;
+//       }),
+//       "]",
+//     ].join("\n");
+
+//     // Path to the new file
+//     const newFilePath = path.join(
+//       __dirname,
+//       "..",
+//       "components",
+//       "docs",
+//       "examples",
+//       "checkbox",
+//       "index.js"
+//     );
+
+//     // Ensure the output directory exists
+//     fs.mkdirSync(path.dirname(newFilePath), { recursive: true });
+
+//     // Write to the new file
+//     fs.writeFileSync(newFilePath, newFileContent, "utf-8");
+
+//     console.log("Combined file created successfully at:", newFilePath);
+//   } catch (error) {
+//     console.error("Error extracting imports:", error.message);
+//   }
+// }
+
+// Run the extraction function
+// extractAllComponents();
+
+const components = [
+  'checkbox',
+  'button',
+  'radio',
+  'alert',
+  'form-control',
+  // Add all your components here
+];
+
+// Function to process each component
+async function processComponent(componentName) {
+  const examplesFilePath = path.join(
+    __dirname,
+    "..",
+    "components",
+    "docs",
+    "examples",
+    componentName,
+    "examples.js"
+  );
+
+  // Skip if examples file doesn't exist
+  if (!fs.existsSync(examplesFilePath)) {
+    console.log(`No examples file found for ${componentName}, skipping...`);
+    return;
+  }
+
   try {
     const fileContent = fs.readFileSync(examplesFilePath, "utf-8");
     const examples = eval(fileContent + "\nexamples;");
@@ -334,7 +413,7 @@ function extractAllComponents() {
       "components",
       "docs",
       "examples",
-      "checkbox",
+      componentName,
       "index.js"
     );
 
@@ -344,11 +423,24 @@ function extractAllComponents() {
     // Write to the new file
     fs.writeFileSync(newFilePath, newFileContent, "utf-8");
 
-    console.log("Combined file created successfully at:", newFilePath);
+    console.log(`✅ Processed ${componentName} successfully`);
   } catch (error) {
-    console.error("Error extracting imports:", error.message);
+    console.error(`❌ Error processing ${componentName}:`, error.message);
   }
 }
 
-// Run the extraction function
-extractAllComponents();
+async function processAllComponents() {
+  console.log('🚀 Starting component processing...\n');
+  
+  for (const component of components) {
+    await processComponent(component);
+  }
+  
+  console.log('\n✨ All components processed!');
+}
+
+// Keep your existing helper functions (extractComponents, generateImports, etc.)
+// ... [rest of your existing code] ...
+
+// Run the process
+processAllComponents();

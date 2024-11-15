@@ -43,30 +43,51 @@ function extractExamplesCode(filePath) {
   }
 }
 
-// Define the extracted file path
-const extractedFilePath = path.join(__dirname, '..', 'components', 'docs', 'examples', 'checkbox', 'extracted_code.mdx');
+// List of components to process
+const components = [
+  { name: 'checkbox', filePath: 'example/storybook-nativewind/src/components/Checkbox/index.nw.stories.mdx' },
+  { name: 'button', filePath: 'example/storybook-nativewind/src/components/Button/index.nw.stories.mdx' },
+  { name: 'radio', filePath: 'example/storybook-nativewind/src/components/Radio/index.nw.stories.mdx' },
+  { name: 'form-control', filePath: 'example/storybook-nativewind/src/components/FormControl/index.nw.stories.mdx' },
+  { name: 'alert', filePath: 'example/storybook-nativewind/src/components/Alert/index.nw.stories.mdx' }
+];
 
-// Extracted output should be saved in the same directory as the extracted file
-const outputFilePath = path.join(path.dirname(extractedFilePath), 'examples.js');
+// Output directory for all component files
+const outputBaseDir = path.join(__dirname, '..', 'components', 'docs', 'examples');
 
-// Define the header content for the final .js file
-const fileHeader = `const examples = [
-`;
+// Function to process and extract examples for all components
+function processComponents() {
+  components.forEach(({ name, filePath }) => {
+    const extractedFilePath = path.join(__dirname, '..', 'gluestack-ui', filePath);
 
-// Extract the examples and code and write to .js file
-const examples = extractExamplesCode(extractedFilePath);
+    // Extract examples from the component file
+    const examples = extractExamplesCode(extractedFilePath);
 
-if (examples.length > 0) {
-  // Combine header, examples, and footer into the final file content
-  const fileContent = fileHeader + examples.map(example => `
-    {
-      name: "${example.name}",
-      Code: ${example.Code}
-    }`).join(',\n') + '\n];';
+    // Define the output file path
+    const outputFilePath = path.join(outputBaseDir, name, 'examples.js');
 
-  // Write the file content to output.js in the same directory as the extracted file
-  fs.writeFileSync(outputFilePath, fileContent, 'utf-8');
-  console.log(`Extracted examples saved to: ${outputFilePath}`);
-} else {
-  console.log('No examples found in the <CodePreview> components.');
+    if (examples.length > 0) {
+      // Define the header content for the final .js file
+      const fileHeader = `const examples = [\n`;
+
+      // Combine header, examples, and footer into the final file content
+      const fileContent = fileHeader + examples.map(example => `
+        {
+          name: "${example.name}",
+          Code: ${example.Code}
+        }`).join(',\n') + '\n];';
+
+      // Ensure the directory exists for the output file
+      // fs.ensureDirSync(path.dirname(outputFilePath));
+
+      // Write the file content to the output.js in the component's directory
+      fs.writeFileSync(outputFilePath, fileContent, 'utf-8');
+      console.log(`Extracted examples for "${name}" saved to: ${outputFilePath}`);
+    } else {
+      console.log(`No examples found in the <CodePreview> components for "${name}".`);
+    }
+  });
 }
+
+// Run the script to process all components
+processComponents();

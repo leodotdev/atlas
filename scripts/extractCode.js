@@ -6,22 +6,26 @@ const { execSync } = require("child_process");
 
 const config = {
   gitUrl: "git@github.com:gluestack/gluestack-ui.git",
-  componentPath: "example/storybook-nativewind/src/components/Checkbox/index.nw.stories.mdx", // Path to the file to extract from
+  components: [
+    { name: "checkbox", path: "example/storybook-nativewind/src/components/Checkbox/index.nw.stories.mdx" },
+    { name: "button", path: "example/storybook-nativewind/src/components/Button/index.nw.stories.mdx" },
+    { name: "radio", path: "example/storybook-nativewind/src/components/Radio/index.nw.stories.mdx" },
+    { name: "form-control", path: "example/storybook-nativewind/src/components/FormControl/index.nw.stories.mdx" },
+    { name: "alert", path: "example/storybook-nativewind/src/components/Alert/index.nw.stories.mdx" },
+  ],
   branchName: "fix/button-extract",
-  destinationDir: path.join(__dirname, "../components/docs/examples/checkbox"), // Destination for the extracted file
-  cloneDir: path.join(__dirname, "../gluestack-ui"), // Directory to clone the repo into
+  destinationDir: path.join(__dirname, "../components/docs/examples/"),
+  cloneDir: path.join(__dirname, "../gluestack-ui"),
 };
 
 async function cloneOrUpdateRepo() {
   const repoPath = config.cloneDir;
 
   try {
-    // Check if the repository directory exists and remove it if it does
     if (fs.existsSync(repoPath)) {
       console.log("Removing existing repository directory...");
       fs.removeSync(repoPath);
-      
-      // Confirm deletion
+
       if (fs.existsSync(repoPath)) {
         console.error("Failed to remove existing repository directory. Please check permissions.");
         process.exit(1);
@@ -43,46 +47,47 @@ async function cloneOrUpdateRepo() {
 async function extractCodeFromExamplesSection(filePath) {
   try {
     const fileContent = fs.readFileSync(filePath, "utf-8");
-    
-    // Find the position of the "### Examples" string
     const startIndex = fileContent.indexOf("### Examples");
 
     if (startIndex === -1) {
-      console.error("### Examples section not found in the file.");
+      console.error(`### Examples section not found in the file: ${filePath}`);
       return "";
     }
 
-    // Extract everything from the start of "### Examples" section onwards
-    const extractedContent = fileContent.slice(startIndex).trim();
-
-    return extractedContent;
+    return fileContent.slice(startIndex).trim();
   } catch (error) {
-    console.error("Error reading or processing the file:", error);
+    console.error(`Error reading or processing the file: ${filePath}`, error);
     return "";
   }
 }
 
-async function saveExtractedContentToFile(extractedContent) {
-  const destPath = config.destinationDir;
-  const outputFilePath = path.join(destPath, "extracted_code.mdx"); // Save the extracted content as .mdx file
+async function saveExtractedContentToFile(componentName, extractedContent) {
+  const destPath = path.join(config.destinationDir, componentName);
+  const outputFilePath = path.join(destPath, "extracted_code.mdx");
 
   if (extractedContent) {
-    fs.ensureDirSync(destPath); // Ensure the destination directory exists
-    fs.writeFileSync(outputFilePath, extractedContent); // Write the extracted content to a file
-    console.log(`Extracted content saved to ${outputFilePath}`);
+    fs.ensureDirSync(destPath);
+    fs.writeFileSync(outputFilePath, extractedContent);
+    console.log(`Extracted content for "${componentName}" saved to ${outputFilePath}`);
   } else {
-    console.error("No content to save.");
+    console.error(`No content to save for "${componentName}".`);
+  }
+}
+
+async function processComponents(repoPath) {
+  for (const { name, path: componentPath } of config.components) {
+    console.log(`Processing component: ${name}`);
+    const filePath = path.join(repoPath, componentPath);
+
+    const extractedCode = await extractCodeFromExamplesSection(filePath);
+    await saveExtractedContentToFile(name, extractedCode);
   }
 }
 
 async function main() {
   try {
     const repoPath = await cloneOrUpdateRepo();
-    const filePath = path.join(repoPath, config.componentPath);
-
-    // Extract code after "### Examples" (including the section header)
-    const extractedCode = await extractCodeFromExamplesSection(filePath);
-    await saveExtractedContentToFile(extractedCode); // Save the extracted content to a file
+    await processComponents(repoPath);
   } catch (error) {
     console.error("Error:", error);
   }
