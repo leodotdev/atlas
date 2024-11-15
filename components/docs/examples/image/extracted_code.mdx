@@ -1,0 +1,39 @@
+### Examples
+
+The Examples section offers visual previews of the component, letting you quickly identify the best fit for your needs. Just copy the code and use it in your project.
+
+#### Basic Unitools Image 
+
+The below example will run for both Expo and Next.js projects. For installation steps, refer to the [Installation](https://unitools.geekyants.com/packages/image/) section of ```@unitools/image```.
+
+```jsx
+import Image from '@unitools/image';
+```
+
+<UnitoolsImageEg/>
+
+<Wrapper>
+  <CodePreview
+    showComponentRenderer={false}
+    showArgsController={false}
+    metaData={{
+      code: `
+        <Image
+          source={require("@/assets/mountains.png")}
+          alt="Logo"
+          width={208}
+          height={320}
+        />            
+      `,
+      transformCode: (code) => {
+        return transformedCode(code);
+      },
+      scope: {
+        Wrapper,
+        UnitoolsImage:Image,
+      },
+      argsType: {
+      },
+    }}
+  />
+</Wrapper>

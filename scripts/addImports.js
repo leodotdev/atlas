@@ -1,17 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 
-// Path to the examples.js file
-const examplesFilePath = path.join(
-  __dirname,
-  "..",
-  "components",
-  "docs",
-  "examples",
-  "checkbox",
-  "examples.js"
-);
-
 // Base path to the components folder
 const componentsBasePath = path.join(__dirname, "..", "components", "ui");
 
@@ -301,66 +290,48 @@ function generateImports(components) {
   }
 }
 
-// Function to parse examples and extract components from the Code fields
-// function extractAllComponents() {
-//   try {
-//     const fileContent = fs.readFileSync(examplesFilePath, "utf-8");
-//     const examples = eval(fileContent + "\nexamples;");
-
-//     const allComponents = new Set();
-
-//     examples.forEach(({ Code }) => {
-//       const components = extractComponents(Code);
-//       components.forEach((component) => allComponents.add(component));
-//     });
-
-//     const importStatements = generateImports(Array.from(allComponents));
-
-//     // Prepare content for the new file
-//     const newFileContent = [
-//       "// Import Statements",
-//       ...importStatements,
-//       "// Examples",
-//       "export const examples = [",
-//       ...examples.map(({ name, Code }) => {
-//         return `  {\n    name: "${name}",\n    Code: (\n      ${Code}\n    )\n  },`;
-//       }),
-//       "]",
-//     ].join("\n");
-
-//     // Path to the new file
-//     const newFilePath = path.join(
-//       __dirname,
-//       "..",
-//       "components",
-//       "docs",
-//       "examples",
-//       "checkbox",
-//       "index.js"
-//     );
-
-//     // Ensure the output directory exists
-//     fs.mkdirSync(path.dirname(newFilePath), { recursive: true });
-
-//     // Write to the new file
-//     fs.writeFileSync(newFilePath, newFileContent, "utf-8");
-
-//     console.log("Combined file created successfully at:", newFilePath);
-//   } catch (error) {
-//     console.error("Error extracting imports:", error.message);
-//   }
-// }
-
-// Run the extraction function
-// extractAllComponents();
-
 const components = [
-  'checkbox',
-  'button',
-  'radio',
-  'alert',
-  'form-control',
-  // Add all your components here
+  "accordion",
+  "actionsheet",
+  "alert",
+  "alert-dialog",
+  "avatar",
+  "badge",
+  "bottomsheet",
+  "box",
+  "button",
+  "card",
+  "center",
+  "checkbox",
+  "divider",
+  "drawer",
+  "fab",
+  "form-control",
+  "grid",
+  "heading",
+  "hstack",
+  "icon",
+  "image",
+  "input",
+  "link",
+  "menu",
+  "modal",
+  "popover",
+  "portal",
+  "pressable",
+  "progress",
+  "radio",
+  "select",
+  "skeleton",
+  "slider",
+  "spinner",
+  "switch",
+  "table",
+  "text",
+  "textarea",
+  "toast",
+  "tooltip",
+  "vstack",
 ];
 
 // Function to process each component
@@ -377,7 +348,33 @@ async function processComponent(componentName) {
 
   // Skip if examples file doesn't exist
   if (!fs.existsSync(examplesFilePath)) {
-    console.log(`No examples file found for ${componentName}, skipping...`);
+    console.log(
+      `No examples file found for ${componentName}, giving empty array.`
+    );
+
+    const newFilePath = path.join(
+      __dirname,
+      "..",
+      "components",
+      "docs",
+      "examples",
+      componentName,
+      "index.js"
+    );
+
+    const newFileContent = "export const examples = [];";
+
+    try {
+      // Ensure the output directory exists
+      fs.mkdirSync(path.dirname(newFilePath), { recursive: true });
+
+      // Write to the new file
+      fs.writeFileSync(newFilePath, newFileContent, "utf-8");
+      console.log(`File created successfully at: ${newFilePath}`);
+    } catch (error) {
+      console.error(`Error creating file at ${newFilePath}:`, error.message);
+    }
+
     return;
   }
 
@@ -430,17 +427,13 @@ async function processComponent(componentName) {
 }
 
 async function processAllComponents() {
-  console.log('🚀 Starting component processing...\n');
-  
+  console.log("🚀 Starting component processing...\n");
+
   for (const component of components) {
     await processComponent(component);
   }
-  
-  console.log('\n✨ All components processed!');
+
+  console.log("\n✨ All components processed!");
 }
 
-// Keep your existing helper functions (extractComponents, generateImports, etc.)
-// ... [rest of your existing code] ...
-
-// Run the process
 processAllComponents();
