@@ -10,7 +10,8 @@ import { Text } from '@/components/ui/text';
 import { Box } from '@/components/ui/box';
 import { Divider } from '@/components/ui/divider';
 import React from 'react';
-import { Toast, ToastTitle, ToastDescription, RefreshCw, Send } from 'lucide-react-native';
+import { useToast, Toast, ToastTitle, ToastDescription } from '@/components/ui/toast';
+import { RefreshCw, Send } from 'lucide-react-native';
 // Examples
 export const examples = [
   {
