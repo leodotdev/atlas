@@ -53,7 +53,7 @@ export const examples = [
   {
     name: "Fallback",
     Code: (
-      <HStack space="md" h="100%" justifyContent="center" alignItems="center"><Avatar size="md"><AvatarFallbackText>John Doe</AvatarFallbackText><AvatarImage source={{ uri: 'https://wrong-url', }} /></Avatar></HStack>
+      <HStack space="md"><Avatar size="md"><AvatarFallbackText>John Doe</AvatarFallbackText><AvatarImage source={{ uri: 'https://wrong-url', }} /></Avatar></HStack>
     )
   },
 ]

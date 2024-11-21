@@ -7,7 +7,8 @@ import { Center } from '@/components/ui/center';
 import { Text } from '@/components/ui/text';
 import { Icon, EditIcon } from '@/components/ui/icon';
 import { HStack } from '@/components/ui/hstack';
-import { Tooltip, TooltipContent, Command } from 'lucide-react-native';
+import { Tooltip, TooltipContent } from '@/components/ui/tooltip';
+import { Command } from 'lucide-react-native';
 // Examples
 export const examples = [
   {
