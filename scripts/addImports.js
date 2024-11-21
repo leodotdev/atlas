@@ -463,7 +463,6 @@ async function processComponent(componentName) {
       components.forEach((component) => allComponents.add(component));
     });
 
-    console.log("allComponents", allComponents)
     const importStatements = generateImports(Array.from(allComponents));
 
     // Prepare content for the new file
@@ -504,10 +503,10 @@ async function processComponent(componentName) {
 async function processAllComponents() {
   console.log("🚀 Starting component processing...\n");
 
-  // for (const component of components) {
-  //   await processComponent(component);
-  // }
-  await processComponent("icon");
+  for (const component of components) {
+    await processComponent(component);
+  }
+  // await processComponent("icon");
 
   console.log("\n✨ All components processed!");
 }
