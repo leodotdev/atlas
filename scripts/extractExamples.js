@@ -6,6 +6,12 @@ function extractExamplesCode(filePath) {
   try {
     const fileContent = fs.readFileSync(filePath, "utf-8");
 
+    // Regular expression to match and remove block comments wrapped with {/* */}
+    const commentBlockRegex = /{\s*\/\*[\s\S]*?\*\/\s*}/g;
+
+    // Remove commented blocks from the file content
+    const uncommentedContent = fileContent.replace(commentBlockRegex, "");
+
     // Regular expression to match the example name (headers)
     const exampleNameRegex = /####\s*(.*)/g;
 
@@ -15,12 +21,12 @@ function extractExamplesCode(filePath) {
     const examples = [];
     let nameMatch, codeMatch;
 
-    while ((nameMatch = exampleNameRegex.exec(fileContent)) !== null) {
+    while ((nameMatch = exampleNameRegex.exec(uncommentedContent)) !== null) {
       // Capture the example name (e.g., Button with Loading State)
       const exampleName = nameMatch[1].trim();
 
       // Capture the code for this example
-      if ((codeMatch = codeRegex.exec(fileContent)) !== null) {
+      if ((codeMatch = codeRegex.exec(uncommentedContent)) !== null) {
         let code = codeMatch[1].trim();
 
         // Clean up the code format and remove {" "} and unnecessary spaces
@@ -51,40 +57,40 @@ const components = [
   "avatar",
   "badge",
   "bottomsheet",
-  'box',
-  'button',
-  'card',
-  'center',
-  'checkbox',
-  'divider',
-  'drawer',
-  'fab',
-  'form-control',
-  'grid',
-  'heading',
-  'hstack',
-  'icon',
-  'image',
-  'input',
-  'link',
-  'menu',
-  'modal',
-  'popover',
-  'portal',
-  'pressable',
-  'progress',
-  'radio',
-  'select',
-  'skeleton',
-  'slider',
-  'spinner',
-  'switch',
-  'table',
-  'text',
-  'textarea',
-  'toast',
-  'tooltip',
-  'vstack',
+  "box",
+  "button",
+  "card",
+  "center",
+  "checkbox",
+  "divider",
+  "drawer",
+  "fab",
+  "form-control",
+  "grid",
+  "heading",
+  "hstack",
+  "icon",
+  "image",
+  "input",
+  "link",
+  "menu",
+  "modal",
+  "popover",
+  "portal",
+  "pressable",
+  "progress",
+  "radio",
+  "select",
+  "skeleton",
+  "slider",
+  "spinner",
+  "switch",
+  "table",
+  "text",
+  "textarea",
+  "toast",
+  "tooltip",
+  "vstack",
 ];
 
 async function processComponent(componentName) {
@@ -155,6 +161,7 @@ async function processAllComponents() {
   for (const component of components) {
     await processComponent(component);
   }
+  // await processComponent("modal");
 
   console.log("\n✨ All components processed!");
 }
