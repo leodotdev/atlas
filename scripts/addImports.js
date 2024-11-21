@@ -6,7 +6,7 @@ const componentsBasePath = path.join(__dirname, "..", "components", "ui");
 
 // Regular expressions to detect component tags and 'as' prop usage
 const componentRegex = /<([A-Za-z][A-Za-z0-9]*)/g;
-const asPropRegex = /as={([A-Za-z][A-Za-z0-9]*)}/g;
+const asPropRegex = /as\s*=\s*\{([^}]+)\}/g;
 
 function extractComponents(code) {
   const components = new Set();
@@ -29,7 +29,21 @@ function extractComponents(code) {
 
   // Check for 'as' prop usage
   while ((match = asPropRegex.exec(code)) !== null) {
-    components.add(match[1]);
+    const asValue = match[1].trim();
+
+    if (asValue.includes("?")) {
+      // Handle conditional expressions like `showPassword ? EyeIcon : EyeOffIcon`
+      const conditionalIcons = asValue
+        .split("?")[1] // Extract the part after '?'
+        .split(":") // Split the true and false values
+        .map((icon) => icon.trim()); // Remove extra spaces
+
+      // Add both icons from the conditional expression
+      conditionalIcons.forEach((icon) => components.add(icon));
+    } else {
+      // Direct usage of a single component
+      components.add(asValue);
+    }
   }
 
   // Extract hooks starting with 'use'
@@ -444,6 +458,7 @@ async function processAllComponents() {
   for (const component of components) {
     await processComponent(component);
   }
+  // await processComponent("input");
 
   console.log("\n✨ All components processed!");
 }

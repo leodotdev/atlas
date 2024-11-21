@@ -2,7 +2,7 @@
 import { Alert, AlertText, AlertIcon } from '@/components/ui/alert';
 import { VStack } from '@/components/ui/vstack';
 import { Button, ButtonText } from '@/components/ui/button';
-import { Icon, CloseIcon, InfoIcon, RepeatIcon } from '@/components/ui/icon';
+import { Icon, CloseIcon, EyeIcon, EyeOffIcon, InfoIcon, RepeatIcon } from '@/components/ui/icon';
 import { HStack } from '@/components/ui/hstack';
 import { Text } from '@/components/ui/text';
 import { Heading } from '@/components/ui/heading';
@@ -29,10 +29,10 @@ export const examples = [
       <Alert action="error" className="gap-3">{/* Bomb is imported from 'lucide-react-native' */}<AlertIcon as={Bomb} size="lg" /><AlertText className="text-typography-900" size="sm"><Text className="mr-2 font-semibold text-typography-900">Heads up:</Text>Once done, this action cannot be undone</AlertText></Alert>
     )
   },
-  // {
-  //   name: "Alert on confirm password modal",
-  //   Code: (
-  //     function Example() { const [showPassword, setShowPassword] = React.useState(false); const handleState = () =>{ setShowPassword((showState) =>{ return !showState; }); }; return (<VStack className="gap-5 sm:gap-8 p-6 sm:p-9 border border-outline-200 bg-background-0 rounded-xl shadow-hard-5 w-full max-w-[423px]"><VStack className="items-center gap-1"><Heading size="xl">Confirm our password?</Heading><Text>johnsmith@gmail.com</Text></VStack><VStack className="gap-3 sm:gap-5"><Input className="rounded-md" size="sm"><InputField type={showPassword ? 'text' : 'password'} placeholder="Enter password" /><InputSlot className="mr-3" onPress={handleState}>{/* EyeIcon, EyeOffIcon are both imported from 'lucide-react-native' */}<InputIcon size="xs" as={showPassword ? EyeIcon : EyeOffIcon} className="stroke-background-600" /></InputSlot></Input><Button className="w-full rounded-md" size="sm"><ButtonText>Confirm</ButtonText></Button></VStack><Alert className="items-start" action="muted"><AlertIcon as={InfoIcon} size="xs" className="stroke-background-500" /><AlertText className="text-typography-600" size="xs">Minimum 8 characters, with at least 1 uppercase, 1 lowercase, and 1 number required.</AlertText></Alert></VStack>); }
-  //   )
-  // },
+  {
+    name: "Alert on confirm password modal",
+    Code: (
+      function Example() { const [showPassword, setShowPassword] = React.useState(false); const handleState = () =>{ setShowPassword((showState) =>{ return !showState; }); }; return (<VStack className="gap-5 sm:gap-8 p-6 sm:p-9 border border-outline-200 bg-background-0 rounded-xl shadow-hard-5 w-full max-w-[423px]"><VStack className="items-center gap-1"><Heading size="xl">Confirm our password?</Heading><Text>johnsmith@gmail.com</Text></VStack><VStack className="gap-3 sm:gap-5"><Input className="rounded-md" size="sm"><InputField type={showPassword ? 'text' : 'password'} placeholder="Enter password" /><InputSlot className="mr-3" onPress={handleState}>{/* EyeIcon, EyeOffIcon are both imported from 'lucide-react-native' */}<InputIcon size="xs" as={showPassword ? EyeIcon : EyeOffIcon} className="stroke-background-600" /></InputSlot></Input><Button className="w-full rounded-md" size="sm"><ButtonText>Confirm</ButtonText></Button></VStack><Alert className="items-start" action="muted"><AlertIcon as={InfoIcon} size="xs" className="stroke-background-500" /><AlertText className="text-typography-600" size="xs">Minimum 8 characters, with at least 1 uppercase, 1 lowercase, and 1 number required.</AlertText></Alert></VStack>); }
+    )
+  },
 ]
