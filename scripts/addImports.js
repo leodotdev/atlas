@@ -7,14 +7,24 @@ const componentsBasePath = path.join(__dirname, "..", "components", "ui");
 // Regular expressions to detect component tags and 'as' prop usage
 const componentRegex = /<([A-Za-z][A-Za-z0-9]*)/g;
 const asPropRegex = /as\s*=\s*\{([^}]+)\}/g;
+const localVariableRegex = /const\s+([A-Za-z][A-Za-z0-9]*)\s*=/g;
 
 function extractComponents(code) {
   const components = new Set();
+  const localVariables = new Set(); // To store locally defined variables
   let match;
+
+  // Find and store local variable names
+  while ((match = localVariableRegex.exec(code)) !== null) {
+    localVariables.add(match[1]);
+  }
 
   // Find component tags
   while ((match = componentRegex.exec(code)) !== null) {
-    components.add(match[1]);
+    const componentName = match[1];
+    if (!localVariables.has(componentName)) {
+      components.add(componentName);
+    }
   }
 
   // Check for 'colors.' in the code
@@ -27,22 +37,38 @@ function extractComponents(code) {
     components.add("Platform");
   }
 
+  // Check for 'createIcon(' in the code
+  if (code.includes("createIcon(")) {
+    components.add("createIcon");
+  }
+
+  // Check for '<Path' and '<Rect' in the code
+  if (code.includes("<Path")) {
+    components.add("Path");
+  }
+
+  if (code.includes("<Rect")) {
+    components.add("Rect");
+  }
+
   // Check for 'as' prop usage
   while ((match = asPropRegex.exec(code)) !== null) {
     const asValue = match[1].trim();
 
-    if (asValue.includes("?")) {
-      // Handle conditional expressions like `showPassword ? EyeIcon : EyeOffIcon`
-      const conditionalIcons = asValue
-        .split("?")[1] // Extract the part after '?'
-        .split(":") // Split the true and false values
-        .map((icon) => icon.trim()); // Remove extra spaces
+    if (!localVariables.has(asValue)) {
+      if (asValue.includes("?")) {
+        // Handle conditional expressions like `showPassword ? EyeIcon : EyeOffIcon`
+        const conditionalIcons = asValue
+          .split("?")[1] // Extract the part after '?'
+          .split(":") // Split the true and false values
+          .map((icon) => icon.trim()); // Remove extra spaces
 
-      // Add both icons from the conditional expression
-      conditionalIcons.forEach((icon) => components.add(icon));
-    } else {
-      // Direct usage of a single component
-      components.add(asValue);
+        // Add both icons from the conditional expression
+        conditionalIcons.forEach((icon) => components.add(icon));
+      } else {
+        // Direct usage of a single component
+        components.add(asValue);
+      }
     }
   }
 
@@ -62,7 +88,7 @@ function extractComponents(code) {
 function getExportedComponents(filePath) {
   const fileContent = fs.readFileSync(filePath, "utf-8");
 
-  // Regular expression to match all export { ... } statements
+  // Regular expression to match all export { ... } statements, including aliases
   const exportRegex = /export\s*{([^}]+)}/g;
 
   let matches;
@@ -75,8 +101,17 @@ function getExportedComponents(filePath) {
       .split(",")
       .map((component) => component.trim());
 
-    // Add each component to the list of exported components
-    exportedComponents.push(...components);
+    // Process each component to get the final exported name
+    components.forEach((component) => {
+      const aliasMatch = component.match(/(\w+)\s+as\s+(\w+)/);
+      if (aliasMatch) {
+        // Add the alias (final exported name)
+        exportedComponents.push(aliasMatch[2]);
+      } else {
+        // Add the component name directly if no alias is present
+        exportedComponents.push(component);
+      }
+    });
   }
 
   return exportedComponents;
@@ -89,6 +124,11 @@ function handleImports(leftComponents, imports) {
   const colors = leftComponents.filter((comp) => comp === "colors");
 
   const platform = leftComponents.filter((comp) => comp === "Platform");
+
+  // Filter for specific components to import from 'react-native-svg'
+  const svgComponents = leftComponents.filter((comp) =>
+    ["Path", "Rect"].includes(comp)
+  );
 
   const formControlComponents = leftComponents.filter((comp) =>
     comp.startsWith("FormControl")
@@ -145,6 +185,13 @@ function handleImports(leftComponents, imports) {
 
   if (platform.length > 0) {
     imports.push(`import { Platform } from 'react-native';`);
+  }
+
+  // Generate a single import statement if there are components to import
+  if (svgComponents.length > 0) {
+    imports.push(
+      `import { ${svgComponents.join(", ")} } from 'react-native-svg';`
+    );
   }
 
   if (formControlComponents.length > 0) {
@@ -217,6 +264,7 @@ function handleImports(leftComponents, imports) {
     ...hooks,
     ...colors,
     ...platform,
+    ...svgComponents,
     ...formControlComponents,
     ...alertDialogComponents,
     ...imageBackgroundComponents,
@@ -415,6 +463,7 @@ async function processComponent(componentName) {
       components.forEach((component) => allComponents.add(component));
     });
 
+    console.log("allComponents", allComponents)
     const importStatements = generateImports(Array.from(allComponents));
 
     // Prepare content for the new file
@@ -455,10 +504,10 @@ async function processComponent(componentName) {
 async function processAllComponents() {
   console.log("🚀 Starting component processing...\n");
 
-  for (const component of components) {
-    await processComponent(component);
-  }
-  // await processComponent("input");
+  // for (const component of components) {
+  //   await processComponent(component);
+  // }
+  await processComponent("icon");
 
   console.log("\n✨ All components processed!");
 }

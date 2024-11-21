@@ -1,9 +1,10 @@
 // Import Statements
 import { Center } from '@/components/ui/center';
 import { HStack } from '@/components/ui/hstack';
-import { Icon, AddIcon, AlertCircleIcon, ArrowUpIcon, ArrowDownIcon, ArrowRightIcon, ArrowLeftIcon, AtSignIcon, BellIcon, CalendarDaysIcon, CheckIcon, CheckCircleIcon, ChevronUpIcon, ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon, ChevronsLeftIcon, ChevronsRightIcon, ChevronsUpDownIcon, CircleIcon, ClockIcon, CloseIcon, CloseCircleIcon, CopyIcon, DownloadIcon, EditIcon, EyeIcon, EyeOffIcon, FavouriteIcon, GlobeIcon, GripVerticalIcon, HelpCircleIcon, InfoIcon, LinkIcon, ExternalLinkIcon, LoaderIcon, LockIcon, MailIcon, MenuIcon, MessageCircleIcon, MoonIcon, PaperclipIcon, PhoneIcon, PlayIcon, RemoveIcon, RepeatIcon, Repeat1Icon, SearchIcon, SettingsIcon, ShareIcon, SlashIcon, StarIcon, SunIcon, ThreeDotsIcon, TrashIcon, UnlockIcon } from '@/components/ui/icon';
+import { Icon, createIcon, AddIcon, AlertCircleIcon, ArrowUpIcon, ArrowDownIcon, ArrowRightIcon, ArrowLeftIcon, AtSignIcon, BellIcon, CalendarDaysIcon, CheckIcon, CheckCircleIcon, ChevronUpIcon, ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon, ChevronsLeftIcon, ChevronsRightIcon, ChevronsUpDownIcon, CircleIcon, ClockIcon, CloseIcon, CloseCircleIcon, CopyIcon, DownloadIcon, EditIcon, EyeIcon, EyeOffIcon, FavouriteIcon, GlobeIcon, GripVerticalIcon, HelpCircleIcon, InfoIcon, LinkIcon, ExternalLinkIcon, LoaderIcon, LockIcon, MailIcon, MenuIcon, MessageCircleIcon, MoonIcon, PaperclipIcon, PhoneIcon, PlayIcon, RemoveIcon, RepeatIcon, Repeat1Icon, SearchIcon, SettingsIcon, ShareIcon, SlashIcon, StarIcon, SunIcon, ThreeDotsIcon, TrashIcon, UnlockIcon } from '@/components/ui/icon';
 import { VStack } from '@/components/ui/vstack';
-import { Camera, ChromeIcon, InstagramIcon, FacebookIcon, Rect, Path, GluestackIcon } from 'lucide-react-native';
+import { Rect, Path } from 'react-native-svg';
+import { Camera, ChromeIcon, InstagramIcon, FacebookIcon } from 'lucide-react-native';
 // Examples
 export const examples = [
   {
@@ -18,10 +19,10 @@ export const examples = [
       <VStack space="md" className="items-center"><Icon className="text-typography-500" as={Camera} /><Icon className="text-typography-500" as={ChromeIcon} /><Icon className="text-typography-500" as={InstagramIcon} /><Icon className="text-typography-500" as={FacebookIcon} /></VStack>
     )
   },
-  // {
-  //   name: "SVG & Custom Icons",
-  //   Code: (
-  //     function App () { const GluestackIcon = createIcon({ viewBox: '0 0 32 32', path: (<>{/* Rect, Path is imported from 'react-native-svg' */}<Rect width="32" height="32" rx="2" fill="currentColor"/><Path d="M9.5 14.6642L15.9999 9.87633V12.1358L9.5 16.9236V14.6642Z" fill="white"/><Path d="M22.5 14.6642L16.0001 9.87639V12.1359L22.5 16.9237V14.6642Z" fill="white"/><Path d="M9.5 19.8641L15.9999 15.0763V17.3358L9.5 22.1236V19.8641Z" fill="white"/><Path d="M22.5 19.8642L16.0001 15.0764V17.3358L22.5 22.1237V19.8642Z" fill="white"/></>), }); return<Icon as={GluestackIcon} size='xl' className="text-typography-black"/>; }
-  //   )
-  // },
+  {
+    name: "SVG & Custom Icons",
+    Code: (
+      function App () { const GluestackIcon = createIcon({ viewBox: '0 0 32 32', path: (<>{/* Rect, Path is imported from 'react-native-svg' */}<Rect width="32" height="32" rx="2" fill="currentColor"/><Path d="M9.5 14.6642L15.9999 9.87633V12.1358L9.5 16.9236V14.6642Z" fill="white"/><Path d="M22.5 14.6642L16.0001 9.87639V12.1359L22.5 16.9237V14.6642Z" fill="white"/><Path d="M9.5 19.8641L15.9999 15.0763V17.3358L9.5 22.1236V19.8641Z" fill="white"/><Path d="M22.5 19.8642L16.0001 15.0764V17.3358L22.5 22.1237V19.8642Z" fill="white"/></>), }); return<Icon as={GluestackIcon} size='xl' className="text-typography-black"/>; }
+    )
+  },
 ]
