@@ -12,7 +12,7 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { FormControl, FormControlLabel, FormControlLabelText } from '@/components/ui/form-control';
 import { KeyboardAvoidingView } from '@/components/ui/keyboard-avoiding-view';
-import { CreditCardIcon, Item } from 'lucide-react-native';
+import { CreditCardIcon } from 'lucide-react-native';
 // Examples
 export const examples = [
   {

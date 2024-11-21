@@ -2,7 +2,7 @@ const examples = [
 
     {
       name: "Variants",
-      Code: `<VStack {...props}><Heading>gluestack-ui</Heading><Text>Universal component library</Text><Divider className="my-2 bg-indigo-500" /><HStack className=""><Text>Installation</Text><Divider orientation="vertical" className="mx-2 h-[20px] bg-emerald-500" /><Text>API Reference</Text><Divider orientation="vertical" className="mx-2 h-[20px] bg-emerald-500" /><Text>Examples</Text></HStack></VStack>`
+      Code: `<VStack><Heading>gluestack-ui</Heading><Text>Universal component library</Text><Divider className="my-2 bg-indigo-500" /><HStack className=""><Text>Installation</Text><Divider orientation="vertical" className="mx-2 h-[20px] bg-emerald-500" /><Text>API Reference</Text><Divider orientation="vertical" className="mx-2 h-[20px] bg-emerald-500" /><Text>Examples</Text></HStack></VStack>`
     },
 
     {
@@ -12,7 +12,7 @@ const examples = [
 
     {
       name: "With & Without Inset",
-      Code: `<VStack space="2xl" {...props}><HStack className="px-3 h-8 rounded border border-solid border-outline-300"><Button variant="link" size="xs"><ButtonText>Github</ButtonText></Button><Divider orientation="vertical" className="mx-2.5" /><Button variant="link" size="xs"><ButtonText>Twitter</ButtonText></Button><Divider orientation="vertical" className="mx-2.5" /><Button variant="link" size="xs"><ButtonText>Discord</ButtonText></Button></HStack><HStack className="px-3 h-8 rounded border border-solid border-outline-300 items-center"><Button variant="link" size="xs"><ButtonText>Github</ButtonText></Button><Divider orientation="vertical" className="h-[50%] mx-2.5" /><Button variant="link" size="xs"><ButtonText>Twitter</ButtonText></Button><Divider orientation="vertical" className="h-[50%] mx-2.5" /><Button variant="link" size="xs"><ButtonText>Discord</ButtonText></Button></HStack></VStack>`
+      Code: `<VStack space="2xl"><HStack className="px-3 h-8 rounded border border-solid border-outline-300"><Button variant="link" size="xs"><ButtonText>Github</ButtonText></Button><Divider orientation="vertical" className="mx-2.5" /><Button variant="link" size="xs"><ButtonText>Twitter</ButtonText></Button><Divider orientation="vertical" className="mx-2.5" /><Button variant="link" size="xs"><ButtonText>Discord</ButtonText></Button></HStack><HStack className="px-3 h-8 rounded border border-solid border-outline-300 items-center"><Button variant="link" size="xs"><ButtonText>Github</ButtonText></Button><Divider orientation="vertical" className="h-[50%] mx-2.5" /><Button variant="link" size="xs"><ButtonText>Twitter</ButtonText></Button><Divider orientation="vertical" className="h-[50%] mx-2.5" /><Button variant="link" size="xs"><ButtonText>Discord</ButtonText></Button></HStack></VStack>`
     },
 
     {

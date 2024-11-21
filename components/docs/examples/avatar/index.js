@@ -17,7 +17,7 @@ export const examples = [
   {
     name: "Avatar with Icon",
     Code: (
-      <VStack space="2xl"><HStack space="md"><Avatar className='bg-indigo-600'>{/* User is imported from 'lucide-react-native' */}<Icon as={User} size="lg" className="stroke-white" /></Avatar><VStack ><Heading size="sm" >Ronald Richards</Heading><Text size="sm" >Nursing Assistant</Text></VStack></HStack><HStack space="md"><Avatar className='bg-pink-600'>{/* User is imported from 'lucide-react-native' */}<Icon as={User} size="lg" className="stroke-white" /></Avatar><VStack ><Heading size="sm" >Kevin James</Heading><Text size="sm" >Web Designer</Text></VStack></HStack></VStack>
+      <VStack space="2xl"><HStack space="md"><Avatar className='bg-indigo-600'><Icon as={User} size="lg" className="stroke-white" /></Avatar><VStack ><Heading size="sm" >Ronald Richards</Heading><Text size="sm" >Nursing Assistant</Text></VStack></HStack><HStack space="md"><Avatar className='bg-pink-600'><Icon as={User} size="lg" className="stroke-white" /></Avatar><VStack ><Heading size="sm" >Kevin James</Heading><Text size="sm" >Web Designer</Text></VStack></HStack></VStack>
     )
   },
   {
@@ -47,7 +47,7 @@ export const examples = [
   {
     name: "Custom",
     Code: (
-      <VStack space="2xl"><HStack space="md"><Avatar size="md" className='bg-indigo-300 border-2 border-indigo-600'>{/* User is imported from 'lucide-react-native' */}<Icon as={User} size="xl" className='text-indigo-600' /></Avatar><VStack ><Heading size="sm" >Ronald Richards</Heading><Text size="sm" >Nursing Assistant</Text></VStack></HStack><HStack space="md"><Avatar size="md" className='bg-pink-300 border-2 border-pink-600'>{/* User is imported from 'lucide-react-native' */}<Icon as={User} size="xl" className='text-pink-600' /></Avatar><VStack ><Heading size="sm" >Kevin James</Heading><Text size="sm" >Web Designer</Text></VStack></HStack></VStack>
+      <VStack space="2xl"><HStack space="md"><Avatar size="md" className='bg-indigo-300 border-2 border-indigo-600'><Icon as={User} size="xl" className='text-indigo-600' /></Avatar><VStack ><Heading size="sm" >Ronald Richards</Heading><Text size="sm" >Nursing Assistant</Text></VStack></HStack><HStack space="md"><Avatar size="md" className='bg-pink-300 border-2 border-pink-600'><Icon as={User} size="xl" className='text-pink-600' /></Avatar><VStack ><Heading size="sm" >Kevin James</Heading><Text size="sm" >Web Designer</Text></VStack></HStack></VStack>
     )
   },
   {

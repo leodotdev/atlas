@@ -1,8 +1,8 @@
 // Import Statements
 import { VStack } from '@/components/ui/vstack';
 import { Text } from '@/components/ui/text';
-import { Heading } from '@/components/ui/heading';
 import { Progress, ProgressFilledTrack } from '@/components/ui/progress';
+import { Heading } from '@/components/ui/heading';
 // Examples
 export const examples = [
   {

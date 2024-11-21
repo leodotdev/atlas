@@ -2,7 +2,7 @@ const examples = [
 
     {
       name: "Button with Loading State",
-      Code: `<Button className='p-3'>{/* colors is imported from tailwindcss/colors */}<ButtonSpinner color={colors.gray[400]} /><ButtonText className='font-medium text-sm ml-2'>Please wait...</ButtonText></Button>`
+      Code: `<Button className='p-3'><ButtonSpinner color={colors.gray[400]} /><ButtonText className='font-medium text-sm ml-2'>Please wait...</ButtonText></Button>`
     },
 
     {

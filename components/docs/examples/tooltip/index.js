@@ -1,5 +1,6 @@
 // Import Statements
 import { Box } from '@/components/ui/box';
+import { Tooltip, TooltipContent } from '@/components/ui/tooltip';
 import { Avatar, AvatarFallbackText, AvatarGroup } from '@/components/ui/avatar';
 import { VStack } from '@/components/ui/vstack';
 import { Heading } from '@/components/ui/heading';
@@ -7,7 +8,6 @@ import { Center } from '@/components/ui/center';
 import { Text } from '@/components/ui/text';
 import { Icon, EditIcon } from '@/components/ui/icon';
 import { HStack } from '@/components/ui/hstack';
-import { Tooltip, TooltipContent } from '@/components/ui/tooltip';
 import { Command } from 'lucide-react-native';
 // Examples
 export const examples = [

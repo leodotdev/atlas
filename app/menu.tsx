@@ -1,9 +1,8 @@
 import React from "react";
 import { Center } from "@/components/ui/center";
 import { Button, ButtonText } from "@/components/ui/button";
-import { AddIcon } from "@/components/ui/icon";
 import { Menu, MenuItem, MenuItemLabel } from "@/components/ui/menu";
-import { Icon, GlobeIcon, PlayIcon, SettingsIcon } from "@/components/ui/icon";
+import { Icon, GlobeIcon, PlayIcon, SettingsIcon, AddIcon } from "@/components/ui/icon";
 import { ScrollView } from "@/components/ui/scroll-view";
 import { examples } from "@/components/docs/examples/menu";
 import { Divider } from "@/components/ui/divider";
