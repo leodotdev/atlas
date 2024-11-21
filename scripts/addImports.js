@@ -22,6 +22,11 @@ function extractComponents(code) {
     components.add("colors");
   }
 
+  // Check for 'Platform.' in the code
+  if (code.includes("Platform.")) {
+    components.add("Platform");
+  }
+
   // Check for 'as' prop usage
   while ((match = asPropRegex.exec(code)) !== null) {
     components.add(match[1]);
@@ -68,6 +73,8 @@ function handleImports(leftComponents, imports) {
   const hooks = leftComponents.filter((comp) => comp.startsWith("use"));
   // Filter out the components that are 'colors'
   const colors = leftComponents.filter((comp) => comp === "colors");
+
+  const platform = leftComponents.filter((comp) => comp === "Platform");
 
   const formControlComponents = leftComponents.filter((comp) =>
     comp.startsWith("FormControl")
@@ -120,6 +127,10 @@ function handleImports(leftComponents, imports) {
 
   if (colors.length > 0) {
     imports.push(`import colors from 'tailwindcss/colors';`);
+  }
+
+  if (platform.length > 0) {
+    imports.push(`import { Platform } from 'react-native';`);
   }
 
   if (formControlComponents.length > 0) {
@@ -191,6 +202,7 @@ function handleImports(leftComponents, imports) {
   const processedComponents = [
     ...hooks,
     ...colors,
+    ...platform,
     ...formControlComponents,
     ...alertDialogComponents,
     ...imageBackgroundComponents,

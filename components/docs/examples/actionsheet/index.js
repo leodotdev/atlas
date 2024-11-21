@@ -9,17 +9,18 @@ import { Text } from '@/components/ui/text';
 import { Input, InputField, InputIcon, InputSlot } from '@/components/ui/input';
 import { ClockIcon, DownloadIcon, EditIcon, EyeOffIcon, TrashIcon } from '@/components/ui/icon';
 import React from 'react';
+import { Platform } from 'react-native';
 import { FormControl, FormControlLabel, FormControlLabelText } from '@/components/ui/form-control';
 import { KeyboardAvoidingView } from '@/components/ui/keyboard-avoiding-view';
 import { CreditCardIcon, Item } from 'lucide-react-native';
 // Examples
 export const examples = [
-  // {
-  //   name: "Keyboard handling",
-  //   Code: (
-  //     function App(){ const [showActionsheet, setShowActionsheet] = React.useState(false); const handleClose = () =>setShowActionsheet(false); return (<><Button onPress={() =>setShowActionsheet(true)}><ButtonText>Open</ButtonText></Button><KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}><Actionsheet isOpen={showActionsheet} onClose={handleClose} ><ActionsheetBackdrop /><ActionsheetContent className=""><ActionsheetDragIndicatorWrapper><ActionsheetDragIndicator /></ActionsheetDragIndicatorWrapper><VStack className="w-full pt-5"><HStack space="md" className="justify-center items-center"><Box className="w-[50px] h-full px-2 border border-solid border-outline-300 rounded-sm" ><Image source={{ uri: 'https://i.imgur.com/UwTLr26.png' }} resizeMode="contain" className="flex-1" /></Box><VStack className="flex-1"><Text className="font-bold">Mastercard</Text><Text>Card ending in 2345</Text></VStack></HStack><FormControl className="mt-[36px]"><FormControlLabel><FormControlLabelText>Confirm security code</FormControlLabelText></FormControlLabel><Input className="w-full"><InputSlot><InputIcon as={CreditCardIcon} className="ml-2"/></InputSlot><InputField placeholder="CVC/CVV" /></Input><Button onPress={handleClose} className="mt-3"><ButtonText className="flex-1">Pay $1000</ButtonText></Button></FormControl></VStack></ActionsheetContent></Actionsheet></KeyboardAvoidingView></>); }
-  //   )
-  // },
+  {
+    name: "Keyboard handling",
+    Code: (
+      function App(){ const [showActionsheet, setShowActionsheet] = React.useState(false); const handleClose = () =>setShowActionsheet(false); return (<><Button onPress={() =>setShowActionsheet(true)}><ButtonText>Open</ButtonText></Button><KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}><Actionsheet isOpen={showActionsheet} onClose={handleClose} ><ActionsheetBackdrop /><ActionsheetContent className=""><ActionsheetDragIndicatorWrapper><ActionsheetDragIndicator /></ActionsheetDragIndicatorWrapper><VStack className="w-full pt-5"><HStack space="md" className="justify-center items-center"><Box className="w-[50px] h-full px-2 border border-solid border-outline-300 rounded-sm" ><Image source={{ uri: 'https://i.imgur.com/UwTLr26.png' }} resizeMode="contain" className="flex-1" /></Box><VStack className="flex-1"><Text className="font-bold">Mastercard</Text><Text>Card ending in 2345</Text></VStack></HStack><FormControl className="mt-[36px]"><FormControlLabel><FormControlLabelText>Confirm security code</FormControlLabelText></FormControlLabel><Input className="w-full"><InputSlot><InputIcon as={CreditCardIcon} className="ml-2"/></InputSlot><InputField placeholder="CVC/CVV" /></Input><Button onPress={handleClose} className="mt-3"><ButtonText className="flex-1">Pay $1000</ButtonText></Button></FormControl></VStack></ActionsheetContent></Actionsheet></KeyboardAvoidingView></>); }
+    )
+  },
   {
     name: "Icons",
     Code: (
