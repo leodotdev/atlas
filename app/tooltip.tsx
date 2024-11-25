@@ -1,6 +1,6 @@
 import React from "react";
 import { Tooltip, TooltipContent, TooltipText } from "@/components/ui/tooltip";
-import { Button, ButtonText, ButtonIcon } from "@/components/ui/button";
+import { Button, ButtonIcon } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
 import { Center } from "@/components/ui/center";
 import {
