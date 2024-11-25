@@ -41,7 +41,7 @@ const SkeletonDemo = () => {
         </VStack>
       </Center>
 
-      {examples?.length > 0 &&
+      {/* {examples?.length > 0 &&
         examples.map((Example: any, index: any) => {
           const isFunctionComponent = typeof Example.Code === "function"; // Check if Code is a function
           return (
@@ -56,7 +56,7 @@ const SkeletonDemo = () => {
               </Center>
             </Box>
           );
-        })}
+        })} */}
     </ScrollView>
   );
 };
