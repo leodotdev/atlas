@@ -106,7 +106,7 @@ export default function HomeScreen() {
           <Header />
         </Box>
         <HStack
-          className="bg-background-0 flex-wrap justify-center gap-x-3 gap-y-4 md:gap-x-4 lg:gap-x-7 lg:gap-y-8 py-6 px-5 md:px-8 md:pt-9 xl:pt-[90px] lg:pt-[70px] lg:px-[70px] xl:px-[100px] max-w-[1730px] mx-auto"
+          className="bg-background-0 flex-wrap justify-center native:gap-6 gap-x-3 gap-y-4 md:gap-x-4 lg:gap-x-7 lg:gap-y-8 py-6 px-5 md:px-8 md:pt-9 xl:pt-[90px] lg:pt-[70px] lg:px-[70px] xl:px-[100px] max-w-[1730px] mx-auto"
         >
           {componentsList.map((component, index) => (
             <Box
