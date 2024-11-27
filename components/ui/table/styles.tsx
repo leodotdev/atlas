@@ -36,7 +36,7 @@ export const tableRowStyleStyle = tva({
 });
 
 export const tableDataStyle = tva({
-  base: 'flex-1 px-4 py-[12px] text-left text-[16px] font-medium leading-[22px] text-typography-800 font-roboto',
+  base: 'flex-1 px-6 py-[14px] text-left text-[16px] font-medium leading-[22px] text-typography-800 font-roboto',
 });
 
 export const tableCaptionStyle = tva({

@@ -3,7 +3,6 @@ import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { componentsList } from "@/utils/list";
 import { ScrollView } from "@/components/ui/scroll-view";
-import { Grid, GridItem } from "@/components/ui/grid";
 import { Box } from "@/components/ui/box";
 import { Image as ExpoImage } from "expo-image";
 import { Text } from "@/components/ui/text";
@@ -102,11 +101,28 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView className="flex-1 bg-background-50 relative">
-      <ScrollView className="flex-1">
+      <ScrollView>
         <Box className="bg-background-50 flex-1">
           <Header />
         </Box>
-        <Box className="bg-background-0">
+        <HStack
+          className="bg-background-0 flex-wrap justify-center native:gap-6 gap-x-3 gap-y-4 md:gap-x-4 lg:gap-x-7 lg:gap-y-8 py-6 px-5 md:px-8 md:pt-9 xl:pt-[90px] lg:pt-[70px] lg:px-[70px] xl:px-[100px] max-w-[1730px] mx-auto"
+        >
+          {componentsList.map((component, index) => (
+            <Box
+              key={index}
+              className="w-[150px] h-[142px] md:w-[224px] md:h-[194px] lg:w-[274px] lg:h-[244px] xl:w-[390px] xl:h-[328px]"
+            >
+              <ComponentCard
+                component={component}
+                //@ts-ignore
+                onPress={() => router.push(component.link)}
+              />
+            </Box>
+          ))}
+        </HStack>
+
+        {/* <Box className="bg-background-0">
           <Grid
             className="gap-x-3 gap-y-4 md:gap-x-4 lg:gap-x-7 lg:gap-y-8 py-6 px-5 md:px-8 md:pt-9 xl:pt-[90px] lg:pt-[70px] lg:px-[70px] xl:px-[100px] max-w-[1730px] mx-auto"
             _extra={{
@@ -123,7 +139,7 @@ export default function HomeScreen() {
               </GridItem>
             ))}
           </Grid>
-        </Box>
+        </Box> */}
       </ScrollView>
     </SafeAreaView>
   );

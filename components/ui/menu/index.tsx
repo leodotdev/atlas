@@ -3,17 +3,16 @@ import React from 'react';
 import { createMenu } from '@gluestack-ui/menu';
 import { tva } from '@gluestack-ui/nativewind-utils/tva';
 import { cssInterop } from 'nativewind';
-import { Pressable, Text, Platform, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { Motion, AnimatePresence } from '@legendapp/motion';
 import type { VariantProps } from '@gluestack-ui/nativewind-utils';
-import { withStates } from '@gluestack-ui/nativewind-utils/withStates';
 
 const menuStyle = tva({
   base: 'rounded-md bg-background-0 border border-outline-100 p-1 shadow-hard-5',
 });
 
 const menuItemStyle = tva({
-  base: 'min-w-[190px] p-3 flex-row items-center rounded data-[hover=true]:bg-background-50 data-[active=true]:bg-background-100 data-[focus=true]:bg-background-50 data-[focus=true]:web:outline-none data-[focus=true]:web:outline-0 data-[disabled=true]:opacity-40 data-[disabled=true]:web:cursor-not-allowed data-[focus-visible=true]:web:outline-2 data-[focus-visible=true]:web:outline-primary-700 data-[focus-visible=true]:web:outline data-[focus-visible=true]:web:cursor-pointer data-[disabled=true]:data-[focus=true]:bg-transparent',
+  base: 'min-w-[200px] p-3 flex-row items-center rounded data-[hover=true]:bg-background-50 data-[active=true]:bg-background-100 data-[focus=true]:bg-background-50 data-[focus=true]:web:outline-none data-[focus=true]:web:outline-0 data-[disabled=true]:opacity-40 data-[disabled=true]:web:cursor-not-allowed data-[focus-visible=true]:web:outline-2 data-[focus-visible=true]:web:outline-primary-700 data-[focus-visible=true]:web:outline data-[focus-visible=true]:web:cursor-pointer data-[disabled=true]:data-[focus=true]:bg-transparent',
 });
 
 const menuBackdropStyle = tva({
@@ -115,15 +114,14 @@ const Separator = React.forwardRef(
 );
 export const UIMenu = createMenu({
   Root: Motion.View,
-  Item: Platform.OS === 'web' ? Item : withStates(Item),
+  Item: Item,
   Label: Text,
   Backdrop: BackdropPressable,
   AnimatePresence: AnimatePresence,
   Separator: Separator,
 });
 
-cssInterop(UIMenu, { className: 'style' });
-cssInterop(UIMenu.ItemLabel, { className: 'style' });
+cssInterop(Motion.View, { className: 'style' });
 
 type IMenuProps = React.ComponentProps<typeof UIMenu> &
   VariantProps<typeof menuStyle> & { className?: string };
