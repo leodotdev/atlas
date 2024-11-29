@@ -161,7 +161,7 @@ async function processAllComponents() {
   for (const component of components) {
     await processComponent(component);
   }
-  // await processComponent("modal");
+  // await processComponent("skeleton");
 
   console.log("\n✨ All components processed!");
 }
