@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 const fs = require("fs-extra");
 const path = require("path");
 const { execSync } = require("child_process");
@@ -48,7 +46,7 @@ const config = {
     { name: "tooltip", path: "example/storybook-nativewind/src/components/Tooltip/index.nw.stories.mdx" },
     { name: "vstack", path: "example/storybook-nativewind/src/components/VStack/index.nw.stories.mdx" }
   ],
-  branchName: "patch",
+  branchName: "fix/docs-examples-4.1",
   destinationDir: path.join(__dirname, "../components/docs/examples/"),
   cloneDir: path.join(__dirname, "../gluestack-ui"),
 };

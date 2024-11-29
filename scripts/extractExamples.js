@@ -37,7 +37,7 @@ function extractExamplesCode(filePath) {
         // Push the example name and code into the examples array
         examples.push({
           name: exampleName,
-          Code: `\`${code}\``,
+          Code: `${code}`,
         });
       }
     }
@@ -126,7 +126,7 @@ async function processComponent(componentName) {
   );
 
   // Define the header content for the final .js file
-  const fileHeader = `const examples = [
+  const fileHeader = `export const examples = [
 `;
 
   // Extract the examples and code and write to .js file
