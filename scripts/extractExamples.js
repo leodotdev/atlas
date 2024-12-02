@@ -9,8 +9,8 @@ function extractExamplesCode(filePath) {
     // Regular expression to match and remove block comments wrapped with {/* */}
     const commentBlockRegex = /{\s*\/\*[\s\S]*?\*\/\s*}/g;
 
-    // Remove commented blocks from the file content
-    const uncommentedContent = fileContent.replace(commentBlockRegex, "");
+    // Remove commented blocks from the file content and {...props} spread
+    const uncommentedContent = fileContent.replace(commentBlockRegex, "").replace("{...props}", "");
 
     // Regular expression to match the example name (headers)
     const exampleNameRegex = /####\s*(.*)/g;
@@ -158,10 +158,10 @@ async function processComponent(componentName) {
 async function processAllComponents() {
   console.log("🚀 Starting component processing...\n");
 
-  for (const component of components) {
-    await processComponent(component);
-  }
-  // await processComponent("skeleton");
+  // for (const component of components) {
+  //   await processComponent(component);
+  // }
+  await processComponent("skeleton");
 
   console.log("\n✨ All components processed!");
 }
