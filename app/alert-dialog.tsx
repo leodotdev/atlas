@@ -20,9 +20,10 @@ const AlertDialogDemo = () => {
   const handleClose = () => setShowAlertDialog(false);
   return (
     <ScrollView
-      className={`bg-background-0 web:items-center ${examples?.length > 0 ? "" : "web:justify-center"}`}
+      className={`bg-background-0 ${examples?.length > 0 ? "" : "web:justify-center"}`}
+      contentContainerClassName="mx-3"
     >
-      <Box className="p-5 rounded-lg m-3 mt-5 bg-background-50 gap-5 min-h-[200px] max-w-[600px] lg:min-w-[700px]">
+      <Box className="p-5 rounded-lg m-3 mt-5 bg-background-50 gap-5 min-h-[200px] max-w-[600px] lg:min-w-[700px] w-full self-center">
         <Text className="border-b border-outline-200 pb-2 lg:pb-3 lg:text-xl text-base">
           Default
         </Text>
@@ -71,7 +72,7 @@ const AlertDialogDemo = () => {
           return (
             <Box
               key={index}
-              className="p-5 border border-outline-100 rounded-lg mx-3 my-2.5 gap-5 min-h-[200px] max-w-[600px] lg:min-w-[700px]"
+              className="p-5 border border-outline-100 rounded-lg mx-3 my-2.5 gap-5 min-h-[200px] max-w-[600px] lg:min-w-[700px] w-full self-center"
             >
               <Text className="border-b border-outline-200 pb-2 lg:pb-3 lg:text-xl text-base">
                 {Example.name}
