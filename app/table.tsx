@@ -20,12 +20,14 @@ const TableDemo = () => {
   const nativeProp = Platform.OS !== "web" ? { useRNView: true } : {};
 
   return (
-    <ScrollView className="bg-background-0 items-center">
+    <ScrollView
+      className={`bg-background-0 web:items-center ${examples?.length > 0 ? "" : "web:justify-center"}`}
+    >
       <Box className="p-5 rounded-lg m-3 mt-5 bg-background-50 gap-5 min-h-[200px] max-w-[600px] lg:min-w-[700px]">
         <Text className="border-b border-outline-200 pb-2 lg:pb-3 lg:text-xl text-base">
           Default
         </Text>
-        <Center className="flex-1 p-6">
+        <Center className="flex-1">
           <Box className="w-full rounded-xl border border-outline-300 overflow-hidden max-w-[500px]">
             <Box className="overflow-x-scroll">
               <Table className="w-full">

@@ -22,17 +22,19 @@ const PortalDemo = () => {
   const [slot, setSlot] = React.useState("12");
 
   return (
-    <ScrollView className="bg-background-0 items-center justify-center">
+    <ScrollView
+      className={`bg-background-0 web:items-center ${examples?.length > 0 ? "" : "web:justify-center"}`}
+    >
       <Box className="p-5 rounded-lg m-3 mt-5 bg-background-50 gap-5 min-h-[200px] max-w-[600px] lg:min-w-[700px]">
         <Text className="border-b border-outline-200 pb-2 lg:pb-3 lg:text-xl text-base">
           Default
         </Text>
-        <Center className="flex-1 p-6">
+        <Center className="flex-1">
           <VStack className="max-w-[336px] w-full" space="md">
-            <VStack className="border border-outline-200 rounded-xl p-3">
+            <VStack className="border border-outline-200 rounded-xl p-3 bg-background-0">
               <Image
                 source={{
-                  uri: "https://images.unsplash.com/photo-1527685609591-44b0aef2400b?q=80&w=3866&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                  uri: "https://gluestack.github.io/public-blog-video-assets/ship.png",
                 }}
                 alt="image"
                 className="w-full aspect-[312/173] rounded"

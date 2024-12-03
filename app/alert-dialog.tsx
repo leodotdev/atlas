@@ -19,7 +19,9 @@ const AlertDialogDemo = () => {
   const [showAlertDialog, setShowAlertDialog] = useState(false);
   const handleClose = () => setShowAlertDialog(false);
   return (
-    <ScrollView className="bg-background-0 items-center">
+    <ScrollView
+      className={`bg-background-0 web:items-center ${examples?.length > 0 ? "" : "web:justify-center"}`}
+    >
       <Box className="p-5 rounded-lg m-3 mt-5 bg-background-50 gap-5 min-h-[200px] max-w-[600px] lg:min-w-[700px]">
         <Text className="border-b border-outline-200 pb-2 lg:pb-3 lg:text-xl text-base">
           Default

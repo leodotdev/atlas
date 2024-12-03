@@ -7,12 +7,12 @@ import { Text } from "@/components/ui/text";
 
 const BoxDemo = () => {
   return (
-    <ScrollView className="bg-background-0 items-center justify-center">
+    <ScrollView className={`bg-background-0 web:items-center ${examples?.length > 0 ? "" : "web:justify-center"}`}>
       <Box className="p-5 rounded-lg m-3 mt-5 bg-background-50 gap-5 min-h-[200px] max-w-[600px] lg:min-w-[700px]">
         <Text className="border-b border-outline-200 pb-2 lg:pb-3 lg:text-xl text-base">
           Default
         </Text>
-        <Center className="flex-1 px-6">
+        <Center className="flex-1">
           <Box className="flex flex-col p-6 rounded-xl border-dashed border-[3px] border-outline-200 bg-background-50 max-w-[406px] w-full">
             <Box className="bg-background-0 h-[180px] self-stretch rounded-lg mb-6" />
             <Box className="bg-background-0 h-[40px] self-stretch rounded-lg" />

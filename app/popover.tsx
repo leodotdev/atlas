@@ -25,15 +25,17 @@ const PopoverDemo = () => {
   };
 
   return (
-    <ScrollView className="bg-background-0 items-center">
-      <Box className="p-5 rounded-lg m-3 mt-5 bg-background-50 gap-5 min-h-[200px] max-w-[600px] lg:min-w-[700px]">
+    <ScrollView
+      className={`bg-background-0 web:items-center ${examples?.length > 0 ? "" : "web:justify-center"}`}
+    >
+      <Box className="p-5 rounded-lg m-3 mt-5 bg-background-100 gap-5 min-h-[200px] max-w-[600px] lg:min-w-[700px]">
         <Text className="border-b border-outline-200 pb-2 lg:pb-3 lg:text-xl text-base">
           Default
         </Text>
-        <Center className="flex-1 p-6">
+        <Center className="flex-1">
           <VStack
             space="md"
-            className="max-w-[336px] w-full rounded-lg bg-background-50 p-4"
+            className="max-w-[336px] w-full rounded-lg bg-background-0 p-4"
           >
             <Image
               source={{

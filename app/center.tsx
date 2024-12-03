@@ -13,12 +13,14 @@ import { examples } from "@/components/docs/examples/center";
 
 const CenterDemo = () => {
   return (
-    <ScrollView className="bg-background-0 items-center justify-center">
+    <ScrollView
+      className={`bg-background-0 web:items-center ${examples?.length > 0 ? "" : "web:justify-center"}`}
+    >
       <Box className="p-5 rounded-lg m-3 mt-5 bg-background-50 gap-5 min-h-[200px] max-w-[600px] lg:min-w-[700px]">
         <Text className="border-b border-outline-200 pb-2 lg:pb-3 lg:text-xl text-base">
           Default
         </Text>
-        <Center className="flex-1 px-6">
+        <Center className="flex-1">
           <Center className="max-h-[406px] max-w-[406px] w-full h-full p-6 bg-background-0 rounded-xl border-dashed border-outline-200 border-[3px]">
             <Center className="w-[176px] h-[176px] p-4 gap-4 flex flex-col rounded-lg bg-background-50">
               <Avatar size="xl">

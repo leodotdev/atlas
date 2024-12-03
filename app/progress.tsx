@@ -9,12 +9,14 @@ import { Box } from "@/components/ui/box";
 
 const ProgressDemo = () => {
   return (
-    <ScrollView className="bg-background-0 items-center">
+    <ScrollView
+      className={`bg-background-0 web:items-center ${examples?.length > 0 ? "" : "web:justify-center"}`}
+    >
       <Box className="p-5 rounded-lg m-3 mt-5 bg-background-50 gap-5 min-h-[200px] max-w-[600px] lg:min-w-[700px]">
         <Text className="border-b border-outline-200 pb-2 lg:pb-3 lg:text-xl text-base">
           Default
         </Text>
-        <Center className="flex-1 p-6">
+        <Center className="flex-1">
           <VStack className="bg-background-0 p-6 rounded-lg border border-outline-200 w-full max-w-[336px] shadow-hard-5">
             <Text size="xl" className="font-medium text-typography-900">
               Download in progress..

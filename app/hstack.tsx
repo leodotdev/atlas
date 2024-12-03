@@ -8,7 +8,9 @@ import { Text } from "@/components/ui/text";
 
 const HStackDemo = () => {
   return (
-    <ScrollView className="bg-background-0 items-center">
+    <ScrollView
+      className={`bg-background-0 web:items-center ${examples?.length > 0 ? "" : "web:justify-center"}`}
+    >
       <Box className="p-5 rounded-lg m-3 mt-5 bg-background-50 gap-5 min-h-[200px] max-w-[600px] lg:min-w-[700px]">
         <Text className="border-b border-outline-200 pb-2 lg:pb-3 lg:text-xl text-base">
           Default
@@ -16,7 +18,7 @@ const HStackDemo = () => {
         <Center className="flex-1">
           <HStack
             space="xl"
-            className="items-center w-full max-w-[548px] p-6 h-full min-h-[364px]"
+            className="items-center w-full max-w-[548px] p-2 h-full min-h-[364px]"
           >
             <Box className="grow-[1] border border-dashed border-outline-400 rounded-lg bg-background-0 h-full" />
             <Box className="grow-[2] border border-dashed border-outline-400 rounded-lg bg-background-0 h-full" />
