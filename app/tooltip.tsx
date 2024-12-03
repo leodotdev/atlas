@@ -14,7 +14,6 @@ import { Box } from "@/components/ui/box";
 import { Platform } from "react-native";
 import { ScrollView } from "@/components/ui/scroll-view";
 import { examples } from "@/components/docs/examples/tooltip";
-import { Divider } from "@/components/ui/divider";
 
 const DirectionalTooltip = ({ placement, IconComponent }: any) => {
   const [pressed, setPressed] = React.useState(false);
@@ -45,46 +44,56 @@ const DirectionalTooltip = ({ placement, IconComponent }: any) => {
 
 const TooltipDemo = () => {
   return (
-    <ScrollView className="bg-background-0">
-      <Center className="flex-1 bg-background-0">
-        <Center className="h-[175px] w-[175px] rounded-lg border border-outline-200 shadow-hard-5 p-2 flex flex-row items-center justify-center gap-3">
-          <DirectionalTooltip
-            placement="left"
-            IconComponent={ChevronLeftIcon}
-          />
+    <ScrollView className="bg-background-0 items-center">
+      <Box className="p-5 rounded-lg m-3 mt-5 bg-background-50 gap-5 min-h-[200px] max-w-[600px] lg:min-w-[700px]">
+        <Text className="border-b border-outline-200 pb-2 lg:pb-3 lg:text-xl text-base">
+          Default
+        </Text>
+        <Center className="flex-1">
+          <Center className="h-[175px] w-[175px] rounded-lg border border-outline-200 shadow-hard-5 p-2 flex flex-row items-center justify-center gap-3">
+            <DirectionalTooltip
+              placement="left"
+              IconComponent={ChevronLeftIcon}
+            />
 
-          <VStack className="items-center justify-center gap-3 h-full">
-            <DirectionalTooltip placement="top" IconComponent={ChevronUpIcon} />
+            <VStack className="items-center justify-center gap-3 h-full">
+              <DirectionalTooltip
+                placement="top"
+                IconComponent={ChevronUpIcon}
+              />
 
-            <Box className="bg-background-50 rounded-md p-2 items-center justify-center w-[90px] aspect-[1/1]">
-              <Text size="xs" className="text-center">
-                Hover over the arrows
-              </Text>
-            </Box>
+              <Box className="bg-background-50 rounded-md p-2 items-center justify-center w-[90px] aspect-[1/1]">
+                <Text size="xs" className="text-center">
+                  Hover over the arrows
+                </Text>
+              </Box>
+
+              <DirectionalTooltip
+                placement="bottom"
+                IconComponent={ChevronDownIcon}
+              />
+            </VStack>
 
             <DirectionalTooltip
-              placement="bottom"
-              IconComponent={ChevronDownIcon}
+              placement="right"
+              IconComponent={ChevronRightIcon}
             />
-          </VStack>
-
-          <DirectionalTooltip
-            placement="right"
-            IconComponent={ChevronRightIcon}
-          />
+          </Center>
         </Center>
-      </Center>
+      </Box>
+
       {examples?.length > 0 &&
         examples.map((Example: any, index: any) => {
           const isFunctionComponent = typeof Example.Code === "function"; // Check if Code is a function
           return (
             <Box
               key={index}
-              className="p-6 border border-outline-200 rounded-lg m-6 bg-background-50 gap-6"
+              className="p-5 border border-outline-100 rounded-lg mx-3 my-2.5 gap-5 min-h-[200px] max-w-[600px] lg:min-w-[700px]"
             >
-              <Text>{Example.name}</Text>
-              <Divider />
-              <Center>
+              <Text className="border-b border-outline-200 pb-2 lg:pb-3 lg:text-xl text-base">
+                {Example.name}
+              </Text>
+              <Center className="flex-1">
                 {isFunctionComponent ? <Example.Code /> : Example.Code}
               </Center>
             </Box>

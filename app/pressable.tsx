@@ -9,53 +9,59 @@ import { VStack } from "@/components/ui/vstack";
 import { Badge } from "@/components/ui/badge";
 import { ScrollView } from "@/components/ui/scroll-view";
 import { examples } from "@/components/docs/examples/pressable";
-import { Divider } from "@/components/ui/divider";
 
 const PressableDemo = () => {
   const [pressed, setPressed] = React.useState(false);
 
   return (
-    <ScrollView className="bg-background-0">
-      <Center className="flex-1 px-4 bg-background-0">
-        <Pressable
-          className={`p-6 max-w-[336px] w-full shadow-hard-5 rounded-lg bg-background-0 border border-outline-100 gap-5 flex flex-row ${pressed ? "scale-95" : ""}`}
-          onPressIn={() => setPressed(true)}
-          onPressOut={() => setPressed(false)}
-        >
-          <Box className="w-32 items-center justify-center rounded bg-[#F6F6F6] flex-shrink-0">
-            <Image
-              className="w-[94px] h-auto aspect-[534/164]"
-              source={{
-                uri: "https://i.imgur.com/w4N0SUz.png",
-              }}
-              alt="image"
-            />
-          </Box>
-          <VStack className="flex-1">
-            <Badge action="info" size="sm" className="self-start">
-              <BadgeText>new story</BadgeText>
-            </Badge>
-            <Text className="text-typography-900 font-medium mt-3">
-              React OS Winner of 2024
-            </Text>
-            <Text size="sm" className="line-clamp-2">
-              Gluestack is the React OS winner of 2024 in the productivity
-              booster category.
-            </Text>
-          </VStack>
-        </Pressable>
-      </Center>
+    <ScrollView className="bg-background-0 items-center">
+      <Box className="p-5 rounded-lg m-3 mt-5 bg-background-50 gap-5 min-h-[200px] max-w-[600px] lg:min-w-[700px]">
+        <Text className="border-b border-outline-200 pb-2 lg:pb-3 lg:text-xl text-base">
+          Default
+        </Text>
+        <Center className="flex-1 px-4">
+          <Pressable
+            className={`p-6 max-w-[336px] w-full shadow-hard-5 rounded-lg bg-background-0 border border-outline-100 gap-5 flex flex-row ${pressed ? "scale-95" : ""}`}
+            onPressIn={() => setPressed(true)}
+            onPressOut={() => setPressed(false)}
+          >
+            <Box className="w-32 items-center justify-center rounded bg-[#F6F6F6] flex-shrink-0">
+              <Image
+                className="w-[94px] h-auto aspect-[534/164]"
+                source={{
+                  uri: "https://i.imgur.com/w4N0SUz.png",
+                }}
+                alt="image"
+              />
+            </Box>
+            <VStack className="flex-1">
+              <Badge action="info" size="sm" className="self-start">
+                <BadgeText>new story</BadgeText>
+              </Badge>
+              <Text className="text-typography-900 font-medium mt-3">
+                React OS Winner of 2024
+              </Text>
+              <Text size="sm" className="line-clamp-2">
+                Gluestack is the React OS winner of 2024 in the productivity
+                booster category.
+              </Text>
+            </VStack>
+          </Pressable>
+        </Center>
+      </Box>
+
       {examples?.length > 0 &&
         examples.map((Example: any, index: any) => {
           const isFunctionComponent = typeof Example.Code === "function"; // Check if Code is a function
           return (
             <Box
               key={index}
-              className="p-6 border border-outline-200 rounded-lg m-6 bg-background-50 gap-6"
+              className="p-5 border border-outline-100 rounded-lg mx-3 my-2.5 gap-5 min-h-[200px] max-w-[600px] lg:min-w-[700px]"
             >
-              <Text>{Example.name}</Text>
-              <Divider />
-              <Center>
+              <Text className="border-b border-outline-200 pb-2 lg:pb-3 lg:text-xl text-base">
+                {Example.name}
+              </Text>
+              <Center className="flex-1">
                 {isFunctionComponent ? <Example.Code /> : Example.Code}
               </Center>
             </Box>

@@ -8,18 +8,18 @@ import {
 import { Center } from "@/components/ui/center";
 import { LogOut } from "lucide-react-native";
 import { ScrollView } from "@/components/ui/scroll-view";
-import { Divider } from "@/components/ui/divider";
 import { Text } from "@/components/ui/text";
 import { Box } from "@/components/ui/box";
 import { examples } from "@/components/docs/examples/button";
 
 const ButtonDemo = () => {
   return (
-    <ScrollView className="bg-background-0">
-      <Box className="p-6 border border-outline-200 rounded-lg m-6 bg-background-50 gap-6">
-        <Text>Basic Example</Text>
-        <Divider />
-        <Center>
+    <ScrollView className="bg-background-0 items-center">
+      <Box className="p-5 rounded-lg m-3 mt-5 bg-background-50 gap-5 min-h-[200px] max-w-[600px] lg:min-w-[700px]">
+        <Text className="border-b border-outline-200 pb-2 lg:pb-3 lg:text-xl text-base">
+          Default
+        </Text>
+        <Center className="flex-1">
           <ButtonGroup className="flex flex-col">
             <Button className="gap-2">
               <ButtonText>Log Out</ButtonText>
@@ -37,16 +37,20 @@ const ButtonDemo = () => {
         </Center>
       </Box>
 
-      {examples?.length &&
+      {examples?.length > 0 &&
         examples.map((Example: any, index: any) => {
+          const isFunctionComponent = typeof Example.Code === "function"; // Check if Code is a function
           return (
             <Box
               key={index}
-              className="p-6 border border-outline-200 rounded-lg m-6 bg-background-50 gap-6"
+              className="p-5 border border-outline-100 rounded-lg mx-3 my-2.5 gap-5 min-h-[200px] max-w-[600px] lg:min-w-[700px]"
             >
-              <Text>{Example.name}</Text>
-              <Divider />
-              <Center>{Example.Code}</Center>
+              <Text className="border-b border-outline-200 pb-2 lg:pb-3 lg:text-xl text-base">
+                {Example.name}
+              </Text>
+              <Center className="flex-1">
+                {isFunctionComponent ? <Example.Code /> : Example.Code}
+              </Center>
             </Box>
           );
         })}
