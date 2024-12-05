@@ -32,7 +32,7 @@ export const examples = [
 
     {
       name: "Form Control with Textarea",
-      Code: <FormControl><FormControlLabel><FormControlLabelText>Comment</FormControlLabelText></FormControlLabel><Textarea><TextareaInput /></Textarea><FormControlHelper ><FormControlHelperText>Type your comment above</FormControlHelperText></FormControlHelper></FormControl>
+      Code: <FormControl><FormControlLabel><FormControlLabelText>Comment</FormControlLabelText></FormControlLabel><Textarea className="min-w-[200px]"><TextareaInput /></Textarea><FormControlHelper ><FormControlHelperText>Type your comment above</FormControlHelperText></FormControlHelper></FormControl>
     },
 
     {

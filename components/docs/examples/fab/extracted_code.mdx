@@ -44,6 +44,7 @@ A Fab component with an icon adds a visually striking and easily recognizable bu
                           source={{
                           uri: chatData.uri,
                           }}
+                          alt="image"
                         />
                       </Avatar>
                       <VStack>
@@ -101,7 +102,7 @@ A Fab component with an icon and text combines a visual icon with accompanying t
         <Box
           className='max-w-96 border rounded-lg border-outline-200 py-[56px] px-6 mx-5 bg-background-100'
         >
-          <Fab className='top-4 h-9 bg-primary-600 hover:bg-primary-700 active:bg-primary-900'>
+          <Fab className="top-4 h-10 bg-primary-600 hover:bg-primary-700 active:bg-primary-900 py-2">
             <FabIcon as={SearchIcon} />
             <FabLabel>Search</FabLabel>
           </Fab>
@@ -286,6 +287,7 @@ A Fab component with custom placement allows for flexible positioning of the but
               fallbackSource={{
                 uri: 'https://drive.google.com/uc?export=view&id=1h1e89BtQCp6JdGiKo92dlf5bjHC8hLjt',
               }}
+              alt="image"
             />
           </Box>
           <VStack className='px-6 pt-4 pb-6'>

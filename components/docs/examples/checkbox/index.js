@@ -42,7 +42,7 @@ export const examples = [
 
     {
       name: "Uncontrolled",
-      Code: function App() { const radioRef = React.useRef(null); const handleCheckboxChange = (e) =>{ e.preventDefault(); const checkboxValue = radioRef.current.checked; }; return (<CheckboxGroup ref={radioRef} ><VStack space="md"><Checkbox onChange={handleCheckboxChange} value="Apartments"><CheckboxIndicator><CheckboxIcon as={CheckIcon}/></CheckboxIndicator><CheckboxLabel>Apartments</CheckboxLabel></Checkbox><Checkbox onChange={handleCheckboxChange} value="Residents"><CheckboxIndicator><CheckboxIcon as={CheckIcon}/></CheckboxIndicator><CheckboxLabel>Residents</CheckboxLabel></Checkbox></VStack></CheckboxGroup>) }
+      Code: function App() { const radioRef = React.useRef(null); const handleCheckboxChange = (e) =>{ const checkboxValue = radioRef.current.checked; }; return (<CheckboxGroup ref={radioRef} ><VStack space="md"><Checkbox onChange={handleCheckboxChange} value="Apartments"><CheckboxIndicator><CheckboxIcon as={CheckIcon}/></CheckboxIndicator><CheckboxLabel>Apartments</CheckboxLabel></Checkbox><Checkbox onChange={handleCheckboxChange} value="Residents"><CheckboxIndicator><CheckboxIcon as={CheckIcon}/></CheckboxIndicator><CheckboxLabel>Residents</CheckboxLabel></Checkbox></VStack></CheckboxGroup>) }
     },
 
     {

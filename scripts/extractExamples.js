@@ -158,10 +158,10 @@ async function processComponent(componentName) {
 async function processAllComponents() {
   console.log("🚀 Starting component processing...\n");
 
-  // for (const component of components) {
-  //   await processComponent(component);
-  // }
-  await processComponent("skeleton");
+  for (const component of components) {
+    await processComponent(component);
+  }
+  // await processComponent("skeleton");
 
   console.log("\n✨ All components processed!");
 }

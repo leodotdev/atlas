@@ -7,7 +7,7 @@ export const examples = [
 
     {
       name: "Icon Button",
-      Code: <Button size="lg" className="rounded-full p-3.5" ><ButtonIcon as={EditIcon} /></Button>
+      Code: <Button size='lg' className='rounded-full p-3.5' ><ButtonIcon as={EditIcon} /></Button>
     },
 
     {
@@ -17,11 +17,11 @@ export const examples = [
 
     {
       name: "Button With Icon",
-      Code: <Box><Button><ButtonIcon as={InfoIcon} className='mr-2'/><ButtonText>Left Icon</ButtonText></Button><Button variant="solid" className='mt-2'><ButtonText>Right Icon</ButtonText><ButtonIcon as={AddIcon} className='ml-2'/></Button></Box>
+      Code: <Box><Button><ButtonIcon as={InfoIcon} className='mr-2'/><ButtonText>Left Icon</ButtonText></Button><Button variant='solid' className='mt-2'><ButtonText>Right Icon</ButtonText><ButtonIcon as={AddIcon} className='ml-2'/></Button></Box>
     },
 
     {
       name: "Button with Full Width",
-      Code: <Center><Box className='p-5 max-w-96 border border-background-300 rounded-lg'><VStack className='pb-4' space='xs'><Heading className='leading-[30px]'>Set new password</Heading><Text className='text-sm'>Almost done. Enter your new password and you are all set.</Text></VStack><VStack space='xl' className='py-2'><Input><InputField className='py-2' placeholder="New password" /></Input><Input><InputField className='py-2' placeholder="Confirm new password" /></Input></VStack><VStack space='lg' className='pt-4'><Button size='sm' ><ButtonText>Submit</ButtonText></Button><Box className='flex flex-row'><Button variant='link' size='sm' className='p-0'><ButtonIcon className='mr-1' size='md' as={ArrowLeftIcon} /><ButtonText >Back to login</ButtonText></Button></Box></VStack></Box></Center>
+      Code: <Center><Box className='p-5 max-w-96 border border-background-300 rounded-lg'><VStack className='pb-4' space='xs'><Heading className='leading-[30px]'>Set new password</Heading><Text className='text-sm'>Almost done. Enter your new password and you are all set.</Text></VStack><VStack space='xl' className='py-2'><Input><InputField className='py-2' placeholder='New password' /></Input><Input><InputField className='py-2' placeholder='Confirm new password' /></Input></VStack><VStack space='lg' className='pt-4'><Button size='sm' ><ButtonText>Submit</ButtonText></Button><Box className='flex flex-row'><Button variant='link' size='sm' className='p-0'><ButtonIcon className='mr-1' size='md' as={ArrowLeftIcon} /><ButtonText >Back to login</ButtonText></Button></Box></VStack></Box></Center>
     }
 ];
