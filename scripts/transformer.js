@@ -169,6 +169,26 @@ export default function transformer(file, api, options) {
     "index.js"
   );
 
+  const deleteExampleFilePath = path.join(
+    __dirname,
+    "..",
+    "components",
+    "docs",
+    "examples",
+    options.componentName,
+    "examples.js"
+  );
+
+  const deleteMdxFilePath = path.join(
+    __dirname,
+    "..",
+    "components",
+    "docs",
+    "examples",
+    options.componentName,
+    "extracted_code.mdx"
+  );
+
   // Ensure the output directory exists
   fs.mkdirSync(path.dirname(newFilePath), { recursive: true });
 
@@ -176,6 +196,28 @@ export default function transformer(file, api, options) {
   fs.writeFileSync(newFilePath, ast.toSource(), "utf-8");
 
   console.log(`✅ Processed ${options.componentName} successfully`);
+
+  if (fs.existsSync(deleteExampleFilePath)) {
+    try {
+      fs.unlinkSync(deleteExampleFilePath);
+      console.log(`🗑️ Deleted examples.js file of ${options.componentName}`);
+    } catch (error) {
+      console.error(`❌ Error deleting examples.js: ${error.message}`);
+    }
+  } else {
+    console.log(`⚠️ File not found: ${deleteExampleFilePath}`);
+  }
+
+  if (fs.existsSync(deleteMdxFilePath)) {
+    try {
+      fs.unlinkSync(deleteMdxFilePath);
+      console.log(`🗑️ Deleted extracted_code.mdx file of ${options.componentName}`);
+    } catch (error) {
+      console.error(`❌ Error deleting extracted_code.mdx: ${error.message}`);
+    }
+  } else {
+    console.log(`⚠️ File not found: ${deleteMdxFilePath}`);
+  }
 
   return file.source;
 }
