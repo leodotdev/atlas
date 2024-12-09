@@ -350,7 +350,7 @@ export default function RootLayout() {
               headerLeft: () => <CustomBackButton />,
             }}
           />
-          {/* <Stack.Screen
+          <Stack.Screen
             name="table"
             options={{
               headerTitle: "Table",
@@ -358,7 +358,7 @@ export default function RootLayout() {
               headerStyle: styles.header,
               headerLeft: () => <CustomBackButton />,
             }}
-          /> */}
+          />
           <Stack.Screen
             name="text"
             options={{

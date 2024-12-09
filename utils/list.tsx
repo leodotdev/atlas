@@ -203,12 +203,12 @@ export const componentsList = [
     url: "https://i.imgur.com/SVcRBpp.png",
     darkUrl: "https://i.imgur.com/eEmyfhZ.png",
   },
-  {
-    title: "Table",
-    link: "/table",
-    url: "https://i.imgur.com/qQ3oUUq.png",
-    darkUrl: "https://i.imgur.com/bGh3iWR.png",
-  },
+  // {
+  //   title: "Table",
+  //   link: "/table",
+  //   url: "https://i.imgur.com/qQ3oUUq.png",
+  //   darkUrl: "https://i.imgur.com/bGh3iWR.png",
+  // },
   {
     title: "Text",
     link: "/text",
