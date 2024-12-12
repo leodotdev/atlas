@@ -1,24 +1,26 @@
 import React from "react";
 import "../global.css";
-import { Stack, useNavigation } from "expo-router";
+import { Stack, useRouter } from "expo-router";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import { Icon, ChevronLeftIcon, SunIcon, MoonIcon } from "@/components/ui/icon";
-import { cssInterop } from "nativewind";
-import { TouchableOpacity, StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 import { Fab } from "@/components/ui/fab";
+import { Pressable } from "@/components/ui/pressable";
 
-cssInterop(TouchableOpacity, { className: "style" });
 export const ColorModeContext = React.createContext({});
 
 const CustomBackButton = () => {
-  const navigation = useNavigation();
+  const router = useRouter();
+
   return (
-    <TouchableOpacity
-      onPress={() => navigation.goBack()}
-      className="web:ml-2 ios:-ml-2 android:-ml-1 android:mr-4"
+    <Pressable
+      onPress={() => {
+        router.back();
+      }}
+      className="web:ml-2 ios:-ml-2 android:mr-4"
     >
       <Icon as={ChevronLeftIcon} size="xl" />
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
@@ -38,6 +40,16 @@ export default function RootLayout() {
       prevMode === "light" ? "dark" : "light"
     );
   };
+
+  const getHeaderOptions = (title: string) => ({
+    headerTitle: title,
+    headerTintColor: colorMode === "light" ? "#000" : "#fff",
+    headerStyle: styles.header,
+    ...(Platform.OS !== "android" && {
+      headerLeft: () => <CustomBackButton />,
+    }),
+  });
+
   return (
     <ColorModeContext.Provider value={{ colorMode }}>
       <GluestackUIProvider mode={colorMode}>
@@ -46,364 +58,71 @@ export default function RootLayout() {
           <Stack.Screen name="+not-found" options={{ headerShown: false }} />
           <Stack.Screen
             name="accordion"
-            options={{
-              headerTitle: "Accordion",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
+            options={getHeaderOptions("Accordion")}
           />
           <Stack.Screen
             name="actionsheet"
-            options={{
-              headerTitle: "ActionSheet",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
+            options={getHeaderOptions("ActionSheet")}
           />
-          <Stack.Screen
-            name="alert"
-            options={{
-              headerTitle: "Alert",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
+          <Stack.Screen name="alert" options={getHeaderOptions("Alert")} />
           <Stack.Screen
             name="alert-dialog"
-            options={{
-              headerTitle: "AlertDialog",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
+            options={getHeaderOptions("AlertDialog")}
           />
-          <Stack.Screen
-            name="avatar"
-            options={{
-              headerTitle: "Avatar",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="badge"
-            options={{
-              headerTitle: "Badge",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="box"
-            options={{
-              headerTitle: "Box",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="button"
-            options={{
-              headerTitle: "Button",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="card"
-            options={{
-              headerTitle: "Card",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="center"
-            options={{
-              headerTitle: "Center",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
+          <Stack.Screen name="avatar" options={getHeaderOptions("Avatar")} />
+          <Stack.Screen name="badge" options={getHeaderOptions("Badge")} />
+          <Stack.Screen name="box" options={getHeaderOptions("Box")} />
+          <Stack.Screen name="button" options={getHeaderOptions("Button")} />
+          <Stack.Screen name="card" options={getHeaderOptions("Card")} />
+          <Stack.Screen name="center" options={getHeaderOptions("Center")} />
           <Stack.Screen
             name="checkbox"
-            options={{
-              headerTitle: "Checkbox",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
+            options={getHeaderOptions("Checkbox")}
           />
-          <Stack.Screen
-            name="divider"
-            options={{
-              headerTitle: "Divider",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="drawer"
-            options={{
-              headerTitle: "Drawer",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="fab"
-            options={{
-              headerTitle: "Fab",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
+          <Stack.Screen name="divider" options={getHeaderOptions("Divider")} />
+          <Stack.Screen name="drawer" options={getHeaderOptions("Drawer")} />
+          <Stack.Screen name="fab" options={getHeaderOptions("Fab")} />
           <Stack.Screen
             name="form-control"
-            options={{
-              headerTitle: "FormControl",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
+            options={getHeaderOptions("FormControl")}
           />
-          <Stack.Screen
-            name="grid"
-            options={{
-              headerTitle: "Grid",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="heading"
-            options={{
-              headerTitle: "Heading",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="hstack"
-            options={{
-              headerTitle: "HStack",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="icon"
-            options={{
-              headerTitle: "Icon",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="image"
-            options={{
-              headerTitle: "Image",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="input"
-            options={{
-              headerTitle: "Input",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="link"
-            options={{
-              headerTitle: "Link",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="menu"
-            options={{
-              headerTitle: "Menu",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="modal"
-            options={{
-              headerTitle: "Modal",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="popover"
-            options={{
-              headerTitle: "Popover",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="portal"
-            options={{
-              headerTitle: "Portal",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
+          <Stack.Screen name="grid" options={getHeaderOptions("Grid")} />
+          <Stack.Screen name="heading" options={getHeaderOptions("Heading")} />
+          <Stack.Screen name="hstack" options={getHeaderOptions("HStack")} />
+          <Stack.Screen name="icon" options={getHeaderOptions("Icon")} />
+          <Stack.Screen name="image" options={getHeaderOptions("Image")} />
+          <Stack.Screen name="input" options={getHeaderOptions("Input")} />
+          <Stack.Screen name="link" options={getHeaderOptions("Link")} />
+          <Stack.Screen name="menu" options={getHeaderOptions("Menu")} />
+          <Stack.Screen name="modal" options={getHeaderOptions("Modal")} />
+          <Stack.Screen name="popover" options={getHeaderOptions("Popover")} />
+          <Stack.Screen name="portal" options={getHeaderOptions("Portal")} />
           <Stack.Screen
             name="pressable"
-            options={{
-              headerTitle: "Pressable",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
+            options={getHeaderOptions("Pressable")}
           />
           <Stack.Screen
             name="progress"
-            options={{
-              headerTitle: "Progress",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
+            options={getHeaderOptions("Progress")}
           />
-          <Stack.Screen
-            name="radio"
-            options={{
-              headerTitle: "Radio",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="select"
-            options={{
-              headerTitle: "Select",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
+          <Stack.Screen name="radio" options={getHeaderOptions("Radio")} />
+          <Stack.Screen name="select" options={getHeaderOptions("Select")} />
           <Stack.Screen
             name="skeleton"
-            options={{
-              headerTitle: "Skeleton",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
+            options={getHeaderOptions("Skeleton")}
           />
-          <Stack.Screen
-            name="slider"
-            options={{
-              headerTitle: "Slider",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="spinner"
-            options={{
-              headerTitle: "Spinner",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="switch"
-            options={{
-              headerTitle: "Switch",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="table"
-            options={{
-              headerTitle: "Table",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="text"
-            options={{
-              headerTitle: "Text",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
+          <Stack.Screen name="slider" options={getHeaderOptions("Slider")} />
+          <Stack.Screen name="spinner" options={getHeaderOptions("Spinner")} />
+          <Stack.Screen name="switch" options={getHeaderOptions("Switch")} />
+          <Stack.Screen name="table" options={getHeaderOptions("Table")} />
+          <Stack.Screen name="text" options={getHeaderOptions("Text")} />
           <Stack.Screen
             name="textarea"
-            options={{
-              headerTitle: "TextArea",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
+            options={getHeaderOptions("TextArea")}
           />
-          <Stack.Screen
-            name="toast"
-            options={{
-              headerTitle: "Toast",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="tooltip"
-            options={{
-              headerTitle: "Tooltip",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
-          <Stack.Screen
-            name="vstack"
-            options={{
-              headerTitle: "VStack",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
-          />
+          <Stack.Screen name="toast" options={getHeaderOptions("Toast")} />
+          <Stack.Screen name="tooltip" options={getHeaderOptions("Tooltip")} />
+          <Stack.Screen name="vstack" options={getHeaderOptions("VStack")} />
         </Stack>
 
         <Fab
