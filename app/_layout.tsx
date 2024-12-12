@@ -1,25 +1,28 @@
 import React from "react";
 import "../global.css";
-import { Stack, useNavigation, router } from "expo-router";
+import { Stack, useRouter } from "expo-router";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import { Icon, ChevronLeftIcon, SunIcon, MoonIcon } from "@/components/ui/icon";
 import { cssInterop } from "nativewind";
 import { TouchableOpacity, StyleSheet } from "react-native";
 import { Fab } from "@/components/ui/fab";
+import { Pressable } from "@/components/ui/pressable";
 
 cssInterop(TouchableOpacity, { className: "style" });
 export const ColorModeContext = React.createContext({});
 
 const CustomBackButton = () => {
-  const navigation = useNavigation();
+  const router = useRouter();
+
   return (
-    <TouchableOpacity
-      // onPress={() => navigation.goBack()}
-      onPress={() => router.back()}
+    <Pressable
+      onPress={() => {
+        router.back();
+      }}
       className="web:ml-2 ios:-ml-2 android:mr-4"
     >
       <Icon as={ChevronLeftIcon} size="xl" />
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
@@ -39,6 +42,7 @@ export default function RootLayout() {
       prevMode === "light" ? "dark" : "light"
     );
   };
+
   return (
     <ColorModeContext.Provider value={{ colorMode }}>
       <GluestackUIProvider mode={colorMode}>
@@ -48,10 +52,7 @@ export default function RootLayout() {
           <Stack.Screen
             name="accordion"
             options={{
-              headerTitle: "Accordion",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              // headerLeft: () => <CustomBackButton />,
+              headerShown: false,
             }}
           />
           <Stack.Screen
@@ -60,7 +61,7 @@ export default function RootLayout() {
               headerTitle: "ActionSheet",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
               headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
+              // headerLeft: (props) => <CustomBackButton {...props} />,
             }}
           />
           <Stack.Screen

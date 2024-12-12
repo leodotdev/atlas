@@ -16,6 +16,7 @@ import { ChevronDownIcon, ChevronUpIcon } from "lucide-react-native";
 import { examples } from "@/components/docs/examples/accordion";
 import { Text } from "@/components/ui/text";
 import { Center } from "@/components/ui/center";
+import Layout from "@/components/custom/Layout";
 
 const AccordionDemo = () => {
   const accRef = React.useRef(null);
@@ -105,4 +106,11 @@ const AccordionDemo = () => {
   );
 };
 
-export default AccordionDemo;
+const AccordionPage = () => {
+  return (
+    <Layout title={"Accordion"}>
+      <AccordionDemo />
+    </Layout>
+  );
+};
+export default AccordionPage;
