@@ -1,6 +1,6 @@
 import React from "react";
 import "../global.css";
-import { Stack, useNavigation } from "expo-router";
+import { Stack, useNavigation, router } from "expo-router";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import { Icon, ChevronLeftIcon, SunIcon, MoonIcon } from "@/components/ui/icon";
 import { cssInterop } from "nativewind";
@@ -14,8 +14,9 @@ const CustomBackButton = () => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
-      onPress={() => navigation.goBack()}
-      className="web:ml-2 ios:-ml-2 android:-ml-1 android:mr-4"
+      // onPress={() => navigation.goBack()}
+      onPress={() => router.back()}
+      className="web:ml-2 ios:-ml-2 android:mr-4"
     >
       <Icon as={ChevronLeftIcon} size="xl" />
     </TouchableOpacity>
