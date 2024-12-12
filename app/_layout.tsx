@@ -50,7 +50,7 @@ export default function RootLayout() {
               headerTitle: "Accordion",
               headerTintColor: colorMode === "light" ? "#000" : "#fff",
               headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
+              // headerLeft: () => <CustomBackButton />,
             }}
           />
           <Stack.Screen
