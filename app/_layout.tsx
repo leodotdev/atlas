@@ -3,12 +3,10 @@ import "../global.css";
 import { Stack, useRouter } from "expo-router";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import { Icon, ChevronLeftIcon, SunIcon, MoonIcon } from "@/components/ui/icon";
-import { cssInterop } from "nativewind";
-import { TouchableOpacity, StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 import { Fab } from "@/components/ui/fab";
 import { Pressable } from "@/components/ui/pressable";
 
-cssInterop(TouchableOpacity, { className: "style" });
 export const ColorModeContext = React.createContext({});
 
 const CustomBackButton = () => {
@@ -43,6 +41,15 @@ export default function RootLayout() {
     );
   };
 
+  const getHeaderOptions = () => ({
+    headerTitle: "Alert",
+    headerTintColor: colorMode === "light" ? "#000" : "#fff",
+    headerStyle: styles.header,
+    ...(Platform.OS !== 'android' && {
+      headerLeft: () => <CustomBackButton />
+    })
+  });
+
   return (
     <ColorModeContext.Provider value={{ colorMode }}>
       <GluestackUIProvider mode={colorMode}>
@@ -66,12 +73,7 @@ export default function RootLayout() {
           />
           <Stack.Screen
             name="alert"
-            options={{
-              headerTitle: "Alert",
-              headerTintColor: colorMode === "light" ? "#000" : "#fff",
-              headerStyle: styles.header,
-              headerLeft: () => <CustomBackButton />,
-            }}
+            options={getHeaderOptions()}
           />
           <Stack.Screen
             name="alert-dialog"
