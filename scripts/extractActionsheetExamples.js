@@ -52,67 +52,90 @@ function extractExamplesCode(filePath) {
       .replace(/{\s*\/\*[\s\S]*?\*\/\s*}/g, "")
       .replace("{...props}", "");
 
-    const sections = uncommentedContent.split(/(?=####)/);
+    // First collect all sections
+    const headings = [];
+    const headingRegex = /(?:####|#####)\s+([^\n]+)/g;
+    let match;
+
+    // Collect all headings with their levels
+    while ((match = headingRegex.exec(uncommentedContent)) !== null) {
+      const level = match[0].startsWith('#####') ? 5 : 4;
+      headings.push({
+        level,
+        name: match[1].trim(),
+        position: match.index
+      });
+    }
+
+    // Get all code blocks
+    const codeBlocks = [...uncommentedContent.matchAll(/metaData\s*=\s*{[^}]*\s*code\s*:\s*`([^`]+)`/g)]
+      .map((match, index) => ({
+        code: match[1].trim(),
+        position: match.index
+      }));
+
     const examples = [];
+    let currentMainExample = null;
+    let codeBlockIndex = 0;
 
-    for (const section of sections) {
-      if (!section.startsWith("####")) continue;
-
-      const nameMatch = section.match(/####\s*(.*?)(?=\n)/);
-      if (!nameMatch) continue;
-
-      const exampleName = nameMatch[1].trim();
-      const subNameMatches = section.match(/#####\s*(.*?)(?=\n)/g);
-
-      if (subNameMatches) {
-        const subExamples = [];
-        const codeMatches = [
-          ...section.matchAll(/metaData\s*=\s*{[^}]*\s*code\s*:\s*`([^`]+)`/g),
-        ];
-
-        for (
-          let i = 0;
-          i < subNameMatches.length && i < codeMatches.length;
-          i++
-        ) {
-          const subName = subNameMatches[i].replace(/\*\*/g, "").trim();
-          let code = codeMatches[i][1].trim();
-          code = code
-            .replace(/\s*{"\s*"\s*}\s*/g, "")
-            .replace(/\s+/g, " ")
-            .replace(/>\s+/g, ">")
-            .replace(/\s+</g, "<");
-
-          subExamples.push({
-            subName,
-            Code: code,
-          });
+    for (let i = 0; i < headings.length; i++) {
+      const heading = headings[i];
+      
+      if (heading.level === 4) {
+        // If we have a previous main example with subExamples, add it
+        if (currentMainExample && currentMainExample.subExamples.length > 0) {
+          examples.push(currentMainExample);
         }
 
-        if (subExamples.length > 0) {
-          examples.push({
-            name: exampleName,
-            subExamples,
-          });
-          continue;
+        // Start new main example
+        currentMainExample = {
+          name: heading.name,
+          subExamples: []
+        };
+
+        // Check if next headings are level 5 (subexamples)
+        let j = i + 1;
+        let hasSubExamples = false;
+        while (j < headings.length && headings[j].level === 5) {
+          hasSubExamples = true;
+          const subExample = headings[j];
+          
+          // Find matching code block
+          const codeBlock = codeBlocks[codeBlockIndex++];
+          if (codeBlock) {
+            let code = codeBlock.code
+              .replace(/\s*{"\s*"\s*}\s*/g, "")
+              .replace(/\s+/g, " ")
+              .replace(/>\s+/g, ">")
+              .replace(/\s+</g, "<");
+
+            currentMainExample.subExamples.push({
+              subName: subExample.name,
+              Code: code
+            });
+          }
+          j++;
         }
-      }
 
-      const codeMatch = section.match(
-        /metaData\s*=\s*{[^}]*\s*code\s*:\s*`([^`]+)`/
-      );
-      if (codeMatch) {
-        let code = codeMatch[1].trim();
-        code = code
-          .replace(/\s*{"\s*"\s*}\s*/g, "")
-          .replace(/\s+/g, " ")
-          .replace(/>\s+/g, ">")
-          .replace(/\s+</g, "<");
+        // If no subexamples, treat as regular example
+        if (!hasSubExamples) {
+          const codeBlock = codeBlocks[codeBlockIndex++];
+          if (codeBlock) {
+            let code = codeBlock.code
+              .replace(/\s*{"\s*"\s*}\s*/g, "")
+              .replace(/\s+/g, " ")
+              .replace(/>\s+/g, ">")
+              .replace(/\s+</g, "<");
 
-        examples.push({
-          name: exampleName,
-          Code: code,
-        });
+            examples.push({
+              name: heading.name,
+              Code: code
+            });
+          }
+        }
+
+        // Skip processed subexamples
+        i = j - 1;
       }
     }
 
@@ -188,7 +211,7 @@ async function processAllComponents() {
   for (const component of components) {
     await processComponent(component);
   }
-//   await processComponent("actionsheet");
+  // await processComponent("actionsheet");
 
   console.log("\n✨ All components processed!");
 }
