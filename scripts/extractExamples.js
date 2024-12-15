@@ -1,54 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 
-// Function to extract example name and code from <CodePreview> components
-function extractExamplesCode(filePath) {
-  try {
-    const fileContent = fs.readFileSync(filePath, "utf-8");
-
-    // Regular expression to match and remove block comments wrapped with {/* */}
-    const commentBlockRegex = /{\s*\/\*[\s\S]*?\*\/\s*}/g;
-
-    // Remove commented blocks from the file content and {...props} spread
-    const uncommentedContent = fileContent.replace(commentBlockRegex, "").replace("{...props}", "");
-
-    // Regular expression to match the example name (headers)
-    const exampleNameRegex = /####\s*(.*)/g;
-
-    // Regular expression to match the code inside metaData prop (code: `...`)
-    const codeRegex = /metaData\s*=\s*{[^}]*\s*code\s*:\s*`([^`]+)`/g;
-
-    const examples = [];
-    let nameMatch, codeMatch;
-
-    while ((nameMatch = exampleNameRegex.exec(uncommentedContent)) !== null) {
-      // Capture the example name (e.g., Button with Loading State)
-      const exampleName = nameMatch[1].trim();
-
-      // Capture the code for this example
-      if ((codeMatch = codeRegex.exec(uncommentedContent)) !== null) {
-        let code = codeMatch[1].trim();
-
-        // Clean up the code format and remove {" "} and unnecessary spaces
-        code = code.replace(/\s*{"\s*"\s*}\s*/g, ""); // Removes {" "} artifacts
-        code = code.replace(/\s+/g, " "); // Replaces multiple spaces with a single space
-        code = code.replace(/>\s+/g, ">").replace(/\s+</g, "<"); // Removes spaces around JSX tags
-
-        // Push the example name and code into the examples array
-        examples.push({
-          name: exampleName,
-          Code: `${code}`,
-        });
-      }
-    }
-
-    return examples;
-  } catch (error) {
-    console.error("Error reading or processing the file:", error);
-    return [];
-  }
-}
-
 const components = [
   "accordion",
   "actionsheet",
@@ -93,22 +45,111 @@ const components = [
   "vstack",
 ];
 
-async function processComponent(componentName) {
-  const examplesFilePath = path.join(
-    __dirname,
-    "..",
-    "components",
-    "docs",
-    "examples",
-    componentName,
-    "extracted_code.mdx"
-  );
+function extractExamplesCode(filePath) {
+  try {
+    const fileContent = fs.readFileSync(filePath, "utf-8");
+    const uncommentedContent = fileContent
+      .replace(/{\s*\/\*[\s\S]*?\*\/\s*}/g, "")
+      .replace("{...props}", "");
 
-  // Skip if examples file doesn't exist
-  if (!fs.existsSync(examplesFilePath)) {
-    console.log(`No examples file found for ${componentName}, skipping...`);
-    return;
+    // First collect all sections
+    const headings = [];
+    const headingRegex = /(?:####|#####)\s+([^\n]+)/g;
+    let match;
+
+    // Collect all headings with their levels
+    while ((match = headingRegex.exec(uncommentedContent)) !== null) {
+      const level = match[0].startsWith("#####") ? 5 : 4;
+      headings.push({
+        level,
+        name: match[1].trim(),
+        position: match.index,
+      });
+    }
+
+    // Get all code blocks
+    const codeBlocks = [
+      ...uncommentedContent.matchAll(
+        /metaData\s*=\s*{[^}]*\s*code\s*:\s*`([^`]+)`/g
+      ),
+    ].map((match, index) => ({
+      code: match[1].trim(),
+      position: match.index,
+    }));
+
+    const examples = [];
+    let currentMainExample = null;
+    let codeBlockIndex = 0;
+
+    for (let i = 0; i < headings.length; i++) {
+      const heading = headings[i];
+
+      if (heading.level === 4) {
+        // If we have a previous main example with subExamples, add it
+        if (currentMainExample && currentMainExample.subExamples.length > 0) {
+          examples.push(currentMainExample);
+        }
+
+        // Start new main example
+        currentMainExample = {
+          name: heading.name,
+          subExamples: [],
+        };
+
+        // Check if next headings are level 5 (subexamples)
+        let j = i + 1;
+        let hasSubExamples = false;
+        while (j < headings.length && headings[j].level === 5) {
+          hasSubExamples = true;
+          const subExample = headings[j];
+
+          // Find matching code block
+          const codeBlock = codeBlocks[codeBlockIndex++];
+          if (codeBlock) {
+            let code = codeBlock.code
+              .replace(/\s*{"\s*"\s*}\s*/g, "")
+              .replace(/\s+/g, " ")
+              .replace(/>\s+/g, ">")
+              .replace(/\s+</g, "<");
+
+            currentMainExample.subExamples.push({
+              subName: subExample.name,
+              Code: code,
+            });
+          }
+          j++;
+        }
+
+        // If no subexamples, treat as regular example
+        if (!hasSubExamples) {
+          const codeBlock = codeBlocks[codeBlockIndex++];
+          if (codeBlock) {
+            let code = codeBlock.code
+              .replace(/\s*{"\s*"\s*}\s*/g, "")
+              .replace(/\s+/g, " ")
+              .replace(/>\s+/g, ">")
+              .replace(/\s+</g, "<");
+
+            examples.push({
+              name: heading.name,
+              Code: code,
+            });
+          }
+        }
+
+        // Skip processed subexamples
+        i = j - 1;
+      }
+    }
+
+    return examples;
+  } catch (error) {
+    console.error("Error:", error);
+    return [];
   }
+}
+
+async function processComponent(componentName) {
   const extractedFilePath = path.join(
     __dirname,
     "..",
@@ -119,39 +160,51 @@ async function processComponent(componentName) {
     "extracted_code.mdx"
   );
 
-  // Extracted output should be saved in the same directory as the extracted file
+  if (!fs.existsSync(extractedFilePath)) {
+    console.log(`No mdx file found for ${componentName}, skipping...`);
+    return;
+  }
+
   const outputFilePath = path.join(
     path.dirname(extractedFilePath),
     "examples.js"
   );
 
-  // Define the header content for the final .js file
-  const fileHeader = `export const examples = [
-`;
-
-  // Extract the examples and code and write to .js file
   const examples = extractExamplesCode(extractedFilePath);
 
   if (examples.length > 0) {
-    // Combine header, examples, and footer into the final file content
-    const fileContent =
-      fileHeader +
-      examples
-        .map(
-          (example) => `
-    {
-      name: "${example.name}",
-      Code: ${example.Code}
-    }`
-        )
-        .join(",\n") +
-      "\n];";
+    // Create the output content with proper formatting
+    let fileContent = "export const examples = [\n";
 
-    // Write the file content to output.js in the same directory as the extracted file
+    examples.forEach((example, index) => {
+      fileContent += "  {\n";
+      fileContent += `    name: "${example.name}",\n`;
+
+      if (example.subExamples) {
+        fileContent += "    subExamples: [\n";
+        example.subExamples.forEach((subExample, subIndex) => {
+          fileContent += "      {\n";
+          fileContent += `        subName: "${subExample.subName}",\n`;
+          fileContent += `        Code: ${subExample.Code}\n`;
+          fileContent +=
+            "      }" +
+            (subIndex < example.subExamples.length - 1 ? "," : "") +
+            "\n";
+        });
+        fileContent += "    ]\n";
+      } else {
+        fileContent += `    Code: ${example.Code}\n`;
+      }
+
+      fileContent += "  }" + (index < examples.length - 1 ? "," : "") + "\n";
+    });
+
+    fileContent += "];";
+
     fs.writeFileSync(outputFilePath, fileContent, "utf-8");
     console.log(`Extracted examples saved to: ${outputFilePath}`);
   } else {
-    console.log("No examples found in the <CodePreview> components.");
+    console.log("No examples found in the file.");
   }
 }
 
@@ -161,7 +214,7 @@ async function processAllComponents() {
   for (const component of components) {
     await processComponent(component);
   }
-  // await processComponent("skeleton");
+  // await processComponent("actionsheet");
 
   console.log("\n✨ All components processed!");
 }
