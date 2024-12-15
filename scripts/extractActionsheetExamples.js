@@ -62,7 +62,7 @@ function extractExamplesCode(filePath) {
       if (!nameMatch) continue;
 
       const exampleName = nameMatch[1].trim();
-      const subNameMatches = section.match(/\*\*(.*?)\*\*/g);
+      const subNameMatches = section.match(/#####\s*(.*?)(?=\n)/g);
 
       if (subNameMatches) {
         const subExamples = [];
