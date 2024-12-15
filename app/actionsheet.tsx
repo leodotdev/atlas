@@ -69,9 +69,34 @@ const ActionsheetDemo = () => {
               <Text className="border-b border-outline-200 pb-2 lg:pb-3 lg:text-xl text-base">
                 {Example.name}
               </Text>
-              <Center className="flex-1">
-                {isFunctionComponent ? <Example.Code /> : Example.Code}
-              </Center>
+
+              {Example.subExamples ? (
+                Example.subExamples.map((subExample: any, index: number) => {
+                  const isFunctionalComponent =
+                    typeof subExample.Code === "function";
+                  return (
+                    <Box
+                      key={index}
+                      className="p-5 bg-background-50 rounded-lg gap-5 min-h-[200px] max-w-[600px] lg:min-w-[660px] w-full self-center"
+                    >
+                      <Text className="border-b border-outline-200 pb-1 lg:pb-2 lg:text-lg text-sm">
+                        {subExample.subName}
+                      </Text>
+                      <Center className="flex-1">
+                        {isFunctionalComponent ? (
+                          <subExample.Code />
+                        ) : (
+                          subExample.Code
+                        )}
+                      </Center>
+                    </Box>
+                  );
+                })
+              ) : (
+                <Center className="flex-1">
+                  {isFunctionComponent ? <Example.Code /> : Example.Code}
+                </Center>
+              )}
             </Box>
           );
         })}
