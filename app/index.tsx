@@ -75,7 +75,7 @@ const Header = () => {
           Kitchensink app
         </Heading>
         <Text className="text-sm lg:text-base xl:text-lg">
-          KitchenSink is a comprehensive demo app showcasing all the NativeBase
+          Kitchensink is a comprehensive demo app showcasing all the gluestack
           components in action. It includes buttons, forms, icons and much more!
         </Text>
       </VStack>
