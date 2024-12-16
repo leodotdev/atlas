@@ -29,7 +29,7 @@ For detailed information on each component and its props, refer to the documenta
 
 ## Give it a shot!
 [Try it in your browser](https://kitchen-sink-v2.gluestack.io/) or scan the QR code below <br/><br/>
-<img src="https://qr.expo.dev/eas-update?slug=exp&projectId=8d16a046-45ac-43e4-b730-33c7a0d6d1ea&groupId=3f94d5d5-f6a5-4041-b3f5-d83ecde1dde1&host=u.expo.dev" alt="expo-icon" width="200" height="200"/> <br/>
+<img src="https://qr.expo.dev/eas-update?slug=exp&projectId=8d16a046-45ac-43e4-b730-33c7a0d6d1ea&groupId=bfdd42b2-0ee4-4c5b-a97d-e2db7e7c9f8b&host=u.expo.dev" alt="expo-icon" width="200" height="200"/> <br/>
 with the Expo Go app on your phone.
 
 ## Created By GeekyAnts
