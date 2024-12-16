@@ -6,6 +6,7 @@ import { Icon, ChevronLeftIcon, SunIcon, MoonIcon } from "@/components/ui/icon";
 import { StyleSheet, Platform } from "react-native";
 import { Fab } from "@/components/ui/fab";
 import { Pressable } from "@/components/ui/pressable";
+import { StatusBar } from "expo-status-bar";
 
 export const ColorModeContext = React.createContext({});
 
@@ -51,6 +52,11 @@ export default function RootLayout() {
   });
 
   return (
+    <>
+      <StatusBar
+        style="auto"  //android
+        backgroundColor={`${colorMode == "light" ? "#F6F6F6" : "#272625"}`}
+      />
     <ColorModeContext.Provider value={{ colorMode }}>
       <GluestackUIProvider mode={colorMode}>
         <Stack>
@@ -136,5 +142,6 @@ export default function RootLayout() {
         </Fab>
       </GluestackUIProvider>
     </ColorModeContext.Provider>
+    </>
   );
 }
