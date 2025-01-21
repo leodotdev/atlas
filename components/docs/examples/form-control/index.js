@@ -29,14 +29,14 @@ export const examples = [
   },
   {
     name: "Form Control with Textarea",
-    Code: <FormControl><FormControlLabel><FormControlLabelText>Comment</FormControlLabelText></FormControlLabel><Textarea className="min-w-[200px]"><TextareaInput /></Textarea><FormControlHelper ><FormControlHelperText>Type your comment above</FormControlHelperText></FormControlHelper></FormControl>
+    Code: function Example() { return (<FormControl><FormControlLabel><FormControlLabelText>Comment</FormControlLabelText></FormControlLabel><Textarea className="min-w-[200px]"><TextareaInput /></Textarea><FormControlHelper ><FormControlHelperText>Type your comment above</FormControlHelperText></FormControlHelper></FormControl>); }
   },
   {
     name: "Form Control with Error",
-    Code: <FormControl isInvalid><FormControlLabel><FormControlLabelText>Which time slot works best for you?</FormControlLabelText></FormControlLabel><RadioGroup className='my-2'><VStack space="sm"><Radio size="sm" value="Mango"><RadioIndicator><RadioIcon as={CircleIcon} /></RadioIndicator><RadioLabel>Monday</RadioLabel></Radio><Radio size="sm" value="Apple"><RadioIndicator><RadioIcon as={CircleIcon} /></RadioIndicator><RadioLabel>Tuesday</RadioLabel></Radio><Radio size="sm" value="Orange"><RadioIndicator><RadioIcon as={CircleIcon} /></RadioIndicator><RadioLabel>Wednesday</RadioLabel></Radio></VStack></RadioGroup><FormControlError><FormControlErrorIcon as={AlertCircleIcon}/><FormControlErrorText>Choose one time slot for the meeting</FormControlErrorText></FormControlError></FormControl>
+    Code: function Example() { return (<FormControl isInvalid><FormControlLabel><FormControlLabelText>Which time slot works best for you?</FormControlLabelText></FormControlLabel><RadioGroup className='my-2'><VStack space="sm"><Radio size="sm" value="Mango"><RadioIndicator><RadioIcon as={CircleIcon} /></RadioIndicator><RadioLabel>Monday</RadioLabel></Radio><Radio size="sm" value="Apple"><RadioIndicator><RadioIcon as={CircleIcon} /></RadioIndicator><RadioLabel>Tuesday</RadioLabel></Radio><Radio size="sm" value="Orange"><RadioIndicator><RadioIcon as={CircleIcon} /></RadioIndicator><RadioLabel>Wednesday</RadioLabel></Radio></VStack></RadioGroup><FormControlError><FormControlErrorIcon as={AlertCircleIcon}/><FormControlErrorText>Choose one time slot for the meeting</FormControlErrorText></FormControlError></FormControl>); }
   },
   {
     name: "Form Control with Form Actions",
-    Code: <HStack><FormControl><Button variant='outline' action='secondary'><ButtonText>Cancel</ButtonText></Button></FormControl><FormControl><Button action='negative' className='ml-4'><ButtonText className="text-white group-hover/button:text-white group-active/button:text-white">Delete</ButtonText></Button></FormControl></HStack>
+    Code: function Example() { return (<HStack><FormControl><Button variant='outline' action='secondary'><ButtonText>Cancel</ButtonText></Button></FormControl><FormControl><Button action='negative' className='ml-4'><ButtonText className="text-white group-hover/button:text-white group-active/button:text-white">Delete</ButtonText></Button></FormControl></HStack>); }
   }
 ];

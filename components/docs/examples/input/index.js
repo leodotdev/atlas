@@ -13,6 +13,6 @@ export const examples = [
   },
   {
     name: "Input with Icons",
-    Code: <Input><InputSlot className='pl-3'><InputIcon as={SearchIcon}/></InputSlot><InputField placeholder="Search..." /></Input>
+    Code: function Example() { return (<Input><InputSlot className='pl-3'><InputIcon as={SearchIcon}/></InputSlot><InputField placeholder="Search..." /></Input>); }
   }
 ];

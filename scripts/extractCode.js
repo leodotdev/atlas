@@ -46,7 +46,7 @@ const config = {
     { name: "tooltip", path: "example/storybook-nativewind/src/components/Tooltip/index.nw.stories.mdx" },
     { name: "vstack", path: "example/storybook-nativewind/src/components/VStack/index.nw.stories.mdx" }
   ],
-  branchName: "fix/actionsheet-examples",
+  branchName: "feat/imports",
   destinationDir: path.join(__dirname, "../components/docs/examples/"),
   cloneDir: path.join(__dirname, "../gluestack-ui"),
 };

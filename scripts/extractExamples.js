@@ -67,15 +67,23 @@ function extractExamplesCode(filePath) {
       });
     }
 
-    // Get all code blocks
+    // Get all code blocks and remove imports first
     const codeBlocks = [
       ...uncommentedContent.matchAll(
         /metaData\s*=\s*{[^}]*\s*code\s*:\s*`([^`]+)`/g
       ),
-    ].map((match, index) => ({
-      code: match[1].trim(),
-      position: match.index,
-    }));
+    ].map((match, index) => {
+      // First remove imports, then clean up the code
+      let code = match[1]
+        .replace(/import\s+.*;(\r?\n|\r)*/g, "") // Remove imports more reliably
+        .replace(/^\s*[\r\n]/gm, "") // Remove empty lines left by import removal
+        .trim();
+
+      return {
+        code,
+        position: match.index,
+      };
+    });
 
     const examples = [];
     let currentMainExample = null;
@@ -85,27 +93,24 @@ function extractExamplesCode(filePath) {
       const heading = headings[i];
 
       if (heading.level === 4) {
-        // If we have a previous main example with subExamples, add it
         if (currentMainExample && currentMainExample.subExamples.length > 0) {
           examples.push(currentMainExample);
         }
 
-        // Start new main example
         currentMainExample = {
           name: heading.name,
           subExamples: [],
         };
 
-        // Check if next headings are level 5 (subexamples)
         let j = i + 1;
         let hasSubExamples = false;
         while (j < headings.length && headings[j].level === 5) {
           hasSubExamples = true;
           const subExample = headings[j];
 
-          // Find matching code block
           const codeBlock = codeBlocks[codeBlockIndex++];
           if (codeBlock) {
+            // Clean up code formatting after imports are removed
             let code = codeBlock.code
               .replace(/\s*{"\s*"\s*}\s*/g, "")
               .replace(/\s+/g, " ")
@@ -120,10 +125,10 @@ function extractExamplesCode(filePath) {
           j++;
         }
 
-        // If no subexamples, treat as regular example
         if (!hasSubExamples) {
           const codeBlock = codeBlocks[codeBlockIndex++];
           if (codeBlock) {
+            // Clean up code formatting after imports are removed
             let code = codeBlock.code
               .replace(/\s*{"\s*"\s*}\s*/g, "")
               .replace(/\s+/g, " ")
@@ -137,7 +142,6 @@ function extractExamplesCode(filePath) {
           }
         }
 
-        // Skip processed subexamples
         i = j - 1;
       }
     }
