@@ -90,7 +90,7 @@ const AccordionDemo = () => {
           return (
             <Box
               key={index}
-              className="p-5 border border-outline-100 rounded-lg my-2.5 gap-5 min-h-[200px] max-w-[600px] lg:min-w-[700px] w-full self-center"
+              className="p-5 border border-outline-100 rounded-lg my-2.5 gap-5 min-h-[200px] max-w-[600px] lg:min-w-[700px] w-full self-center ios:flex-1 android:flex-1"
             >
               <Text className="border-b border-outline-200 pb-2 lg:pb-3 lg:text-xl text-base">
                 {Example.name}
