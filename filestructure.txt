@@ -1,0 +1,316 @@
+.
+├── README.md
+├── app
+│   ├── +not-found.tsx
+│   ├── _layout.tsx
+│   ├── index.tsx
+│   └── kitchen-sink
+│       ├── _layout.tsx
+│       ├── accordion.tsx
+│       ├── actionsheet.tsx
+│       ├── alert-dialog.tsx
+│       ├── alert.tsx
+│       ├── avatar.tsx
+│       ├── badge.tsx
+│       ├── box.tsx
+│       ├── button.tsx
+│       ├── card.tsx
+│       ├── center.tsx
+│       ├── checkbox.tsx
+│       ├── divider.tsx
+│       ├── drawer.tsx
+│       ├── fab.tsx
+│       ├── form-control.tsx
+│       ├── grid.tsx
+│       ├── heading.tsx
+│       ├── hstack.tsx
+│       ├── icon.tsx
+│       ├── image.tsx
+│       ├── index.tsx
+│       ├── input.tsx
+│       ├── link.tsx
+│       ├── menu.tsx
+│       ├── modal.tsx
+│       ├── popover.tsx
+│       ├── portal.tsx
+│       ├── pressable.tsx
+│       ├── progress.tsx
+│       ├── radio.tsx
+│       ├── select.tsx
+│       ├── skeleton.tsx
+│       ├── slider.tsx
+│       ├── spinner.tsx
+│       ├── switch.tsx
+│       ├── table.tsx
+│       ├── text.tsx
+│       ├── textarea.tsx
+│       ├── toast.tsx
+│       ├── tooltip.tsx
+│       └── vstack.tsx
+├── app.json
+├── assets
+│   └── images
+│       ├── adaptive-icon.png
+│       ├── favicon.png
+│       ├── icon.png
+│       └── splash.png
+├── babel.config.js
+├── backend
+│   ├── data
+│   │   └── pds.sqlite
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── src
+│   │   ├── index.ts
+│   │   └── pds.ts
+│   ├── tsconfig.json
+│   └── yarn.lock
+├── components
+│   ├── custom
+│   │   └── icons
+│   │       ├── hundredEmoji
+│   │       │   ├── index.tsx
+│   │       │   └── index.web.tsx
+│   │       └── thumbDownEmoji
+│   │           ├── index.tsx
+│   │           └── index.web.tsx
+│   ├── docs
+│   │   └── examples
+│   │       ├── accordion
+│   │       │   └── index.js
+│   │       ├── actionsheet
+│   │       │   └── index.js
+│   │       ├── alert
+│   │       │   └── index.js
+│   │       ├── alert-dialog
+│   │       │   └── index.js
+│   │       ├── avatar
+│   │       │   └── index.js
+│   │       ├── badge
+│   │       │   └── index.js
+│   │       ├── bottomsheet
+│   │       │   └── index.js
+│   │       ├── box
+│   │       │   └── index.js
+│   │       ├── button
+│   │       │   └── index.js
+│   │       ├── card
+│   │       │   └── index.js
+│   │       ├── center
+│   │       │   └── index.js
+│   │       ├── checkbox
+│   │       │   └── index.js
+│   │       ├── divider
+│   │       │   └── index.js
+│   │       ├── drawer
+│   │       │   └── index.js
+│   │       ├── fab
+│   │       │   └── index.js
+│   │       ├── form-control
+│   │       │   └── index.js
+│   │       ├── grid
+│   │       │   └── index.js
+│   │       ├── heading
+│   │       │   └── index.js
+│   │       ├── hstack
+│   │       │   └── index.js
+│   │       ├── icon
+│   │       │   └── index.js
+│   │       ├── image
+│   │       │   └── index.js
+│   │       ├── input
+│   │       │   └── index.js
+│   │       ├── link
+│   │       │   └── index.js
+│   │       ├── menu
+│   │       │   └── index.js
+│   │       ├── modal
+│   │       │   └── index.js
+│   │       ├── popover
+│   │       │   └── index.js
+│   │       ├── portal
+│   │       │   └── index.js
+│   │       ├── pressable
+│   │       │   └── index.js
+│   │       ├── progress
+│   │       │   └── index.js
+│   │       ├── radio
+│   │       │   └── index.js
+│   │       ├── select
+│   │       │   └── index.js
+│   │       ├── skeleton
+│   │       │   └── index.js
+│   │       ├── slider
+│   │       │   └── index.js
+│   │       ├── spinner
+│   │       │   └── index.js
+│   │       ├── switch
+│   │       │   └── index.js
+│   │       ├── table
+│   │       │   └── index.js
+│   │       ├── text
+│   │       │   └── index.js
+│   │       ├── textarea
+│   │       │   └── index.js
+│   │       ├── toast
+│   │       │   └── index.js
+│   │       ├── tooltip
+│   │       │   └── index.js
+│   │       └── vstack
+│   │           └── index.js
+│   └── ui
+│       ├── accordion
+│       │   └── index.tsx
+│       ├── actionsheet
+│       │   └── index.tsx
+│       ├── alert
+│       │   └── index.tsx
+│       ├── alert-dialog
+│       │   └── index.tsx
+│       ├── avatar
+│       │   └── index.tsx
+│       ├── badge
+│       │   └── index.tsx
+│       ├── bottomsheet
+│       │   └── index.tsx
+│       ├── box
+│       │   ├── index.tsx
+│       │   ├── index.web.tsx
+│       │   └── styles.tsx
+│       ├── button
+│       │   └── index.tsx
+│       ├── card
+│       │   ├── index.tsx
+│       │   ├── index.web.tsx
+│       │   └── styles.tsx
+│       ├── center
+│       │   ├── index.tsx
+│       │   ├── index.web.tsx
+│       │   └── styles.tsx
+│       ├── checkbox
+│       │   └── index.tsx
+│       ├── divider
+│       │   └── index.tsx
+│       ├── drawer
+│       │   └── index.tsx
+│       ├── fab
+│       │   └── index.tsx
+│       ├── flat-list
+│       │   └── index.tsx
+│       ├── form-control
+│       │   └── index.tsx
+│       ├── gluestack-ui-provider
+│       │   ├── config.ts
+│       │   ├── index.tsx
+│       │   ├── index.web.tsx
+│       │   └── script.ts
+│       ├── grid
+│       │   ├── index.tsx
+│       │   ├── index.web.tsx
+│       │   └── styles.tsx
+│       ├── heading
+│       │   ├── index.tsx
+│       │   ├── index.web.tsx
+│       │   └── styles.tsx
+│       ├── hstack
+│       │   ├── index.tsx
+│       │   ├── index.web.tsx
+│       │   └── styles.tsx
+│       ├── icon
+│       │   ├── index.tsx
+│       │   └── index.web.tsx
+│       ├── image
+│       │   └── index.tsx
+│       ├── image-background
+│       │   └── index.tsx
+│       ├── input
+│       │   └── index.tsx
+│       ├── input-accessory-view
+│       │   └── index.tsx
+│       ├── keyboard-avoiding-view
+│       │   └── index.tsx
+│       ├── link
+│       │   └── index.tsx
+│       ├── menu
+│       │   └── index.tsx
+│       ├── modal
+│       │   └── index.tsx
+│       ├── popover
+│       │   └── index.tsx
+│       ├── portal
+│       │   └── index.tsx
+│       ├── pressable
+│       │   └── index.tsx
+│       ├── progress
+│       │   └── index.tsx
+│       ├── radio
+│       │   └── index.tsx
+│       ├── refresh-control
+│       │   └── index.tsx
+│       ├── safe-area-view
+│       │   └── index.tsx
+│       ├── scroll-view
+│       │   └── index.tsx
+│       ├── section-list
+│       │   └── index.tsx
+│       ├── select
+│       │   ├── index.tsx
+│       │   └── select-actionsheet.tsx
+│       ├── skeleton
+│       │   ├── index.tsx
+│       │   ├── index.web.tsx
+│       │   └── styles.tsx
+│       ├── slider
+│       │   └── index.tsx
+│       ├── spinner
+│       │   └── index.tsx
+│       ├── status-bar
+│       │   └── index.tsx
+│       ├── switch
+│       │   └── index.tsx
+│       ├── table
+│       │   ├── index.tsx
+│       │   ├── index.web.tsx
+│       │   └── styles.tsx
+│       ├── text
+│       │   ├── index.tsx
+│       │   ├── index.web.tsx
+│       │   └── styles.tsx
+│       ├── textarea
+│       │   └── index.tsx
+│       ├── toast
+│       │   └── index.tsx
+│       ├── tooltip
+│       │   └── index.tsx
+│       ├── utils
+│       │   └── use-break-point-value.ts
+│       ├── view
+│       │   └── index.tsx
+│       ├── virtualized-list
+│       │   └── index.tsx
+│       └── vstack
+│           ├── index.tsx
+│           ├── index.web.tsx
+│           └── styles.tsx
+├── expo-env.d.ts
+├── filestructure.txt
+├── global.css
+├── gluestack-ui.config.json
+├── metro.config.js
+├── nativewind-env.d.ts
+├── package-lock.json
+├── package.json
+├── scripts
+│   ├── addImports.js
+│   ├── componentsImportList.js
+│   ├── extractCode.js
+│   ├── extractExamples.js
+│   └── transformer.js
+├── tailwind.config.js
+├── tsconfig.json
+├── utils
+│   └── list.tsx
+├── vercel.json
+└── yarn.lock
+
+113 directories, 201 files

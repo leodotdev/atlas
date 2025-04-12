@@ -42,15 +42,6 @@ export default function RootLayout() {
     );
   };
 
-  const getHeaderOptions = (title: string) => ({
-    headerTitle: title,
-    headerTintColor: colorMode === "light" ? "#000" : "#fff",
-    headerStyle: styles.header,
-    ...(Platform.OS !== "android" && {
-      headerLeft: () => <CustomBackButton />,
-    }),
-  });
-
   return (
     <>
       <StatusBar
@@ -61,89 +52,11 @@ export default function RootLayout() {
         <GluestackUIProvider mode={colorMode}>
           <Stack screenOptions={{ animation: "slide_from_right" }}>
             <Stack.Screen name="index" options={{ headerShown: false }} />
+            <Stack.Screen
+              name="kitchen-sink"
+              options={{ headerShown: false }}
+            />
             <Stack.Screen name="+not-found" options={{ headerShown: false }} />
-            <Stack.Screen
-              name="accordion"
-              options={getHeaderOptions("Accordion")}
-            />
-            <Stack.Screen
-              name="actionsheet"
-              options={getHeaderOptions("ActionSheet")}
-            />
-            <Stack.Screen name="alert" options={getHeaderOptions("Alert")} />
-            <Stack.Screen
-              name="alert-dialog"
-              options={getHeaderOptions("AlertDialog")}
-            />
-            <Stack.Screen name="avatar" options={getHeaderOptions("Avatar")} />
-            <Stack.Screen name="badge" options={getHeaderOptions("Badge")} />
-            <Stack.Screen name="box" options={getHeaderOptions("Box")} />
-            <Stack.Screen name="button" options={getHeaderOptions("Button")} />
-            <Stack.Screen name="card" options={getHeaderOptions("Card")} />
-            <Stack.Screen name="center" options={getHeaderOptions("Center")} />
-            <Stack.Screen
-              name="checkbox"
-              options={getHeaderOptions("Checkbox")}
-            />
-            <Stack.Screen
-              name="divider"
-              options={getHeaderOptions("Divider")}
-            />
-            <Stack.Screen name="drawer" options={getHeaderOptions("Drawer")} />
-            <Stack.Screen name="fab" options={getHeaderOptions("Fab")} />
-            <Stack.Screen
-              name="form-control"
-              options={getHeaderOptions("FormControl")}
-            />
-            <Stack.Screen name="grid" options={getHeaderOptions("Grid")} />
-            <Stack.Screen
-              name="heading"
-              options={getHeaderOptions("Heading")}
-            />
-            <Stack.Screen name="hstack" options={getHeaderOptions("HStack")} />
-            <Stack.Screen name="icon" options={getHeaderOptions("Icon")} />
-            <Stack.Screen name="image" options={getHeaderOptions("Image")} />
-            <Stack.Screen name="input" options={getHeaderOptions("Input")} />
-            <Stack.Screen name="link" options={getHeaderOptions("Link")} />
-            <Stack.Screen name="menu" options={getHeaderOptions("Menu")} />
-            <Stack.Screen name="modal" options={getHeaderOptions("Modal")} />
-            <Stack.Screen
-              name="popover"
-              options={getHeaderOptions("Popover")}
-            />
-            <Stack.Screen name="portal" options={getHeaderOptions("Portal")} />
-            <Stack.Screen
-              name="pressable"
-              options={getHeaderOptions("Pressable")}
-            />
-            <Stack.Screen
-              name="progress"
-              options={getHeaderOptions("Progress")}
-            />
-            <Stack.Screen name="radio" options={getHeaderOptions("Radio")} />
-            <Stack.Screen name="select" options={getHeaderOptions("Select")} />
-            <Stack.Screen
-              name="skeleton"
-              options={getHeaderOptions("Skeleton")}
-            />
-            <Stack.Screen name="slider" options={getHeaderOptions("Slider")} />
-            <Stack.Screen
-              name="spinner"
-              options={getHeaderOptions("Spinner")}
-            />
-            <Stack.Screen name="switch" options={getHeaderOptions("Switch")} />
-            <Stack.Screen name="table" options={getHeaderOptions("Table")} />
-            <Stack.Screen name="text" options={getHeaderOptions("Text")} />
-            <Stack.Screen
-              name="textarea"
-              options={getHeaderOptions("TextArea")}
-            />
-            <Stack.Screen name="toast" options={getHeaderOptions("Toast")} />
-            <Stack.Screen
-              name="tooltip"
-              options={getHeaderOptions("Tooltip")}
-            />
-            <Stack.Screen name="vstack" options={getHeaderOptions("VStack")} />
           </Stack>
 
           <Fab
